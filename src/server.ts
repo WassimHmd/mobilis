@@ -4,6 +4,8 @@ import cors from "cors";
 import fs from "fs";
 import path from "path";
 import dotenv from "dotenv";
+import { PrismaClient } from "@prisma/client";
+import routes from "./router/v1"
 
 // Load environment variables
 dotenv.config();
@@ -32,6 +34,9 @@ app.use(
     skip: (req: Request, res: Response) => res.statusCode < 500,
   })
 );
+
+app.use("/api/v1/", routes)
+
 
 // Run server
 const port: number = parseInt(process.env.PORT || "3000", 10);
