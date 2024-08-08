@@ -5,7 +5,8 @@
   "scripts": {
     "build": "tsc",
     "start": "nodemon dist/server.js",
-    "dev": "nodemon src/server.ts"
+    "dev": "nodemon src/server.ts",
+    "migrate": "prisma migrate deploy"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +22,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "express-basic-auth": "^1.2.1",
     "fs": "^0.0.1-security",
     "handlebars": "^4.7.8",
     "jsonwebtoken": "^9.0.2",
@@ -29,12 +31,16 @@
     "path": "^0.12.7",
     "pg": "^8.12.0",
     "prisma": "^5.17.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.17",
-    "@types/morgan": "^1.9.9"
+    "@types/morgan": "^1.9.9",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.6"
   }
 }

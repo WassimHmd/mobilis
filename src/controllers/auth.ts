@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
 
-
+// register global
 export const register = async (req: Request, res: Response) => {
   try {
     const { email, password, firstName, lastName } = req.body;
@@ -38,12 +38,12 @@ export const register = async (req: Request, res: Response) => {
     res.cookie("token", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
 
     return res.status(200).json(user);
-
   } catch (err) {
     return res.status(500).json({ error: err });
   }
 };
 
+// login global
 export const login = async (req: Request, res: Response, next: Function) => {
   try {
     const { email, password } = req.body;
@@ -54,7 +54,7 @@ export const login = async (req: Request, res: Response, next: Function) => {
     const user = await prisma.user.findUnique({
       where: { email },
     });
-    
+
     if (!user || !bcrypt.compareSync(password, user.password)) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
@@ -68,7 +68,6 @@ export const login = async (req: Request, res: Response, next: Function) => {
     res.cookie("token", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
 
     return res.status(200).json(user);
-
   } catch (err) {
     return res.status(500).json({ error: err });
   }

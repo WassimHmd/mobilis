@@ -4,9 +4,10 @@ import cors from "cors";
 import fs from "fs";
 import path from "path";
 import dotenv from "dotenv";
+import routes from "./router/v1";
+import setupSwagger from "./config/swagger";
+// FIXME: change usage so the log of database connection is printed on here(low priority)
 import { PrismaClient } from "@prisma/client";
-import routes from "./router/v1"
-
 // Load environment variables
 dotenv.config();
 
@@ -15,6 +16,9 @@ const app = express();
 
 // Initialize CORS
 app.use(cors());
+
+// Initialize Swagger
+setupSwagger(app);
 
 // Use JSON parser
 app.use(express.json());
@@ -35,8 +39,7 @@ app.use(
   })
 );
 
-app.use("/api/v1/", routes)
-
+app.use("/api/v1/", routes);
 
 // Run server
 const port: number = parseInt(process.env.PORT || "3000", 10);
