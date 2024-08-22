@@ -16,20 +16,43 @@ const router = Router();
  */
 router.use("/auth", auth);
 
+/**
+ * @swagger
+ * /api/v1/sites:
+ *   get:
+ *     summary: Sites routes endpoint
+ *     description: Placeholder for the sites routes.
+ */
+router.use("/sites", sites)
 
 
 /**
  * @swagger
- * tags:
- *   name: Sites routes endpoint
- *   description: CRUD operations for managing sites
+ * /api/v1/subcontractor:
+ *   get:
+ *     summary: Get all Subctractors
+ *     description: Placeholder for the subcontractor routes.
  */
-router.use("/sites", sites)
-
 router.use("/subcontractor", subcontractors)
 
+
+/**
+ * @swagger
+ * /api/v1/negociator:
+ *   get:
+ *     summary: Get all Negociators 
+ *     description: Placeholder for the negociator routes.
+ */
 router.use("/negociator", negociator)
 
+
+/**
+ * @swagger
+ * /api/v1/moderator:
+ *   get:
+ *     summary: Get all Moderators
+ *     description: Placeholder for the moderator routes.
+ */
 router.use("/moderator", moderator)
 
 export default router;
