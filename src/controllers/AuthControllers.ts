@@ -7,9 +7,9 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // register global
-export const register = async (req: Request, res: Response) => {
+export const register = async (req: Request & { user?: any }, res: Response) => {
   try {
-    const { email, password, firstName, lastName } = req.body;
+    const { email, password, firstName, lastName, phoneNumber } = req.body;
     if (!email || !password || !firstName || !lastName)
       return res.status(400).json({ message: "All fields are required" });
 
@@ -27,8 +27,11 @@ export const register = async (req: Request, res: Response) => {
         password: hashedPassword,
         firstName,
         lastName,
+        phoneNumber
       },
     });
+
+    req.user = user
     const token: string = jwt.sign(
       { email: user.email, ver: user.ver },
       process.env.JWT_SECRET || "secret",
@@ -39,6 +42,7 @@ export const register = async (req: Request, res: Response) => {
 
     return res.status(200).json(user);
   } catch (err) {
+    console.log(err)
     return res.status(500).json({ error: err });
   }
 };
@@ -69,6 +73,7 @@ export const login = async (req: Request, res: Response, next: Function) => {
 
     return res.status(200).json(user);
   } catch (err) {
+    console.log(err)
     return res.status(500).json({ error: err });
   }
 };

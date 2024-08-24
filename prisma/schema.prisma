@@ -1,18 +1,161 @@
 generator client {
   provider = "prisma-client-js"
 }
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
 model User {
-  id        String  @id @default(cuid())
-  email     String  @unique
-  firstName String
-  lastName  String
-  password  String
-  image     String?
+  id          String    @id @default(cuid())
+  email       String    @unique
+  firstName   String
+  lastName    String
+  password    String
+  image       String?
+  phoneNumber String?
+  userType    userTypes @default(SUBCONTRACTOR)
+
+  moderator     Moderator?
+  subcontractor SubContractor?
 
   //tetincrementa a chaque changement li lazem y'deconnecti les sessions lokhrin
-  ver       Int     @default(0)
+  ver        Int         @default(0)
+  Negociator Negociator?
+  Bureau     Bureau?
+}
+
+enum userTypes {
+  MODERATOR
+  SUBCONTRACTOR
+  NEGOCIATOR
+  BUREAU
+}
+
+model Moderator {
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @id @unique
+
+  region String
+  admin  Boolean @default(false)
+}
+
+model SubContractor {
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @id @unique
+
+  status      Float   @default(0)
+  fullName    String
+  address     String
+  //SignaNum
+  CAF         Int     @default(0)
+  SPOC        String
+  deployment  Boolean @default(false)
+  maintenance Boolean @default(false)
+
+  sites Site[]
+}
+
+model Site {
+  id          String    @id @default(cuid())
+  type        SiteTypes
+  startDate   DateTime
+  endDate     DateTime
+  code        Int
+  name        String
+  region      String
+  wilaya      Wilayas
+  location    String
+  progression Int       @default(0)
+
+  //step
+  negociatorId    String?
+  subcontractorId String
+  bureauId        String?
+
+  subcontractor SubContractor @relation(fields: [subcontractorId], references: [userId])
+  negociator    Negociator?   @relation(fields: [negociatorId], references: [userId])
+  Bureau        Bureau?       @relation(fields: [bureauId], references: [userId])
+}
+
+model Negociator {
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @id @unique
+
+  sites Site[]
+}
+
+model Bureau {
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @id @unique
+
+  sites Site[]
+}
+
+enum SiteTypes {
+  PYLON
+  TERASSE
+}
+
+enum Wilayas {
+  PARIS
+  ADRAR
+  CHLEF
+  LAGHOUAT
+  OUM_EL_BOUAGHI
+  BATNA
+  BEJAIA
+  BISKRA
+  BECHAR
+  BLIDA
+  BOUIRA
+  TAMANRASSET
+  TBESSA
+  TLEMCEN
+  TIARET
+  TIZI_OUZOU
+  ALGER
+  DJELFA
+  JIJEL
+  SETIF
+  SAIDA
+  SKIKDA
+  SIDI_BEL_ABBES
+  ANNABA
+  GUELMA
+  CONSTANTINE
+  MEDEA
+  MOSTAGANEM
+  MSILA
+  MASCARA
+  OUARGLA
+  ORAN
+  EL_BAYADH
+  ILLIZI
+  BORDJ_BOU_ARRERIDJ
+  BOUMERDES
+  EL_TARF
+  TINDOUF
+  TISSEMSILT
+  EL_OUED
+  KHENCHELA
+  SOUK_AHRAS
+  TIPAZA
+  MILA
+  AIN_DEFLA
+  NAAMA
+  AIN_TEMOUCHENT
+  GHARDAIA
+  RELIZANE
+  EL_MGHAIR
+  EL_MENIA
+  OULED_DJELLAL
+  BORDJ_BAJI_MOKHTAR
+  BENI_ABBES
+  TIMIMOUN
+  TOUGGOURT
+  DJANET
+  IN_SALAH
+  IN_GUEZZAM
 }
