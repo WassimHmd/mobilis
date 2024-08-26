@@ -77,6 +77,7 @@ model Site {
   subcontractor SubContractor @relation(fields: [subcontractorId], references: [userId])
   negociator    Negociator?   @relation(fields: [negociatorId], references: [userId])
   Bureau        Bureau?       @relation(fields: [bureauId], references: [userId])
+  Document      Document[]
 }
 
 model Negociator {
@@ -91,6 +92,27 @@ model Bureau {
   userId String @id @unique
 
   sites Site[]
+}
+
+model Document {
+  id   String   @id @default(cuid())
+  type DocTypes
+  data String
+
+  site   Site   @relation(fields: [siteId], references: [id])
+  siteId String
+  
+
+  //TODO: Add Step relation when steps are implemented 
+}
+
+enum DocTypes {
+  RECEIPT
+  SA1
+  SA2
+  SA3
+  SA4
+  ANF
 }
 
 enum SiteTypes {
