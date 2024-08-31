@@ -1,9 +1,12 @@
 import { Router } from "express";
 import auth from "./routes/auth";
-import sites from "./routes/sites";
-import subcontractors from "./routes/subcontractor";
-import negociator from "./routes/negociator";
-import moderator from "./routes/moderator";
+
+import sites from "./routes/sites"
+import subcontractors from "./routes/subcontractor"
+import negociator from "./routes/negociator"
+import moderator from "./routes/moderator"
+import documents from "./routes/documents"
+
 
 const router = Router();
 
@@ -60,4 +63,5 @@ router.use("/negociator", negociator);
 router.use("/moderator", moderator);
 
 
+router.use("/documents", documents)
 export default router;
