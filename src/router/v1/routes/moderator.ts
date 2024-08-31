@@ -169,65 +169,6 @@ router.put("/:id", updateModerator)
 router.delete("/:id", deleteModerator)
 
 
-/**
- * @swagger
- * /moderators/{id}:
- *   put:
- *     summary: Update a moderator by ID
- *     tags: [Moderators]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: Moderator ID
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               region:
- *                 type: string
- *                 example: "South"
- *               otherField:
- *                 type: string
- *                 example: "Some value"
- *     responses:
- *       200:
- *         description: Moderator updated successfully
- *       400:
- *         description: Bad request
- *       404:
- *         description: Moderator not found
- *       500:
- *         description: Server error
- */
-router.put("/:id", updateModerator);
 
-/**
- * @swagger
- * /moderators/{id}:
- *   delete:
- *     summary: Delete a moderator by ID
- *     tags: [Moderators]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: Moderator ID
- *     responses:
- *       204:
- *         description: No content, moderator deleted successfully
- *       404:
- *         description: Moderator not found
- *       500:
- *         description: Server error
- */
-router.delete("/:id", deleteModerator);
 
 export default router;
