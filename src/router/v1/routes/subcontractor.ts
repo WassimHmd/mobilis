@@ -1,5 +1,4 @@
 import { Router } from "express";
-
 import {
   createSubContractor,
   getSubContractorById,
@@ -7,9 +6,10 @@ import {
   updateSubContractor,
   deleteSubContractor,
 } from "../../../controllers/SubcontractorControllers";
-import { registerMiddleware } from "@/middleware/authMiddleware"
+import { registerMiddleware } from "@/middleware/authMiddleware";
 
 const router = Router();
+
 
 
 /**
@@ -20,6 +20,7 @@ const router = Router();
  *     description: Creates a new SubContractor account.
  *     tags:
  *       - SubContractors
+
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -29,6 +30,7 @@ const router = Router();
  *           schema:
  *             type: object
  *             properties:
+
  *               email:
  *                 type: string
  *                 example: user@example.com
@@ -53,6 +55,7 @@ const router = Router();
  *               SPOC:
  *                 type: string
  *                 example: John Doe
+
  *               deployment:
  *                 type: boolean
  *                 example: true
@@ -61,6 +64,7 @@ const router = Router();
  *                 example: false
  *     responses:
  *       201:
+
  *         description: SubContractor registered successfully
  *       400:
  *         description: Bad request
@@ -93,12 +97,14 @@ router.get("/", getAllSubContractors)
  *     description: Get a SubContractor by id
  *     tags:
  *       - SubContractors
+
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema:
  *           type: string
+
  *         description: SubContractor id
  *     responses:
  *       200:
@@ -125,6 +131,7 @@ router.get("/:id", getSubContractorById)
  *           type: string
  *         required: true
  *         description: The ID of the SubContractor to update.
+
  *     requestBody:
  *       required: true
  *       content:
@@ -132,6 +139,7 @@ router.get("/:id", getSubContractorById)
  *           schema:
  *             type: object
  *             properties:
+
  *               email:
  *                 type: string
  *                 example: user@example.com
@@ -197,4 +205,5 @@ router.put("/:id", updateSubContractor)
  */
 router.delete("/:id", deleteSubContractor)
 
-export default router
+
+export default router;

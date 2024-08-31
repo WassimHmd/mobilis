@@ -1,9 +1,9 @@
 import { Router } from "express";
 import auth from "./routes/auth";
-import sites from "./routes/sites"
-import subcontractors from "./routes/subcontractor"
-import negociator from "./routes/negociator"
-import moderator from "./routes/moderator"
+import sites from "./routes/sites";
+import subcontractors from "./routes/subcontractor";
+import negociator from "./routes/negociator";
+import moderator from "./routes/moderator";
 
 const router = Router();
 
@@ -23,7 +23,14 @@ router.use("/auth", auth);
  *     summary: Sites routes endpoint
  *     description: Placeholder for the sites routes.
  */
-router.use("/sites", sites)
+router.use("/sites", sites);
+/**
+ * @swagger
+ * tags:
+ *   name: Sites routes endpoint
+ *   description: CRUD operations for managing subcontractor
+ */
+
 
 
 /**
@@ -31,28 +38,26 @@ router.use("/sites", sites)
  * /api/v1/subcontractor:
  *   get:
  *     summary: Get all Subctractors
- *     description: Placeholder for the subcontractor routes.
+ *     description: CRUD operations for managing subcontractor
  */
-router.use("/subcontractor", subcontractors)
 
-
+router.use("/subcontractor", subcontractors);
 /**
  * @swagger
- * /api/v1/negociator:
- *   get:
- *     summary: Get all Negociators 
- *     description: Placeholder for the negociator routes.
+ * tags:
+ *   name: Sites routes endpoint
+ *   description: CRUD operations for managing negociator
  */
-router.use("/negociator", negociator)
 
-
+router.use("/negociator", negociator);
 /**
  * @swagger
- * /api/v1/moderator:
- *   get:
- *     summary: Get all Moderators
- *     description: Placeholder for the moderator routes.
+ * tags:
+ *   name: Sites routes endpoint
+ *   description: CRUD operations for managing moderator
  */
-router.use("/moderator", moderator)
+
+router.use("/moderator", moderator);
+
 
 export default router;

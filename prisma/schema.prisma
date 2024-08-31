@@ -20,10 +20,22 @@ model User {
   moderator     Moderator?
   subcontractor SubContractor?
 
+  resetTokens  ResetToken[]
+  @@index([email])
+
   //tetincrementa a chaque changement li lazem y'deconnecti les sessions lokhrin
   ver        Int         @default(0)
   Negociator Negociator?
   Bureau     Bureau?
+}
+model ResetToken {
+  id        String   @id @default(cuid())
+  owner     User     @relation(fields: [ownerId], references: [id])
+  ownerId   String
+  token     String
+  createdAt DateTime @default(now())
+
+  @@index([ownerId])
 }
 
 enum userTypes {

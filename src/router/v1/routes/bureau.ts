@@ -12,6 +12,7 @@ const router = Router();
 
 /**
  * @swagger
+
  * /api/v1/bureau:
  *   post:
  *     summary: Register a new Bureau
