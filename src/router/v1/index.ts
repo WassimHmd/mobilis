@@ -1,10 +1,12 @@
 import { Router } from "express";
 import auth from "./routes/auth";
+
 import sites from "./routes/sites"
 import subcontractors from "./routes/subcontractor"
 import negociator from "./routes/negociator"
 import moderator from "./routes/moderator"
 import documents from "./routes/documents"
+
 
 const router = Router();
 
@@ -17,21 +19,49 @@ const router = Router();
  */
 router.use("/auth", auth);
 
-
-
+/**
+ * @swagger
+ * /api/v1/sites:
+ *   get:
+ *     summary: Sites routes endpoint
+ *     description: Placeholder for the sites routes.
+ */
+router.use("/sites", sites);
 /**
  * @swagger
  * tags:
  *   name: Sites routes endpoint
- *   description: CRUD operations for managing sites
+ *   description: CRUD operations for managing subcontractor
  */
-router.use("/sites", sites)
 
-router.use("/subcontractor", subcontractors)
 
-router.use("/negociator", negociator)
 
-router.use("/moderator", moderator)
+/**
+ * @swagger
+ * /api/v1/subcontractor:
+ *   get:
+ *     summary: Get all Subctractors
+ *     description: CRUD operations for managing subcontractor
+ */
+
+router.use("/subcontractor", subcontractors);
+/**
+ * @swagger
+ * tags:
+ *   name: Sites routes endpoint
+ *   description: CRUD operations for managing negociator
+ */
+
+router.use("/negociator", negociator);
+/**
+ * @swagger
+ * tags:
+ *   name: Sites routes endpoint
+ *   description: CRUD operations for managing moderator
+ */
+
+router.use("/moderator", moderator);
+
 
 router.use("/documents", documents)
 export default router;

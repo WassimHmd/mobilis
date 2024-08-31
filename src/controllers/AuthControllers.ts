@@ -7,7 +7,10 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // register global
-export const register = async (req: Request & { user?: any }, res: Response) => {
+export const register = async (
+  req: Request & { user?: any },
+  res: Response
+) => {
   try {
     const { email, password, firstName, lastName, phoneNumber } = req.body;
     if (!email || !password || !firstName || !lastName)
@@ -27,14 +30,14 @@ export const register = async (req: Request & { user?: any }, res: Response) => 
         password: hashedPassword,
         firstName,
         lastName,
-        phoneNumber
+        phoneNumber,
       },
     });
 
-    req.user = user
+    req.user = user;
     const token: string = jwt.sign(
       { email: user.email, ver: user.ver },
-      process.env.JWT_SECRET || "secret",
+      process.env.JWT_SECRET || "secret@2025",
       { expiresIn: "1d" }
     );
 
@@ -42,7 +45,7 @@ export const register = async (req: Request & { user?: any }, res: Response) => 
 
     return res.status(200).json(user);
   } catch (err) {
-    console.log(err)
+    console.log(err);
     return res.status(500).json({ error: err });
   }
 };
@@ -65,7 +68,7 @@ export const login = async (req: Request, res: Response, next: Function) => {
 
     const token: string = jwt.sign(
       { email: user.email, ver: user.ver },
-      process.env.JWT_SECRET || "secret",
+      process.env.JWT_SECRET || "secret@2025",
       { expiresIn: "1d" }
     );
 
@@ -73,7 +76,87 @@ export const login = async (req: Request, res: Response, next: Function) => {
 
     return res.status(200).json(user);
   } catch (err) {
-    console.log(err)
     return res.status(500).json({ error: err });
+  }
+};
+
+// password forgot global
+export const forgotPassword = async (req: Request, res: Response) => {
+  try {
+    const { email } = req.body;
+    if (!email) {
+      return res.status(400).json({ message: "Email is required" });
+    }
+    const user = await prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const token = jwt.sign(
+      { userId: user.id, email: user.email },
+      process.env.JWT_SECRET || "secret",
+      { expiresIn: "12h" }
+    );
+    await prisma.resetToken.create({
+      data: {
+        ownerId: user.id,
+        token,
+      },
+    });
+    return res
+      .status(200)
+      .json({ message: "Password reset link sent to your email." });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Something went wrong" });
+  }
+};
+
+// password reset global
+export const resetPassword = async (req: Request, res: Response) => {
+  try {
+    const { token, newPassword } = req.body;
+
+    if (!token || !newPassword) {
+      return res
+        .status(400)
+        .json({ message: "Token and new password are required" });
+    }
+    let decoded;
+    try {
+      decoded = jwt.verify(token, process.env.JWT_SECRET || "secret");
+    } catch (err) {
+      return res.status(400).json({ message: "Invalid or expired token" });
+    }
+    const resetToken = await prisma.resetToken.findFirst({
+      where: { token },
+    });
+
+    if (!resetToken) {
+      return res.status(404).json({ message: "Invalid token" });
+    }
+    const user = await prisma.user.findUnique({
+      where: { id: resetToken.ownerId },
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const hashedPassword = bcrypt.hashSync(newPassword, 10);
+    await prisma.user.update({
+      where: { id: user.id },
+      data: { password: hashedPassword },
+    });
+    await prisma.resetToken.delete({
+      where: { id: resetToken.id },
+    });
+    return res
+      .status(200)
+      .json({ message: "Password has been reset successfully" });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Something went wrong" });
   }
 };
