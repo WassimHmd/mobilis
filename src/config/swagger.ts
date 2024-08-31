@@ -37,7 +37,7 @@ const swaggerDefinition = {
 //  options ::
 const options = {
   swaggerDefinition,
-  apis: ["./src/router/**/*.ts"],
+  apis: ["./src/router/**/*.ts", "./src/router/**/**/*.ts"],
 };
 
 // init ::

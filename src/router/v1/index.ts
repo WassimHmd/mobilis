@@ -18,9 +18,10 @@ router.use("/auth", auth);
 
 /**
  * @swagger
- * tags:
- *   name: Sites routes endpoint
- *   description: CRUD operations for managing sites
+ * /api/v1/sites:
+ *   get:
+ *     summary: Sites routes endpoint
+ *     description: Placeholder for the sites routes.
  */
 router.use("/sites", sites);
 /**
@@ -28,6 +29,16 @@ router.use("/sites", sites);
  * tags:
  *   name: Sites routes endpoint
  *   description: CRUD operations for managing subcontractor
+ */
+
+
+
+/**
+ * @swagger
+ * /api/v1/subcontractor:
+ *   get:
+ *     summary: Get all Subctractors
+ *     description: CRUD operations for managing subcontractor
  */
 
 router.use("/subcontractor", subcontractors);
@@ -47,5 +58,6 @@ router.use("/negociator", negociator);
  */
 
 router.use("/moderator", moderator);
+
 
 export default router;
