@@ -4,6 +4,9 @@ import {
   deleteSite,
   getAllSites,
   getSiteById,
+  siteCancelCurrentStep,
+  siteNextStep,
+  updateCurrentStep,
   updateSite,
 } from "../../../controllers/SiteControllers";
 
@@ -64,6 +67,10 @@ const router = Router();
 
 
 router.post("/", createSite);
+
+router.post("/cancelStep/:id", siteCancelCurrentStep)
+
+router.post("/nextStep/:id", siteNextStep)
 
 /**
  * @swagger
@@ -184,6 +191,9 @@ router.get("/:id", getSiteById);
  *       500:
  *         description: Server error
  */
+
+router.put("/updateStep/:id", updateCurrentStep)
+
 router.put("/:id", updateSite);
 
 

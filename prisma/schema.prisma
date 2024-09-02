@@ -20,14 +20,16 @@ model User {
   moderator     Moderator?
   subcontractor SubContractor?
 
-  resetTokens  ResetToken[]
-  @@index([email])
+  resetTokens ResetToken[]
 
   //tetincrementa a chaque changement li lazem y'deconnecti les sessions lokhrin
   ver        Int         @default(0)
   Negociator Negociator?
   Bureau     Bureau?
+
+  @@index([email])
 }
+
 model ResetToken {
   id        String   @id @default(cuid())
   owner     User     @relation(fields: [ownerId], references: [id])
@@ -72,7 +74,7 @@ model SubContractor {
 model Site {
   id          String    @id @default(cuid())
   type        SiteTypes
-  startDate   DateTime
+  startDate   DateTime  @default(now())
   endDate     DateTime
   code        Int
   name        String
@@ -90,6 +92,7 @@ model Site {
   negociator    Negociator?   @relation(fields: [negociatorId], references: [userId])
   Bureau        Bureau?       @relation(fields: [bureauId], references: [userId])
   Document      Document[]
+  Step          Step[]
 }
 
 model Negociator {
@@ -113,9 +116,51 @@ model Document {
 
   site   Site   @relation(fields: [siteId], references: [id])
   siteId String
-  
 
   //TODO: Add Step relation when steps are implemented 
+}
+
+model Step {
+  id        String     @id @default(cuid())
+  status    StepStatus @default(PENDING)
+  payload   Json       @default("{}")
+  type      StepTypes
+  createdAt DateTime   @default(now())
+  
+  site    Site      @relation(fields: [siteId], references: [id])
+  siteId  String
+  Manager Manager[]
+}
+
+model Manager {
+  id         String            @id @default(uuid())
+  email      String
+  validation ManagerValidation
+
+  step   Step   @relation(fields: [stepId], references: [id])
+  stepId String
+}
+
+enum ManagerValidation {
+  VALID
+  PENDING
+  REFUSED
+}
+
+enum StepTypes {
+  SA1
+  SA2
+  SA3
+  SA4
+  ANF
+  DOS
+  OC
+}
+
+enum StepStatus {
+  COMPLETED
+  PENDING
+  FAILED
 }
 
 enum DocTypes {

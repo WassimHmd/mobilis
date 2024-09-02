@@ -1,14 +1,17 @@
 import { Request, Response } from "express";
 import prisma from "../config/db";
 import { SiteTypes } from "@prisma/client";
+import { cancelStep, createStep, getCurrentStep, nextStep, updateStep } from "./StepsControllers";
 
 export const createSite = async (req: Request, res: Response) => {
+  //TODO: create SA1 on creation
   try {
     const site = await prisma.site.create({
       data: {
         ...req.body
       },
     });
+    createStep(site.id, "SA1");
     res.status(201).json(site);
   } catch (error: any) {
     console.log(error);
@@ -77,3 +80,38 @@ export const deleteSite = async (req: Request, res: Response) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+export const siteCancelCurrentStep = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const newStep = await cancelStep(id)
+    return res.status(200).json(newStep)
+  } catch (error: any) {
+    console.log(error);
+    return res.status(500).json("Internal Server Error");
+  }
+}
+
+export const siteNextStep = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params
+    const newStep = await nextStep(id)
+    return res.status(200).json(newStep)
+  }catch(err){
+    console.error(err)
+    return res.status(200).json(err)
+  }
+}
+
+export const updateCurrentStep = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params
+    const { payload } = req.body
+    const currentStep = await getCurrentStep(id)
+    if(currentStep)
+      updateStep(currentStep.id, payload)
+  }catch(err){
+    console.error(err)
+    return res.status(200).json(err)
+  }
+}
