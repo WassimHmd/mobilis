@@ -6,6 +6,8 @@ import subcontractors from "./routes/subcontractor"
 import negociator from "./routes/negociator"
 import moderator from "./routes/moderator"
 import documents from "./routes/documents"
+import manager from "./routes/manager"
+
 import { testFeature } from "@/controllers/StepsControllers";
 
 
@@ -65,6 +67,8 @@ router.use("/moderator", moderator);
 
 
 router.use("/documents", documents)
+
+router.use("/manager/", manager)
 
 router.use("/step/:id", testFeature)
 export default router;

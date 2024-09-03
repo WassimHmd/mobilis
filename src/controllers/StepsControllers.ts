@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import prisma from "../config/db";
 import { Site, Step, StepTypes } from "@prisma/client";
+import { replicateManagers } from "./ManagerControllers";
 
 export const createStep = async (
   siteId: string,
@@ -88,11 +89,11 @@ export const nextStep = async (siteId: string) => {
   }
 };
 
-export const cancelStep = async (siteId: string) => {
+export const cancelStep = async (stepId: string) => {
 
-  //TODO: Replicate Managers from cancelled step once implemented
+  
   try {
-    const stepId = (await getCurrentStep(siteId))?.id
+    // const stepId = (await getCurrentStep(siteId))?.id
     const step = await prisma.step.update({
       where: {
         id:stepId
@@ -101,7 +102,8 @@ export const cancelStep = async (siteId: string) => {
         status: "FAILED"
       }
     })
-    const newStep = createStep(step.siteId, step.type)
+    const newStep = await createStep(step.siteId, step.type)
+    await replicateManagers(stepId, newStep.id)
 
     return newStep
     

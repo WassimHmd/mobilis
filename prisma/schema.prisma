@@ -126,7 +126,7 @@ model Step {
   payload   Json       @default("{}")
   type      StepTypes
   createdAt DateTime   @default(now())
-  
+
   site    Site      @relation(fields: [siteId], references: [id])
   siteId  String
   Manager Manager[]
@@ -135,10 +135,11 @@ model Step {
 model Manager {
   id         String            @id @default(uuid())
   email      String
-  validation ManagerValidation
+  validation ManagerValidation @default(PENDING)
+  type       String
 
   step   Step   @relation(fields: [stepId], references: [id])
-  stepId String
+  stepId String 
 }
 
 enum ManagerValidation {

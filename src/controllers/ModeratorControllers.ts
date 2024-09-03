@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import prisma from "../config/db";
-import { updateNegociator } from "@/controllers/NegociatorControllers";
 
 export const createModerator = async (req: any, res: Response) => {
   try {
