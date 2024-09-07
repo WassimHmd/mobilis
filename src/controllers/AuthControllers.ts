@@ -1,7 +1,7 @@
-import { Request, Response } from "express";
-import prisma from "../config/db";
 import bcrypt from "bcryptjs";
+import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import prisma from "../config/db";
 
 import dotenv from "dotenv";
 dotenv.config();

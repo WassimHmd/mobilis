@@ -16,17 +16,18 @@ model User {
   image       String?
   phoneNumber String?
   userType    userTypes @default(SUBCONTRACTOR)
-
+  
   moderator     Moderator?
   subcontractor SubContractor?
+  Negociator Negociator?
+  Bureau     Bureau?
 
   resetTokens  ResetToken[]
   @@index([email])
 
   //tetincrementa a chaque changement li lazem y'deconnecti les sessions lokhrin
   ver        Int         @default(0)
-  Negociator Negociator?
-  Bureau     Bureau?
+
 }
 model ResetToken {
   id        String   @id @default(cuid())
