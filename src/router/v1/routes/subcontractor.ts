@@ -10,19 +10,17 @@ import { registerMiddleware } from "@/middleware/authMiddleware";
 
 const router = Router();
 
-/**
- * @swagger
- * tags:
- *   name: Subcontractors
- *   description: CRUD operations for managing subcontractors
- */
+
 
 /**
  * @swagger
- * /subcontractors:
+ * /api/v1/subcontractor:
  *   post:
- *     summary: Create a new subcontractor
- *     tags: [Subcontractors]
+ *     summary: Register a new SubContractor
+ *     description: Creates a new SubContractor account.
+ *     tags:
+ *       - SubContractors
+
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -32,18 +30,32 @@ const router = Router();
  *           schema:
  *             type: object
  *             properties:
- *               fullName:
+
+ *               email:
  *                 type: string
- *                 example: "John Doe"
- *               address:
+ *                 example: user@example.com
+ *               password:
  *                 type: string
- *                 example: "123 Main St"
+ *                 example: yourpassword
+ *               firstName:
+ *                 type: string
+ *                 example: John
+ *               lastName:
+ *                 type: string
+ *                 example: Doe
+ *               phoneNumber:
+ *                 type: string
+ *                 example: 202-555-1234
+ *               status:
+ *                 type: number
+ *                 example: 0
  *               CAF:
- *                 type: string
- *                 example: "CAF12345"
+ *                 type: number
+ *                 example: 3
  *               SPOC:
  *                 type: string
- *                 example: "Jane Smith"
+ *                 example: John Doe
+
  *               deployment:
  *                 type: boolean
  *                 example: true
@@ -52,62 +64,74 @@ const router = Router();
  *                 example: false
  *     responses:
  *       201:
- *         description: Subcontractor created successfully
+
+ *         description: SubContractor registered successfully
  *       400:
  *         description: Bad request
- */
-router.post("/", registerMiddleware("SUBCONTRACTOR"), createSubContractor);
-
-/**
- * @swagger
- * /subcontractors:
- *   get:
- *     summary: Get all subcontractors
- *     tags: [Subcontractors]
- *     responses:
- *       200:
- *         description: A list of subcontractors
  *       500:
  *         description: Server error
  */
-router.get("/", getAllSubContractors);
+router.post("/", registerMiddleware("SUBCONTRACTOR"), createSubContractor)
 
 /**
  * @swagger
- * /subcontractors/{id}:
+ * /api/v1/subcontractor:
  *   get:
- *     summary: Get a subcontractor by ID
- *     tags: [Subcontractors]
+ *     summary: Get all SubContractors
+ *     description: Get all SubContractors
+ *     tags:
+ *       - SubContractors
+ *     responses:
+ *       200:
+ *         description: List of SubContractors
+ *       500:
+ *         description: Server error
+ */
+router.get("/", getAllSubContractors)
+
+/**
+ * @swagger
+ * /api/v1/subcontractor/{id}:
+ *   get:
+ *     summary: Get a SubContractor by id
+ *     description: Get a SubContractor by id
+ *     tags:
+ *       - SubContractors
+
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema:
  *           type: string
- *         description: Subcontractor ID
+
+ *         description: SubContractor id
  *     responses:
  *       200:
- *         description: Subcontractor found
+ *         description: SubContractor retrieved successfully
  *       404:
- *         description: Subcontractor not found
+ *         description: SubContractor not found
  *       500:
  *         description: Server error
  */
-router.get("/:id", getSubContractorById);
+router.get("/:id", getSubContractorById)
 
 /**
  * @swagger
- * /subcontractors/{id}:
+ * /api/v1/subcontractor/{id}:
  *   put:
- *     summary: Update a subcontractor by ID
- *     tags: [Subcontractors]
+ *     summary: Update a SubContractor
+ *     description: Updates a single SubContractor by ID.
+ *     tags:
+ *       - SubContractors
  *     parameters:
  *       - in: path
  *         name: id
- *         required: true
  *         schema:
  *           type: string
- *         description: Subcontractor ID
+ *         required: true
+ *         description: The ID of the SubContractor to update.
+
  *     requestBody:
  *       required: true
  *       content:
@@ -115,51 +139,71 @@ router.get("/:id", getSubContractorById);
  *           schema:
  *             type: object
  *             properties:
- *               fullName:
+
+ *               email:
  *                 type: string
- *               address:
+ *                 example: user@example.com
+ *               password:
  *                 type: string
+ *                 example: yourpassword
+ *               firstName:
+ *                 type: string
+ *                 example: John
+ *               lastName:
+ *                 type: string
+ *                 example: Doe
+ *               phoneNumber:
+ *                 type: string
+ *                 example: 202-555-1234
+ *               status:
+ *                 type: number
+ *                 example: 0
  *               CAF:
- *                 type: string
+ *                 type: number
+ *                 example: 12345678
  *               SPOC:
  *                 type: string
+ *                 example: John Doe
  *               deployment:
  *                 type: boolean
+ *                 example: true
  *               maintenance:
  *                 type: boolean
+ *                 example: false
  *     responses:
  *       200:
- *         description: Subcontractor updated successfully
+ *         description: SubContractor updated
  *       400:
  *         description: Bad request
- *       404:
- *         description: Subcontractor not found
  *       500:
  *         description: Server error
  */
-router.put("/:id", updateSubContractor);
+router.put("/:id", updateSubContractor)
 
 /**
  * @swagger
- * /subcontractors/{id}:
+ * /api/v1/subcontractor/{id}:
  *   delete:
- *     summary: Delete a subcontractor by ID
- *     tags: [Subcontractors]
+ *     summary: Delete a SubContractor
+ *     description: Deletes a single SubContractor by ID.
+ *     tags:
+ *       - SubContractors
  *     parameters:
  *       - in: path
  *         name: id
- *         required: true
  *         schema:
  *           type: string
- *         description: Subcontractor ID
+ *         required: true
+ *         description: The ID of the SubContractor to delete.
  *     responses:
- *       204:
- *         description: No content, subcontractor deleted successfully
+ *       200:
+ *         description: SubContractor deleted
  *       404:
- *         description: Subcontractor not found
+ *         description: SubContractor not found
  *       500:
  *         description: Server error
  */
-router.delete("/:id", deleteSubContractor);
+router.delete("/:id", deleteSubContractor)
+
 
 export default router;

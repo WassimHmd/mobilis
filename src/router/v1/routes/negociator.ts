@@ -12,17 +12,14 @@ const router = Router();
 
 /**
  * @swagger
- * tags:
- *   name: Negociators
- *   description: CRUD operations for managing negociators
- */
 
-/**
- * @swagger
- * /negociators:
+ * /api/v1/negociator:
  *   post:
- *     summary: Create a new negociator
- *     tags: [Negociators]
+ *     summary: Register a new Negociator
+ *     description: Creates a new Negociator account.
+ *     tags:
+ *       - Negociators
+
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -33,11 +30,13 @@ const router = Router();
  *             type: object
  *             properties:
  *               userId:
- *                 type: string
- *                 example: "user-uuid"
+
+ *                 type: integer
+ *                 example: 1
  *     responses:
  *       201:
- *         description: Negociator created successfully
+ *         description: Negociator registered successfully
+
  *       400:
  *         description: Bad request
  */
@@ -45,118 +44,68 @@ router.post("/", registerMiddleware("NEGOCIATOR"), createNegociator);
 
 /**
  * @swagger
- * /negociators:
+
+ * /api/v1/negociator:
  *   get:
- *     summary: Get all negociators
- *     tags: [Negociators]
+ *     summary: Get all Negociators
+ *     description: Get all Negociators
+ *     tags:
+ *       - Negociators
  *     responses:
  *       200:
- *         description: A list of negociators
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   id:
- *                     type: string
- *                     example: "negociator-uuid"
- *                   userId:
- *                     type: string
- *                     example: "user-uuid"
- *                   user:
- *                     type: object
- *                     properties:
- *                       id:
- *                         type: string
- *                         example: "user-uuid"
- *                       fullName:
- *                         type: string
- *                         example: "John Doe"
- *                   sites:
- *                     type: array
- *                     items:
- *                       type: object
- *                       properties:
- *                         id:
- *                           type: string
- *                           example: "site-uuid"
- *                         name:
- *                           type: string
- *                           example: "Site A"
- *       500:
- *         description: Server error
+ *         description: All Negociators retrieved successfully
+ *       404:
+ *         description: No Negociators found
+
  */
 router.get("/", getAllNegociators);
 
 /**
  * @swagger
- * /negociators/{id}:
+
+ * /api/v1/negociator/{id}:
  *   get:
- *     summary: Get a negociator by ID
- *     tags: [Negociators]
+ *     summary: Get a Negociator by id
+ *     description: Get a Negociator by id
+ *     tags:
+ *       - Negociators
+
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema:
- *           type: string
- *         description: Negociator ID
+
+ *           type: integer
+ *         description: Negociator id
  *     responses:
  *       200:
- *         description: Negociator found
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 id:
- *                   type: string
- *                   example: "negociator-uuid"
- *                 userId:
- *                   type: string
- *                   example: "user-uuid"
- *                 user:
- *                   type: object
- *                   properties:
- *                     id:
- *                       type: string
- *                       example: "user-uuid"
- *                     fullName:
- *                       type: string
- *                       example: "John Doe"
- *                 sites:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       id:
- *                         type: string
- *                         example: "site-uuid"
- *                       name:
- *                         type: string
- *                         example: "Site A"
+ *         description: Negociator retrieved successfully
  *       404:
  *         description: Negociator not found
- *       500:
- *         description: Server error
+
  */
 router.get("/:id", getNegociatorById);
 
 /**
  * @swagger
- * /negociators/{id}:
+
+ * /api/v1/negociator/{id}:
  *   put:
- *     summary: Update a negociator by ID
- *     tags: [Negociators]
+ *     summary: Update a Negociator by id
+ *     description: Update a Negociator by id
+ *     tags:
+ *       - Negociators
+
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema:
- *           type: string
- *         description: Negociator ID
+
+ *           type: integer
+ *         description: Negociator id
+
  *     requestBody:
  *       required: true
  *       content:
@@ -165,43 +114,42 @@ router.get("/:id", getNegociatorById);
  *             type: object
  *             properties:
  *               userId:
- *                 type: string
- *                 example: "user-uuid"
- *               otherField:
- *                 type: string
- *                 example: "Some value"
+
+ *                 type: integer
+ *                 example: 1
  *     responses:
  *       200:
  *         description: Negociator updated successfully
- *       400:
- *         description: Bad request
  *       404:
  *         description: Negociator not found
- *       500:
- *         description: Server error
+
  */
 router.put("/:id", updateNegociator);
 
 /**
  * @swagger
- * /negociators/{id}:
+
+ * /api/v1/negociator/{id}:
  *   delete:
- *     summary: Delete a negociator by ID
- *     tags: [Negociators]
+ *     summary: Delete a Negociator by id
+ *     description: Delete a Negociator by id
+ *     tags:
+ *       - Negociators
+
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema:
- *           type: string
- *         description: Negociator ID
+
+ *           type: integer
+ *         description: Negociator id
  *     responses:
  *       204:
- *         description: No content, negociator deleted successfully
+ *         description: Negociator deleted successfully
  *       404:
  *         description: Negociator not found
- *       500:
- *         description: Server error
+
  */
 router.delete("/:id", deleteNegociator);
 

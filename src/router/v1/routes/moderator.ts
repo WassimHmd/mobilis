@@ -12,17 +12,13 @@ const router = Router();
 
 /**
  * @swagger
- * tags:
- *   name: Moderators
- *   description: CRUD operations for managing moderators
- */
 
-/**
- * @swagger
- * /moderators:
+ * /api/v1/moderator:
  *   post:
- *     summary: Create a new moderator
- *     tags: [Moderators]
+ *     summary: Register a new Moderator
+ *     description: Creates a new Moderator account.
+ *     tags:
+ *       - Moderators
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -32,109 +28,87 @@ const router = Router();
  *           schema:
  *             type: object
  *             properties:
- *               region:
+ *               email:
  *                 type: string
- *                 example: "North"
+ *                 example: user@example.com
+ *               password:
+ *                 type: string
+ *                 example: yourpassword
+ *               firstName:
+ *                 type: string
+ *                 example: John
+ *               lastName:
+ *                 type: string
+ *                 example: Doe
+ *               phoneNumber:
+ *                 type: string
+ *                 example: 202-555-1234
  *     responses:
  *       201:
- *         description: Moderator created successfully
+ *         description: Moderator registered successfully
  *       400:
  *         description: Bad request
- */
-router.post("/", registerMiddleware("MODERATOR"), createModerator);
-
-/**
- * @swagger
- * /moderators:
- *   get:
- *     summary: Get all moderators
- *     tags: [Moderators]
- *     responses:
- *       200:
- *         description: A list of moderators
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   id:
- *                     type: string
- *                     example: "moderator-uuid"
- *                   region:
- *                     type: string
- *                     example: "North"
- *                   user:
- *                     type: object
- *                     properties:
- *                       id:
- *                         type: string
- *                         example: "user-uuid"
- *                       fullName:
- *                         type: string
- *                         example: "John Doe"
  *       500:
  *         description: Server error
  */
-router.get("/", getAllModerators);
+router.post("/", registerMiddleware("MODERATOR"), createModerator)
 
 /**
  * @swagger
- * /moderators/{id}:
+ * /api/v1/moderator:
  *   get:
- *     summary: Get a moderator by ID
- *     tags: [Moderators]
+ *     summary: Get all Moderators
+ *     description: Returns a list of all Moderators.
+ *     tags:
+ *       - Moderators
+ *     responses:
+ *       200:
+ *         description: List of Moderators
+ *       500:
+ *         description: Server error
+ */
+router.get("/", getAllModerators)
+
+/**
+ * @swagger
+ * /api/v1/moderator/{id}:
+ *   get:
+ *     summary: Get a Moderator by ID
+ *     description: Returns a single Moderator by ID.
+ *     tags:
+ *       - Moderators
  *     parameters:
  *       - in: path
  *         name: id
- *         required: true
  *         schema:
  *           type: string
- *         description: Moderator ID
+ *         required: true
+ *         description: The ID of the Moderator to get.
  *     responses:
  *       200:
- *         description: Moderator found
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 id:
- *                   type: string
- *                   example: "moderator-uuid"
- *                 region:
- *                   type: string
- *                   example: "North"
- *                 user:
- *                   type: object
- *                   properties:
- *                     id:
- *                       type: string
- *                       example: "user-uuid"
- *                     fullName:
- *                       type: string
- *                       example: "John Doe"
+ *         description: Moderator by ID
  *       404:
  *         description: Moderator not found
  *       500:
  *         description: Server error
  */
-router.get("/:id", getModeratorById);
+router.get("/:id", getModeratorById)
 
 /**
  * @swagger
- * /moderators/{id}:
+ * /api/v1/moderator/{id}:
  *   put:
- *     summary: Update a moderator by ID
- *     tags: [Moderators]
+ *     summary: Update a Moderator
+ *     description: Updates a single Moderator by ID.
+ *     tags:
+ *       - Moderators
  *     parameters:
  *       - in: path
  *         name: id
- *         required: true
  *         schema:
  *           type: string
- *         description: Moderator ID
+ *         required: true
+ *         description: The ID of the Moderator to update.
  *     requestBody:
  *       required: true
  *       content:
@@ -142,45 +116,59 @@ router.get("/:id", getModeratorById);
  *           schema:
  *             type: object
  *             properties:
- *               region:
+ *               email:
  *                 type: string
- *                 example: "South"
- *               otherField:
+ *                 example: user@example.com
+ *               password:
  *                 type: string
- *                 example: "Some value"
+ *                 example: yourpassword
+ *               firstName:
+ *                 type: string
+ *                 example: John
+ *               lastName:
+ *                 type: string
+ *                 example: Doe
+ *               phoneNumber:
+ *                 type: string
+ *                 example: 202-555-1234
  *     responses:
  *       200:
- *         description: Moderator updated successfully
+ *         description: Moderator updated
  *       400:
  *         description: Bad request
- *       404:
- *         description: Moderator not found
  *       500:
  *         description: Server error
  */
-router.put("/:id", updateModerator);
+router.put("/:id", updateModerator)
 
 /**
  * @swagger
- * /moderators/{id}:
+ * /api/v1/moderator/{id}:
  *   delete:
- *     summary: Delete a moderator by ID
- *     tags: [Moderators]
+ *     summary: Delete a Moderator
+ *     description: Deletes a single Moderator by ID.
+ *     tags:
+ *       - Moderators
  *     parameters:
  *       - in: path
  *         name: id
- *         required: true
  *         schema:
  *           type: string
- *         description: Moderator ID
+ *         required: true
+ *         description: The ID of the Moderator to delete.
  *     responses:
  *       204:
- *         description: No content, moderator deleted successfully
+ *         description: Moderator deleted
+
  *       404:
  *         description: Moderator not found
  *       500:
  *         description: Server error
  */
-router.delete("/:id", deleteModerator);
+
+router.delete("/:id", deleteModerator)
+
+
+
 
 export default router;

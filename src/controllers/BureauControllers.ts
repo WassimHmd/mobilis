@@ -3,11 +3,20 @@ import prisma from "../config/db";
 
 export const createBureau = async (req: any, res: Response) => {
   try {
+    const { siteId } = req.body;
     const bureau = await prisma.bureau.create({
       data: {
         userId: req.user.id,
       },
     });
+    if (siteId) {
+      if (await prisma.site.findUnique({ where: { id: siteId } })) {
+        await prisma.site.update({
+          where: { id: siteId },
+          data: { bureauId: bureau.userId },
+        });
+      }
+    }
 
     res.status(201).json(bureau);
   } catch (error: any) {
