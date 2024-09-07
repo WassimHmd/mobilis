@@ -66,7 +66,18 @@ export const nextStep = async (siteId: string) => {
   ];
   try {
     const step = await getCurrentStep(siteId);
-    console.log(step)
+    console.log("step: ", step)
+    if(!step) throw Error("Step unavailable")
+    const managers = await prisma.manager.findMany({
+      where: {
+        stepId: step?.id
+      }
+    })
+    for(let manager of managers){
+      if(manager.validation === "PENDING" || manager.validation === "REFUSED"){
+        throw Error("Manager validation is not completed")
+      }
+    }
     if (step) {
       const index = stepOrder.indexOf(step.type);
       if (index < stepOrder.length - 1) {

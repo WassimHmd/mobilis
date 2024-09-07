@@ -8,7 +8,7 @@ import { Router } from "express";
 const router = Router();
 
 router.post("/invite/:stepId", createManagerController);
-router.post("/validate/:stepId", validateManagerController);
-router.post("/cancel/:stepId", cancelManagerController);
+router.post("/validate/:managerId", validateManagerController);
+router.post("/cancel/:managerId", cancelManagerController);
 
 export default router;
