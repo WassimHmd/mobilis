@@ -1,18 +1,18 @@
 import { Router } from "express";
 import auth from "./routes/auth";
 
-import sites from "./routes/sites"
-import subcontractors from "./routes/subcontractor"
-import negociator from "./routes/negociator"
-import moderator from "./routes/moderator"
-import documents from "./routes/documents"
-import manager from "./routes/manager"
-import bureau from "./routes/bureau"
+import sites from "./routes/sites";
+import subcontractors from "./routes/subcontractor";
+import negociator from "./routes/negociator";
+import moderator from "./routes/moderator";
+import documents from "./routes/documents";
+import manager from "./routes/manager";
+import bureau from "./routes/bureau";
+import { uploadFile } from "../../middleware/uploadImage";
 
 import { testFeature } from "@/controllers/StepsControllers";
 
-
-const router = Router({mergeParams:true});
+const router = Router({ mergeParams: true });
 
 /**
  * @swagger
@@ -38,8 +38,6 @@ router.use("/sites", sites);
  *   description: CRUD operations for managing subcontractor
  */
 
-
-
 /**
  * @swagger
  * /api/v1/subcontractor:
@@ -64,7 +62,7 @@ router.use("/negociator", negociator);
  *   description: CRUD operations for managing Bureau
  */
 
-router.use("/bureau", bureau)
+router.use("/bureau", bureau);
 /**
  * @swagger
  * tags:
@@ -74,10 +72,20 @@ router.use("/bureau", bureau)
 
 router.use("/moderator", moderator);
 
+router.use("/documents", documents);
 
-router.use("/documents", documents)
+router.use("/manager/", manager);
 
-router.use("/manager/", manager)
+router.use("/step/:id", testFeature);
+router.post("/test", uploadFile("test"), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ message: "No file uploaded!" });
+  }
 
-router.use("/step/:id", testFeature)
+  // Return the uploaded file information for testing purposes
+  res.status(200).json({
+    message: "File uploaded successfully!",
+    file: req.file,
+  });
+});
 export default router;
