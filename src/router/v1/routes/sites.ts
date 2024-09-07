@@ -4,6 +4,11 @@ import {
   deleteSite,
   getAllSites,
   getSiteById,
+  inviteBureau,
+  inviteNegociator,
+  siteCancelCurrentStep,
+  siteNextStep,
+  updateCurrentStep,
   updateSite,
 } from "../../../controllers/SiteControllers";
 
@@ -64,6 +69,15 @@ const router = Router();
 
 
 router.post("/", createSite);
+
+router.post("/cancelStep/:id", siteCancelCurrentStep)
+
+router.post("/nextStep/:id", siteNextStep)
+
+router.post("/invite/negociator/:siteId", inviteNegociator)
+
+router.post("/invite/bureau/:siteId", inviteBureau)
+
 
 /**
  * @swagger
@@ -184,6 +198,9 @@ router.get("/:id", getSiteById);
  *       500:
  *         description: Server error
  */
+
+router.put("/updateStep/:id", updateCurrentStep)
+
 router.put("/:id", updateSite);
 
 

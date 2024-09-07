@@ -6,9 +6,13 @@ import subcontractors from "./routes/subcontractor"
 import negociator from "./routes/negociator"
 import moderator from "./routes/moderator"
 import documents from "./routes/documents"
+import manager from "./routes/manager"
+import bureau from "./routes/bureau"
+
+import { testFeature } from "@/controllers/StepsControllers";
 
 
-const router = Router();
+const router = Router({mergeParams:true});
 
 /**
  * @swagger
@@ -56,6 +60,14 @@ router.use("/negociator", negociator);
 /**
  * @swagger
  * tags:
+ *   name: Bureau routes endpoint
+ *   description: CRUD operations for managing Bureau
+ */
+
+router.use("/bureau", bureau)
+/**
+ * @swagger
+ * tags:
  *   name: Sites routes endpoint
  *   description: CRUD operations for managing moderator
  */
@@ -64,4 +76,8 @@ router.use("/moderator", moderator);
 
 
 router.use("/documents", documents)
+
+router.use("/manager/", manager)
+
+router.use("/step/:id", testFeature)
 export default router;
