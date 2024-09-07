@@ -48,7 +48,7 @@ enum userTypes {
 }
 
 model Moderator {
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @id @unique
 
   region String
@@ -56,7 +56,7 @@ model Moderator {
 }
 
 model SubContractor {
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @id @unique
 
   status      Float   @default(0)
@@ -96,14 +96,14 @@ model Site {
 }
 
 model Negociator {
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @id @unique
 
   sites Site[]
 }
 
 model Bureau {
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @id @unique
 
   sites Site[]

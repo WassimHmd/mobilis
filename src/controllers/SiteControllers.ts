@@ -1,14 +1,19 @@
 import { Request, Response } from "express";
 import prisma from "../config/db";
 import { SiteTypes } from "@prisma/client";
-import { cancelStep, createStep, getCurrentStep, nextStep, updateStep } from "./StepsControllers";
+import {
+  cancelStep,
+  createStep,
+  getCurrentStep,
+  nextStep,
+  updateStep,
+} from "./StepsControllers";
 
 export const createSite = async (req: Request, res: Response) => {
-  
   try {
     const site = await prisma.site.create({
       data: {
-        ...req.body
+        ...req.body,
       },
     });
     createStep(site.id, "SA1");
@@ -85,36 +90,63 @@ export const deleteSite = async (req: Request, res: Response) => {
 export const siteCancelCurrentStep = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const stepId = (await getCurrentStep(id))?.id
-    if(!stepId) return res.status(400).json("Step not found")
-    const newStep = await cancelStep(stepId)
-    return res.status(200).json(newStep)
+    const stepId = (await getCurrentStep(id))?.id;
+    if (!stepId) return res.status(400).json("Step not found");
+    const newStep = await cancelStep(stepId);
+    return res.status(200).json(newStep);
   } catch (error: any) {
     console.log(error);
     return res.status(500).json("Internal Server Error");
   }
-}
+};
 
 export const siteNextStep = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params
-    const newStep = await nextStep(id)
-    return res.status(200).json(newStep)
-  }catch(err){
-    console.error(err)
-    return res.status(200).json(err)
+    const { id } = req.params;
+    const newStep = await nextStep(id);
+    return res.status(200).json(newStep);
+  } catch (err) {
+    console.error(err);
+    return res.status(200).json(err);
   }
-}
+};
 
 export const updateCurrentStep = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params
-    const { payload } = req.body
-    const currentStep = await getCurrentStep(id)
-    if(currentStep)
-      updateStep(currentStep.id, payload)
-  }catch(err){
-    console.error(err)
-    return res.status(200).json(err)
+    const { id } = req.params;
+    const { payload } = req.body;
+    const currentStep = await getCurrentStep(id);
+    if (currentStep) updateStep(currentStep.id, payload);
+  } catch (err) {
+    console.error(err);
+    return res.status(200).json(err);
   }
-}
+};
+
+export const inviteNegociator = async (req: Request, res: Response) => {
+  try {
+    const { siteId } = req.params;
+    const { email } = req.body;
+
+    if (!email) return res.status(400).json("Email not found");
+
+    const user = await prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (!user) {
+      //TODO: mailing logic
+      return res.status(400).json("Email invitations not implemented yet")
+    } else {
+      await prisma.site.update({
+        where: { id: siteId },
+        data: { negociatorId: user.id },
+      });
+
+      return res.status(200).json("Negociator Added to Site successfully")
+    }
+  } catch (err) {
+    console.error(err);
+    return res.status(200).json(err);
+  }
+};

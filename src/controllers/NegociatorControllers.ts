@@ -3,15 +3,26 @@ import prisma from "../config/db";
 
 export const createNegociator = async (req: any, res: Response) => {
   try {
+    const { siteId } = req.body;
     const negociator = await prisma.negociator.create({
       data: {
         userId: req.user.id,
       },
     });
+    if (siteId) {
+      if (await prisma.site.findUnique({ where: { id: siteId } })) {
+        await prisma.site.update({
+          where: { id: siteId },
+          data: { negociatorId: negociator.userId },
+        });
+      }
+    }
 
     res.status(201).json(negociator);
   } catch (error: any) {
     console.log(error);
+    await prisma.user.delete({where: {id: req.user.id}})
+    await prisma.negociator.delete({where: {userId: req.user.id}})
     res.status(400).json({ error: error.message });
   }
 };
