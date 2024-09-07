@@ -114,7 +114,7 @@ router.get("/", getAllSubContractors)
  *       500:
  *         description: Server error
  */
-router.get("/:id", getSubContractorById)
+router.get("/:userId", getSubContractorById)
 
 /**
  * @swagger
@@ -178,7 +178,7 @@ router.get("/:id", getSubContractorById)
  *       500:
  *         description: Server error
  */
-router.put("/:id", updateSubContractor)
+router.put("/:userId", updateSubContractor)
 
 /**
  * @swagger
@@ -203,7 +203,7 @@ router.put("/:id", updateSubContractor)
  *       500:
  *         description: Server error
  */
-router.delete("/:id", deleteSubContractor)
+router.delete("/:userId", deleteSubContractor)
 
 
 export default router;
