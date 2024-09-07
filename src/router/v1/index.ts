@@ -7,6 +7,7 @@ import negociator from "./routes/negociator"
 import moderator from "./routes/moderator"
 import documents from "./routes/documents"
 import manager from "./routes/manager"
+import bureau from "./routes/bureau"
 
 import { testFeature } from "@/controllers/StepsControllers";
 
@@ -56,6 +57,14 @@ router.use("/subcontractor", subcontractors);
  */
 
 router.use("/negociator", negociator);
+/**
+ * @swagger
+ * tags:
+ *   name: Bureau routes endpoint
+ *   description: CRUD operations for managing Bureau
+ */
+
+router.use("/bureau", bureau)
 /**
  * @swagger
  * tags:

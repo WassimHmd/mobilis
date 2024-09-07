@@ -4,6 +4,7 @@ import {
   deleteSite,
   getAllSites,
   getSiteById,
+  inviteBureau,
   inviteNegociator,
   siteCancelCurrentStep,
   siteNextStep,
@@ -74,6 +75,9 @@ router.post("/cancelStep/:id", siteCancelCurrentStep)
 router.post("/nextStep/:id", siteNextStep)
 
 router.post("/invite/negociator/:siteId", inviteNegociator)
+
+router.post("/invite/bureau/:siteId", inviteBureau)
+
 
 /**
  * @swagger

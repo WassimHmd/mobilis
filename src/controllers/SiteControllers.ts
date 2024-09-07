@@ -150,3 +150,32 @@ export const inviteNegociator = async (req: Request, res: Response) => {
     return res.status(200).json(err);
   }
 };
+
+
+export const inviteBureau = async (req: Request, res: Response) => {
+  try {
+    const { siteId } = req.params;
+    const { email } = req.body;
+
+    if (!email) return res.status(400).json("Email not found");
+
+    const user = await prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (!user) {
+      //TODO: mailing logic
+      return res.status(400).json("Email invitations not implemented yet")
+    } else {
+      await prisma.site.update({
+        where: { id: siteId },
+        data: { bureauId: user.id },
+      });
+
+      return res.status(200).json("Bureau Added to Site successfully")
+    }
+  } catch (err) {
+    console.error(err);
+    return res.status(200).json(err);
+  }
+};
