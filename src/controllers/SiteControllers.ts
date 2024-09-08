@@ -82,8 +82,9 @@ export const updateSite = async (req: Request, res: Response) => {
 export const deleteSite = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    await prisma.site.delete({
+    await prisma.site.update({
       where: { id },
+      data: { status: "CANCELLED" },
     });
     res.status(204).send();
   } catch (error: any) {
@@ -127,8 +128,8 @@ export const getReport = async (
 };
 export const siteCancelCurrentStep = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
-    const stepId = (await getCurrentStep(id))?.id;
+    const { siteId } = req.params;
+    const stepId = (await getCurrentStep(siteId))?.id;
     if (!stepId) return res.status(400).json("Step not found");
     const newStep = await cancelStep(stepId);
     return res.status(200).json(newStep);
@@ -140,8 +141,8 @@ export const siteCancelCurrentStep = async (req: Request, res: Response) => {
 
 export const siteNextStep = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
-    const newStep = await nextStep(id);
+    const { siteId } = req.params;
+    const newStep = await nextStep(siteId);
     return res.status(200).json(newStep);
   } catch (err) {
     console.error(err);

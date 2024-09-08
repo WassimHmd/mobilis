@@ -92,7 +92,7 @@ router.get("/", getAllModerators)
  *       500:
  *         description: Server error
  */
-router.get("/:id", getModeratorById)
+router.get("/:userId", getModeratorById)
 
 /**
  * @swagger
@@ -139,7 +139,7 @@ router.get("/:id", getModeratorById)
  *       500:
  *         description: Server error
  */
-router.put("/:id", updateModerator)
+router.put("/:userId", updateModerator)
 
 /**
  * @swagger
@@ -166,7 +166,7 @@ router.put("/:id", updateModerator)
  *         description: Server error
  */
 
-router.delete("/:id", deleteModerator)
+router.delete("/:userId", deleteModerator)
 
 
 

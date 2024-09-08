@@ -85,7 +85,7 @@ router.get("/", getAllNegociators);
  *         description: Negociator not found
 
  */
-router.get("/:id", getNegociatorById);
+router.get("/:userId", getNegociatorById);
 
 /**
  * @swagger
@@ -124,7 +124,7 @@ router.get("/:id", getNegociatorById);
  *         description: Negociator not found
 
  */
-router.put("/:id", updateNegociator);
+router.put("/:userId", updateNegociator);
 
 /**
  * @swagger
@@ -151,6 +151,6 @@ router.put("/:id", updateNegociator);
  *         description: Negociator not found
 
  */
-router.delete("/:id", deleteNegociator);
+router.delete("/:userId", deleteNegociator);
 
 export default router;

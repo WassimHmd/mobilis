@@ -102,7 +102,7 @@ router.get("/", getAllBureaus);
  *       500:
  *         description: Server error
  */
-router.get("/:id", getBureauById);
+router.get("/:userId", getBureauById);
 
 /**
  * @swagger
@@ -155,7 +155,7 @@ router.get("/:id", getBureauById);
  *       500:
  *         description: Server error
  */
-router.put("/:id", updateBureau);
+router.put("/:userId", updateBureau);
 
 /**
  * @swagger
@@ -180,6 +180,6 @@ router.put("/:id", updateBureau);
  *       500:
  *         description: Server error
  */
-router.delete("/:id", deleteBureau);
+router.delete("/:userId", deleteBureau);
 
 export default router;

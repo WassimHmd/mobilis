@@ -70,9 +70,9 @@ const router = Router();
 
 router.post("/", createSite);
 
-router.post("/cancelStep/:id", siteCancelCurrentStep)
+router.post("/cancelStep/:siteId", siteCancelCurrentStep)
 
-router.post("/nextStep/:id", siteNextStep)
+router.post("/nextStep/:siteId", siteNextStep)
 
 router.post("/invite/negociator/:siteId", inviteNegociator)
 
