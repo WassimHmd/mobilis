@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  addImagesToSite,
   createSite,
   deleteSite,
   getAllSites,
@@ -7,10 +8,12 @@ import {
   inviteBureau,
   inviteNegociator,
   siteCancelCurrentStep,
+  siteGetAllSteps,
   siteNextStep,
   updateCurrentStep,
   updateSite,
 } from "../../../controllers/SiteControllers";
+import { uploadFile } from "@/middleware/uploadImage";
 
 const router = Router();
 
@@ -78,6 +81,8 @@ router.post("/invite/negociator/:siteId", inviteNegociator)
 
 router.post("/invite/bureau/:siteId", inviteBureau)
 
+router.post("/addImages/:siteId", uploadFile("step"), addImagesToSite)
+
 
 /**
  * @swagger
@@ -134,6 +139,8 @@ router.get("/", getAllSites);
  *         description: Server error
  */
 router.get("/:id", getSiteById);
+
+router.get("/steps/:siteId", siteGetAllSteps)
 
 /**
  * @swagger

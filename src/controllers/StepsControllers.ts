@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import prisma from "../config/db";
 import { Site, Step, StepTypes } from "@prisma/client";
 import { replicateManagers } from "./ManagerControllers";
+//@ts-ignore
 import { sendEmail } from './../utils/sendMail';
 export const createStep = async (
   siteId: string,
@@ -46,6 +47,9 @@ export const getAllSteps = async (siteId: string) => {
       where: {
         siteId,
       },
+      include: {
+        Images: true
+      }
     });
     return steps;
   } catch (error) {

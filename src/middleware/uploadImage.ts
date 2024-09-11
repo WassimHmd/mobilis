@@ -3,9 +3,13 @@ import { Request, Response, NextFunction } from "express";
 import path from "path";
 import fs from "fs";
 import crypto from "crypto";
+
+type FileFolders = "site" | "step"
+
 interface CustomRequest extends Request {
-  filePath?: string;
+  images?: Record<string, any>;
 }
+
 const createFolderIfNotExists = (folder: string) => {
   if (!fs.existsSync(folder)) {
     fs.mkdirSync(folder, { recursive: true });
@@ -14,14 +18,14 @@ const createFolderIfNotExists = (folder: string) => {
 const getHash = (str: string) => {
   return crypto.createHash("md5").update(str).digest("hex");
 };
-export const uploadFile = (folder: string) => {
+export const uploadFile = (folder: FileFolders) => {
   const storage = multer.diskStorage({
     destination: (req, file, cb) => {
       const uploadPath = path.join("uploads", folder);
       createFolderIfNotExists(uploadPath);
       cb(null, uploadPath);
     },
-    filename: (req, file, cb) => {
+    filename: (req: CustomRequest, file, cb) => {
       const fileHash = getHash(file.originalname);
 
       const uploadPath = path.join(
@@ -31,10 +35,14 @@ export const uploadFile = (folder: string) => {
       );
 
       if (fs.existsSync(uploadPath)) {
-        (req as CustomRequest).filePath = uploadPath;
-        cb(new Error("File already exists. No need to upload again."));
+        if (!req.images) req.images = {};
+        req.images[file.fieldname] = uploadPath;
+        console.log("File already exists.");
+        cb(null, `${fileHash}${path.extname(file.originalname)}`);
+        // cb(new Error("File already exists. No need to upload again."));
       } else {
-        (req as CustomRequest).filePath = uploadPath;
+        if (!req.images) req.images = {};
+        req.images[file.fieldname] = uploadPath;
         cb(null, `${fileHash}${path.extname(file.originalname)}`);
       }
     },
@@ -63,27 +71,39 @@ export const uploadFile = (folder: string) => {
     fileFilter: fileFilter,
   });
 
-  return (req: Request, res: Response, next: NextFunction) => {
-    const uploader = upload.single("file");
+  return (req: CustomRequest, res: Response, next: NextFunction) => {
+    const uploader = upload.any();
 
     uploader(req, res, (err: any) => {
       if (err instanceof multer.MulterError) {
         return res.status(400).json({ message: err.message });
       } else if (err) {
         if (err.message === "File already exists. No need to upload again.") {
-          return res.status(200).json({
-            message: "File already exists.",
-            path: (req as CustomRequest).filePath,
-          });
+          // console.log("File already exists.");
+        } else {
+          return res.status(400).json({ message: err.message });
         }
+      }
+
+      const fields: { [key: string]: any } = {};
+
+      try {
+        if (Array.isArray(req.files)) {
+          for (const file of req.files) {
+            if (!fields[file.fieldname]) {
+              fields[file.fieldname] = [];
+            }
+            fields[file.fieldname].push(file.path);
+          }
+        }
+        for (const field in fields) {
+          (req.images as Record<string, any>)[field] = fields[field];
+        }
+      } catch (err: any) {
+        console.error(err);
         return res.status(400).json({ message: err.message });
       }
 
-      (req as CustomRequest).filePath = path.join(
-        "uploads",
-        folder,
-        req.file!.filename
-      );
       next();
     });
   };

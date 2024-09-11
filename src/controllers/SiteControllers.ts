@@ -9,10 +9,15 @@ import { SiteTypes } from "@prisma/client";
 import {
   cancelStep,
   createStep,
+  getAllSteps,
   getCurrentStep,
   nextStep,
   updateStep,
 } from "./StepsControllers";
+
+import { RequestWithImages } from './../types';
+
+
 
 export const createSite = async (req: Request, res: Response) => {
   try {
@@ -218,3 +223,38 @@ export const inviteBureau = async (req: Request, res: Response) => {
     return res.status(200).json(err);
   }
 };
+
+export const addImagesToSite = async (req: RequestWithImages, res: Response) => {
+  try {
+    const { siteId } = req.params;
+    const { images } = req;
+    
+    if (!images) return res.status(400).json("Images not found");
+
+    const step = await getCurrentStep(siteId)
+    if (!step) return res.status(400).json("Step not found");
+
+    await prisma.images.createMany({
+      data: images.images.map((img: string)=> ({
+        stepId: step.id,
+        path: img,
+      })),
+    })
+
+    return res.status(200).json("Images added successfully");
+  } catch (err) {
+    console.error(err);
+    return res.status(400).json(err);
+  }
+}
+
+export const siteGetAllSteps = async (req: Request, res: Response) => {
+  try {
+    const { siteId } = req.params;
+    const steps = await getAllSteps(siteId);
+    return res.status(200).json(steps);
+  } catch (err) {
+    console.error(err);
+    return res.status(200).json(err);
+  }
+}
