@@ -81,6 +81,8 @@ model Site {
   location    String
   progression Int        @default(0)
   status      SiteStatus @default(ONGOING)
+  lat         String     @default("N/A")
+  long        String     @default("N/A")
 
   //step
   negociatorId    String?
@@ -129,7 +131,7 @@ model Step {
   site    Site      @relation(fields: [siteId], references: [id], onDelete: Cascade)
   siteId  String
   Manager Manager[]
-  Images   Images[]
+  Images  Images[]
 }
 
 model Manager {
@@ -143,11 +145,10 @@ model Manager {
 }
 
 model Images {
-  id     String @id @default(uuid())
-  path   String
-  stepId String
+  id        String   @id @default(uuid())
+  path      String
+  stepId    String
   createdAt DateTime @default(now())
-
 
   step Step @relation(fields: [stepId], references: [id], onDelete: Cascade)
 }
