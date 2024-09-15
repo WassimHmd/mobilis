@@ -1,0 +1,1456 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulaire de Recherche de Site</title>
+    <style>
+      table {
+        width: 800px;
+        max-height: 1141px;
+        border-collapse: collapse;
+        font-family: "Arial";
+        table-layout: fixed;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        /* padding: 8px; */
+        text-align: left;
+        height: 19px;
+      }
+      .no-border {
+        border: none;
+      }
+      .header {
+        text-align: center;
+        font-weight: bold;
+      }
+      .map {
+        height: 500px;
+      }
+
+      .gray {
+        background-color: #c0c0c0;
+      }
+      .right {
+        text-align: right;
+      }
+
+      .left {
+        text-align: left;
+      }
+      .separator {
+        border: none;
+        height: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tbody>
+        <tr>
+          <td
+            colspan="4"
+            class="header no-border"
+            style="
+              text-align: center;
+              color: rgb(255, 6, 6);
+              font-weight: bold;
+              font-size: 20px;
+            "
+          >
+            ANNEXE SA3
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="no-border">
+            <img src="logo.png" alt="Mobilis" height="50" />
+          </td>
+          <td colspan="2" class="header gray" style="font-size: 28px">SA-3</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="no-border"></td>
+          <td
+            colspan="2"
+            class="header no-border"
+            rowspan="3"
+            style="height: 40px; padding-bottom: 50px; font-size: 24px"
+          >
+            Rapport de Visite Technique
+          </td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr>
+          <td
+            colspan="4"
+            class="header no-border"
+            style="text-align: center; color: rgb(19, 2, 144)"
+          >
+            Visite technique effectué le
+          </td>
+        </tr>
+        <!-- ---------------------------------------- -->
+        <tr>
+          <td class="header left gray">Nom du site:</td>
+          <td></td>
+          <td class="header left gray">Code Site:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Qualité radio (1,2,3):</td>
+          <td></td>
+          <td class="header left gray">Candidat (a,b,c):</td>
+          <td></td>
+        </tr>
+        <!-- --------------------------------------------- -->
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+
+        <!-- ---------------------------------- -->
+
+        <tr>
+          <td class="header left gray">Nom Négociateur:</td>
+          <td></td>
+          <td class="header left gray">Mobile:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Sociéte:</td>
+          <td></td>
+          <td class="header left gray">Téléphone:</td>
+          <td></td>
+        </tr>
+        <!-- --------------------------------------------- -->
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+
+        <!-- ---------------------------------- -->
+
+        <tr>
+          <td colspan="4" class="header gray" style="font-size: 24px">
+            Informations Générales
+          </td>
+        </tr>
+        <tr>
+          <td class="header left gray" style="border-bottom: none">
+            Adresse du site:
+          </td>
+          <td style="border-bottom: none"></td>
+          <td class="header gray left">Ville:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray" style="border-top: none"></td>
+          <td style="border-top: none"></td>
+          <td class="header gray left">Wilaya:</td>
+          <td></td>
+        </tr>
+
+        <!-- --------------------------------------------- -->
+
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <!-- ---------------------------------- -->
+
+        <tr>
+          <td class="header left gray">Nom du propriétaire:</td>
+          <td></td>
+          <td class="header left gray">Téléphone:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray" style="border-bottom: none">
+            Adresse du propriétaire:
+          </td>
+          <td style="border-bottom: none"></td>
+          <td class="header gray left">Mobile:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray" style="border-top: none"></td>
+          <td style="border-top: none"></td>
+          <td class="header gray left">Fax:</td>
+          <td></td>
+        </tr>
+
+        <!-- ------------------------------------------------ -->
+
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+
+        <!-- ---------------------------------- -->
+
+        <tr>
+          <td class="header left gray">Personne a contacter:</td>
+          <td></td>
+          <td class="header left gray">Téléphone:</td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td class="header left gray" style="border-bottom: none">
+            Adresse du contact:
+          </td>
+          <td style="border-bottom: none"></td>
+          <td class="header gray left">Mobile:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray" style="border-top: none"></td>
+          <td style="border-top: none"></td>
+          <td class="header gray left">Fax:</td>
+          <td></td>
+        </tr>
+
+        <!-- ---------------------------------------------->
+
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+
+        <!-- ---------------------------------- -->
+
+        <tr>
+          <td class="header left gray" style="border-bottom: none">
+            Autres informations:
+          </td>
+          <td style="border-bottom: none; border-right: none"></td>
+          <td
+            style="border-bottom: none; border-left: none; border-right: none"
+          ></td>
+          <td style="border-bottom: none; border-left: none"></td>
+        </tr>
+        <tr>
+          <td class="header left gray" style="border-top: none"></td>
+          <td style="border-top: none; border-right: none"></td>
+          <td
+            style="border-top: none; border-left: none; border-right: none"
+          ></td>
+          <td style="border-top: none; border-left: none"></td>
+        </tr>
+
+        <!-- -------------------------------- -->
+
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+
+        <!--  -------------------------------- -->
+
+        <tr>
+          <td class="header left gray">Type de propriété:</td>
+          <td></td>
+          <td class="no-border"></td>
+          <td class="no-border"></td>
+        </tr>
+        <tr>
+          <td class="header left gray" style="font-size: 15px">
+            Date estimée de signature:
+          </td>
+          <td></td>
+          <td class="header left gray">Fiabilité de négociation:</td>
+          <td></td>
+        </tr>
+
+        <!-- -------------------------------- -->
+
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+
+        <!-- -------------------------------- -->
+
+        <tr>
+          <td colspan="4" class="header gray" style="font-size: 24px">
+            Localisation
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2" class="header gray">Coordonnées du site théorique</td>
+          <td colspan="2" class="header gray">Coordonnées du Candidat:</td>
+        </tr>
+        <tr>
+          <td class="header left gray">Longitude:</td>
+          <td></td>
+          <td class="header gray left">Longitude:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Latitude:</td>
+          <td></td>
+          <td class="header gray left">Latitude:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray" style="border-bottom: none">
+            Référence carte:
+          </td>
+          <td style="border-bottom: none"></td>
+          <td class="header gray left">Altitude:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray" style="border-top: none"></td>
+          <td style="border-top: none"></td>
+          <td class="header gray left" style="font-size: 15px">
+            Source des coordonnées:
+          </td>
+          <td></td>
+        </tr>
+
+        <!-- --------------------------------- -->
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <!-- -------------------------------- -->
+
+        <tr>
+          <td class="header left gray">Zone:</td>
+          <td></td>
+          <td class="header gray left">Environnement:</td>
+          <td></td>
+        </tr>
+        <!-- --------------------------------- -->
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+
+        <!-- -------------------------------- -->
+
+        <tr>
+          <td class="header left gray" style="border-bottom: none">
+            Antennes présentes sur le site:
+          </td>
+          <td style="border-bottom: none; border-right: none"></td>
+          <td
+            style="border-bottom: none; border-left: none; border-right: none"
+          ></td>
+          <td style="border-bottom: none; border-left: none"></td>
+        </tr>
+
+        <tr>
+          <td class="header left gray">Autres sites environnants:</td>
+          <td style="border-right: none"></td>
+          <td style="border-left: none; border-right: none"></td>
+          <td style="border-left: none"></td>
+        </tr>
+
+        <!-- --------------------------------- -->
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <!-- -------------------------------- -->
+
+        <tr>
+          <td colspan="4" class="header gray" style="font-size: 24px">
+            Topologie
+          </td>
+        </tr>
+        <tr>
+          <td class="header left gray">Type de site:</td>
+          <td></td>
+          <td class="header gray left">Hauteur:</td>
+          <td></td>
+        </tr>
+        <!-- page 1 -->
+        <!-- --------------------------------- -->
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <!-- -------------------------------- -->
+        <tr>
+          <td class="no-border left">Cas d'un bâtiment:</td>
+          <td class="no-border"></td>
+          <td class="header gray left">Nombre d'étages:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Année de construction:</td>
+          <td></td>
+          <td class="header gray left">Toit plat:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Local disponible:</td>
+          <td></td>
+          <td class="header gray left">Dimensions local:</td>
+          <td></td>
+        </tr>
+        <!-- --------------------------------- -->
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <!-- -------------------------------- -->
+
+        <tr>
+          <td colspan="4" class="header gray" style="font-size: 20px">
+            Typologie de site
+          </td>
+        </tr>
+        <tr>
+          <td class="header left gray">Type équipement:</td>
+          <td></td>
+          <td class="header gray left">Percement nécessaire:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Dimensions de site:</td>
+          <td></td>
+          <td class="header gray left">Nombre de mats:</td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td class="header left gray" style="border-bottom: none">
+            Commentaires et dimensions structure équipements:
+          </td>
+          <td colspan="3"></td>
+        </tr>
+        <tr>
+          <td class="header left gray" style="border-bottom: none">
+            Commentaires généraux de construction:
+          </td>
+          <td colspan="3"></td>
+        </tr>
+        <tr>
+          <td
+            class="header left gray"
+            style="border-bottom: none; padding: 15px 0"
+          >
+            Plans As-built existants:
+          </td>
+          <td colspan="3"></td>
+        </tr>
+        <tr>
+          <td class="header left gray" style="border-bottom: none">
+            Commentaires dégâts existants
+          </td>
+          <td colspan="3"></td>
+        </tr>
+        <tr>
+          <td class="header left gray" style="border-bottom: none">
+            Restrictions de construction:
+          </td>
+          <td colspan="3"></td>
+        </tr>
+        <tr>
+          <td class="header left gray">
+            Commentaires sur autre opérateurs existants:
+          </td>
+          <td colspan="3"></td>
+        </tr>
+        <!-- --------------------------------- -->
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <!-- --------------------------------- -->
+
+        <tr>
+          <td colspan="4" class="header gray" style="font-size: 24px">Accès</td>
+        </tr>
+        <tr>
+          <td class="header left gray">Accès 24/24h:</td>
+          <td></td>
+          <td colspan="2" class="header left">
+            Si Non, indiquer ci-dessous les horaires:
+          </td>
+        </tr>
+        <tr>
+          <td class="header left gray">Accès en semaine:</td>
+          <td></td>
+          <td class="header gray left">Accès le Week-end:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="4" style="text-align: center" class="no-border">
+            Indiquer ci-dessous les horaires d'accès pendant la construction:
+          </td>
+        </tr>
+        <tr>
+          <td class="header left gray">Accès en semaine:</td>
+          <td></td>
+          <td class="header gray left">Accès le Week-end:</td>
+          <td></td>
+        </tr>
+
+        <!-- --------------------------------- -->
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <!-- --------------------------------- -->
+
+        <tr>
+          <td class="header left gray" style="font-size: 17px">
+            Itinéraire d'accès au site:
+          </td>
+          <td colspan="3"></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Commentaires accès aux emplacements:</td>
+          <td colspan="3"></td>
+        </tr>
+        <tr>
+          <td class="header left gray" style="padding: 10px 0">
+            Conditions d'entée:
+          </td>
+          <td colspan="3"></td>
+        </tr>
+
+        <tr>
+          <td class="header left gray">Boite a clés à installer:</td>
+          <td colspan="1"></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Ascenseur:</td>
+          <td></td>
+          <td class="header left gray">Dimensions et poids:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Monte charges:</td>
+          <td></td>
+          <td class="header left gray">Dimensions et poids:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Droit passage demande:</td>
+          <td colspan="1"></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Commentaires droit de passage:</td>
+          <td colspan="3"></td>
+        </tr>
+        <tr>
+          <td class="header left gray" style="font-size: 15px">
+            Nouvelle route nécessaire:
+          </td>
+          <td></td>
+          <td class="header left gray">Longueur estimée:</td>
+          <td></td>
+        </tr>
+
+        <!-- --------------------------------- -->
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <!-- --------------------------------- -->
+
+        <tr>
+          <td colspan="4" class="header gray" style="font-size: 24px">
+            Emplacement équipements extérieurs
+          </td>
+        </tr>
+        <tr>
+          <td class="header left gray">Disponible:</td>
+          <td></td>
+          <td class="header gray left">Nacelle nécessaire:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">clôture équipement existante:</td>
+          <td></td>
+          <td class="header gray left">Plateforme d'élévation nécessaire:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Nouvelle clôture nécessaire:</td>
+          <td></td>
+          <td class="header gray left">Dalles en béton existantes:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray" style="padding: 10px 0">
+            Emplacements BTS:
+          </td>
+          <td colspan="3"></td>
+        </tr>
+        <tr>
+          <td class="header left gray" style="padding: 10px 0">
+            Espace nacelle:
+          </td>
+          <td colspan="3"></td>
+        </tr>
+
+        <!-- --------------------------------- -->
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <!-- --------------------------------- -->
+        <!-- page 2 -->
+
+        <tr>
+          <td colspan="4" class="header gray" style="font-size: 18px">
+            Énergie
+          </td>
+        </tr>
+        <tr>
+          <td class="header left gray">Alimentation disponible sur site:</td>
+          <td></td>
+          <td class="header gray left">Nouveau branchement nécessaire:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Capacité électrique:</td>
+          <td></td>
+          <td class="header gray left">Longueur câble alimentation:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left" style="border-right: none"></td>
+          <td style="border-left: none"></td>
+          <td class="header gray left">Section câble alimentation:</td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td class="header left gray">Localisation branchement principal:</td>
+          <td colspan="3"></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Cheminement câble alimentation:</td>
+          <td colspan="3"></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Commentaires énergie:</td>
+          <td colspan="3"></td>
+        </tr>
+        <!-- --------------------------------- -->
+        <tr class="separator"></tr>
+        <!-- --------------------------------- -->
+
+        <tr>
+          <td colspan="4" class="header gray" style="font-size: 18px">
+            Mise à la terre
+          </td>
+        </tr>
+        <tr>
+          <td class="header left gray">Mise a la terre:</td>
+          <td></td>
+          <td class="header gray left">Longueur MAT:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">MAT courant AC:</td>
+          <td></td>
+          <td class="header gray left">Ceinturage existant:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Barre principale de MAT:</td>
+          <td></td>
+          <td class="header gray left">Descente de terre:</td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td class="header left gray" style="border-bottom: none">
+            Emplacement MAT dans bâtiment principal :
+          </td>
+          <td colspan="3"></td>
+        </tr>
+
+        <tr>
+          <td class="header left gray">Commentaires descente de terre:</td>
+          <td colspan="3"></td>
+        </tr>
+
+        <!-- --------------------------------- -->
+        <tr class="separator"></tr>
+        <!-- --------------------------------- -->
+        <tr>
+          <td colspan="4" class="header gray" style="font-size: 18px">
+            Parafoudre
+          </td>
+        </tr>
+        <tr>
+          <td class="header left gray">Parafoudre existant:</td>
+          <td></td>
+          <td class="header gray left">Nécessaire:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Parafoudre radioactif:</td>
+          <td></td>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Commentaires:</td>
+          <td colspan="3"></td>
+        </tr>
+        <!-- --------------------------------- -->
+        <tr class="separator"></tr>
+        <!-- --------------------------------- -->
+
+        <tr>
+          <td colspan="4" class="header gray" style="font-size: 18px">
+            Equipements de Sécurité
+          </td>
+        </tr>
+        <tr>
+          <td class="header left gray">Système permanent nécessaire:</td>
+          <td></td>
+          <td class="header gray left">Système temporaire nécessaire:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Description système permanent:</td>
+          <td colspan="3"></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Description système temporaire:</td>
+          <td colspan="3"></td>
+        </tr>
+
+        <!-- --------------------------------- -->
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <!-- --------------------------------- -->
+        <tr>
+          <td colspan="4" class="header gray" style="font-size: 18px">
+            Configuration Radio
+          </td>
+        </tr>
+        <tr>
+          <td class="header left gray">Type de BTS:</td>
+          <td style="text-align: center">RBS2102</td>
+          <td class="header gray left">Configuration BTS:</td>
+          <td style="text-align: center">4+4+4</td>
+        </tr>
+        <tr>
+          <td
+            class="header left gray"
+            style="
+              background: repeating-linear-gradient(
+                45deg,
+                #c0c0c0,
+                #494848 2px,
+                #ffffff 3px,
+                #ffffff 5px
+              );
+            "
+          ></td>
+          <td class="header gray center">Secteur 1</td>
+          <td class="header gray center">Secteur 2:</td>
+          <td class="header gray center">Secteur 3</td>
+        </tr>
+        <tr>
+          <td class="header left gray">Azimut:</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Nombre d'antennes:</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">HBA toit:</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">HBA sol:</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Type d'antenne:</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">TMA:</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Tilt éléctrique:</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Tilt mécanique:</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Longueur feeder:</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Diamètre feeder:</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Combiner:</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <!-- --------------------------------- -->
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <!-- --------------------------------- -->
+        <tr>
+          <td colspan="4" class="header gray" style="font-size: 22px">
+            Transmission
+          </td>
+        </tr>
+        <tr>
+          <td class="header left gray">Visibilté hub1 potentiel:</td>
+          <td></td>
+          <td class="header gray left">Azimut hub1 potentiel:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Adresse hub1 potentiel:</td>
+          <td colspan="3"></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Visibilté hub2 potentiel:</td>
+          <td></td>
+          <td class="header gray left">Azimut hub2 potentiel:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Adresse hub2 potentiel:</td>
+          <td colspan="3"></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Visibilté hub3 potentiel:</td>
+          <td></td>
+          <td class="header gray left">Azimut hub3 potentiel:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Adresse hub3 potentiel:</td>
+          <td colspan="3"></td>
+        </tr>
+        <tr>
+          <td rowspan="2" class="header left gray">
+            Nouveau support d'antenne nécessaire:
+          </td>
+          <td rowspan="2"></td>
+          <td rowspan="2" class="header gray left"></td>
+          <td>
+            <tr>
+              <td></td>
+            </tr>
+          </td>
+        </tr>
+        <!-- page 3 -->
+        <!-- --------------------------------- -->
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+
+        <!-- --------------------------------- -->
+        <tr>
+          <td colspan="4" class="header gray" style="font-size: 22px">
+            Liaision spécialisée
+          </td>
+        </tr>
+        <tr>
+          <td class="header left gray">LS disponible sur site:</td>
+          <td></td>
+          <td class="header gray left">Nouveau branchement nécessaire:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="header left gray">
+            Localisation boitier de raccordement:
+          </td>
+          <td colspan="3"></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Cheminement LS:</td>
+          <td colspan="3"></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Distance repartiteur-boitier:</td>
+          <td></td>
+          <td class="header gray left">Distance boitier-BTS:</td>
+          <td></td>
+        </tr>
+        <!-- ---------------------------------  -->
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <!-- --------------------------------- -->
+        <tr>
+          <td colspan="4" class="header gray" style="font-size: 22px">
+            Annexes
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="left"
+            colspan="4"
+            style="border-bottom: none; padding-top: 20px"
+          >
+            Diagramme des obstacles
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="left"
+            colspan="2"
+            style="border-bottom: none; border-right: none; border-top: none"
+          >
+            Croquis sommaire
+          </td>
+          <td
+            class="left"
+            colspan="2"
+            style="border-bottom: none; border-left: none; border-top: none"
+          >
+            Photo du local
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="left"
+            colspan="2"
+            style="border-bottom: none; border-right: none; border-top: none"
+          >
+            Carte scanée
+          </td>
+          <td
+            class="left"
+            colspan="2"
+            style="border-bottom: none; border-left: none; border-top: none"
+          >
+            Photo du la terrasse
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="left"
+            colspan="2"
+            style="border-bottom: none; border-right: none; border-top: none"
+          >
+            Copie du POS
+          </td>
+          <td
+            class="left"
+            colspan="2"
+            style="border-bottom: none; border-left: none; border-top: none"
+          >
+            Photo emplacement mats et antennes
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="left"
+            colspan="2"
+            style="border-bottom: none; border-right: none; border-top: none"
+          >
+            Copie du plan des Servitudes
+          </td>
+          <td
+            class="left"
+            colspan="2"
+            style="border-bottom: none; border-left: none; border-top: none"
+          >
+            Photo gaine technique
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="left"
+            colspan="2"
+            style="border-bottom: none; border-right: none; border-top: none"
+          >
+            Photo d'ensempble
+          </td>
+          <td
+            class="left"
+            colspan="2"
+            style="border-bottom: none; border-left: none; border-top: none"
+          >
+            Photo énergie principale
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="left"
+            colspan="2"
+            style="border-bottom: none; border-right: none; border-top: none"
+          >
+            Photo entrée du site
+          </td>
+          <td
+            class="left"
+            colspan="2"
+            style="border-bottom: none; border-left: none; border-top: none"
+          >
+            Photo sous-comptage
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="left"
+            colspan="2"
+            style="border-bottom: none; border-right: none; border-top: none"
+          >
+            Panoramique 360°
+          </td>
+          <td
+            class="left"
+            colspan="2"
+            style="border-bottom: none; border-left: none; border-top: none"
+          >
+            Photo accés terasse
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="left"
+            colspan="2"
+            style="
+              border-bottom: none;
+              border-right: none;
+              border-top: none;
+              padding-top: 30px;
+            "
+          ></td>
+          <td
+            class="left"
+            colspan="2"
+            style="border-bottom: none; border-left: none; border-top: none"
+          ></td>
+        </tr>
+        <tr>
+          <td
+            class="left"
+            colspan="2"
+            style="border-bottom: none; border-right: none; border-top: none"
+          >
+            Photo Secteur 1
+          </td>
+          <td
+            class="left"
+            colspan="2"
+            style="border-bottom: none; border-left: none; border-top: none"
+          >
+            Photo accés aux emplacements
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="left"
+            colspan="2"
+            style="border-bottom: none; border-right: none; border-top: none"
+          >
+            Photo Secteur 2
+          </td>
+          <td
+            class="left"
+            colspan="2"
+            style="border-bottom: none; border-left: none; border-top: none"
+          >
+            Photo zone de grutage
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="left"
+            colspan="2"
+            style="border-right: none; border-top: none"
+          >
+            Photo Secteur 3
+          </td>
+          <td
+            class="left"
+            colspan="2"
+            style="border-left: none; border-top: none"
+          >
+            Autres
+          </td>
+        </tr>
+        <!-- --------------------------------- -->
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <!-- --------------------------------- -->
+
+        <tr>
+          <td class="header left gray">Validation Acquisition:</td>
+          <td style="padding: 0; border-right: none">
+            Validé
+            <span
+              style="
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                border: 1.5px solid black;
+                background-color: transparent;
+                margin-left: 35px;
+                margin-top: 1px;
+                margin-bottom: 0px;
+                text-align: center;
+              "
+            ></span>
+          </td>
+          <td style="padding: 0; border-right: none; border-left: none">
+            Rejeté
+            <span
+              style="
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                border: 1.5px solid black;
+                background-color: transparent;
+                margin-left: 35px;
+                margin-top: 1px;
+                margin-bottom: 0px;
+                text-align: center;
+              "
+            ></span>
+          </td>
+          <td style="padding: 0; border-left: none">
+            Gelé
+            <span
+              style="
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                border: 1.5px solid black;
+                background-color: transparent;
+                margin-left: 35px;
+                margin-top: 1px;
+                margin-bottom: 0px;
+                text-align: center;
+              "
+            ></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="header left gray">Responsable Acq:</td>
+          <td></td>
+          <td class="no-border left">Signature:</td>
+          <td class="no-border" style="border-right: 1px solid black"></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Date:</td>
+          <td></td>
+          <td
+            class="no-border left"
+            style="border-bottom: 1px solid black"
+          ></td>
+          <td
+            style="
+              border-right: 1px solid black;
+              border-bottom: 1px solid black;
+            "
+            class="no-border"
+          ></td>
+        </tr>
+        <tr>
+          <td class="header left gray" style="padding-bottom: 20px">
+            Commentaires:
+          </td>
+          <td colspan="3"></td>
+        </tr>
+        <!-- --------------------------------- -->
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <!-- --------------------------------- -->
+
+        <tr>
+          <td class="header left gray">Validation Radio:</td>
+          <td style="padding: 0; border-right: none">
+            Validé
+            <span
+              style="
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                border: 1.5px solid black;
+                background-color: transparent;
+                margin-left: 35px;
+                margin-top: 1px;
+                margin-bottom: 0px;
+                text-align: center;
+              "
+            ></span>
+          </td>
+          <td style="padding: 0; border-right: none; border-left: none">
+            Rejeté
+            <span
+              style="
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                border: 1.5px solid black;
+                background-color: transparent;
+                margin-left: 35px;
+                margin-top: 1px;
+                margin-bottom: 0px;
+                text-align: center;
+              "
+            ></span>
+          </td>
+          <td style="padding: 0; border-left: none">
+            Gelé
+            <span
+              style="
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                border: 1.5px solid black;
+                background-color: transparent;
+                margin-left: 35px;
+                margin-top: 1px;
+                margin-bottom: 0px;
+                text-align: center;
+              "
+            ></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="header left gray">Responsable RF:</td>
+          <td></td>
+          <td class="no-border left">Signature:</td>
+          <td class="no-border" style="border-right: 1px solid black"></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Date:</td>
+          <td></td>
+          <td
+            class="no-border left"
+            style="border-bottom: 1px solid black"
+          ></td>
+          <td
+            style="
+              border-right: 1px solid black;
+              border-bottom: 1px solid black;
+            "
+            class="no-border"
+          ></td>
+        </tr>
+        <tr>
+          <td class="header left gray" style="padding-bottom: 20px">
+            Commentaires:
+          </td>
+          <td colspan="3"></td>
+        </tr>
+
+        <!-- --------------------------------- -->
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <!-- --------------------------------- -->
+
+        <tr>
+          <td class="header left gray">Validation Construction:</td>
+          <td style="padding: 0; border-right: none">
+            Validé
+            <span
+              style="
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                border: 1.5px solid black;
+                background-color: transparent;
+                margin-left: 35px;
+                margin-top: 1px;
+                margin-bottom: 0px;
+                text-align: center;
+              "
+            ></span>
+          </td>
+          <td style="padding: 0; border-right: none; border-left: none">
+            Rejeté
+            <span
+              style="
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                border: 1.5px solid black;
+                background-color: transparent;
+                margin-left: 35px;
+                margin-top: 1px;
+                margin-bottom: 0px;
+                text-align: center;
+              "
+            ></span>
+          </td>
+          <td style="padding: 0; border-left: none">
+            Gelé
+            <span
+              style="
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                border: 1.5px solid black;
+                background-color: transparent;
+                margin-left: 35px;
+                margin-top: 1px;
+                margin-bottom: 0px;
+                text-align: center;
+                
+    
+              "
+            >
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td class="header left gray">Responsable CW:</td>
+          <td></td>
+          <td class="no-border left">Signature:</td>
+          <td class="no-border" style="border-right: 1px solid black"></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Date:</td>
+          <td></td>
+          <td
+            class="no-border left"
+            style="border-bottom: 1px solid black"
+          ></td>
+          <td
+            style="
+              border-right: 1px solid black;
+              border-bottom: 1px solid black;
+            "
+            class="no-border"
+          ></td>
+        </tr>
+        <tr>
+          <td class="header left gray" style="padding-bottom: 20px">
+            Commentaires:
+          </td>
+          <td colspan="3"></td>
+        </tr>
+        <!-- --------------------------------- -->
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <!-- --------------------------------- -->
+        <tr>
+          <td class="header left gray">Validation Transmission:</td>
+          <td style="padding: 0; border-right: none">
+            Validé
+            <span
+              style="
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                border: 1.5px solid black;
+                background-color: transparent;
+                margin-left: 35px;
+                margin-top: 1px;
+                margin-bottom: 0px;
+                text-align: center;
+              "
+            ></span>
+          </td>
+          <td style="padding: 0; border-right: none; border-left: none">
+            Rejeté
+            <span
+              style="
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                border: 1.5px solid black;
+                background-color: transparent;
+                margin-left: 35px;
+                margin-top: 1px;
+                margin-bottom: 0px;
+                text-align: center;
+              "
+            ></span>
+          </td>
+          <td style="padding: 0; border-left: none">
+            Gelé
+            <span
+              style="
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                border: 1.5px solid black;
+                background-color: transparent;
+                margin-left: 35px;
+                margin-top: 1px;
+                margin-bottom: 0px;
+                text-align: center;
+              "
+            ></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="header left gray">Responsable Trans:</td>
+          <td></td>
+          <td class="no-border left">Signature:</td>
+          <td class="no-border" style="border-right: 1px solid black"></td>
+        </tr>
+        <tr>
+          <td class="header left gray">Date:</td>
+          <td></td>
+          <td
+            class="no-border left"
+            style="border-bottom: 1px solid black"
+          ></td>
+          <td
+            style="
+              border-right: 1px solid black;
+              border-bottom: 1px solid black;
+            "
+            class="no-border"
+          ></td>
+        </tr>
+        <tr>
+          <td class="header left gray" style="padding-bottom: 20px">
+            Commentaires:
+          </td>
+          <td colspan="3"></td>
+        </tr>
+
+        <!-- --------------------------------- -->
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <tr class="separator"></tr>
+        <!-- --------------------------------- -->
+      </tbody>
+    </table>
+    <div style="margin-bottom: 200px"></div>
+  </body>
+</html>
