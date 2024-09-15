@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Site" ADD COLUMN     "lat" TEXT NOT NULL DEFAULT 'N/A',
+ADD COLUMN     "long" TEXT NOT NULL DEFAULT 'N/A';

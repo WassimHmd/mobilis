@@ -106,16 +106,7 @@ export const getReport = async (
   try {
     const { perteId } = req.params;
 
-    const paths = [
-      { path: "articles.article", populate: "categorie" },
-      { path: "nature_perte" },
-    ];
-
-    const perte = await Perte.findById(perteId).populate(paths).lean();
-    if (!perte) {
-      return next(new HttpError.NotFoundError("perte not found"));
-    }
-    console.log(perte);
+    
     const report = await buildReport(
       "SA1.hbs",
       { perte },
