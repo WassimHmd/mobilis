@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import prisma from "../config/db";
 import { Site, Step, StepTypes } from "@prisma/client";
-import { replicateManagers } from "./ManagerControllers";
+import { createManager, replicateManagers } from "./ManagerControllers";
 //@ts-ignore
 import { sendEmail } from './../utils/sendMail';
 export const createStep = async (
@@ -98,7 +98,29 @@ export const nextStep = async (siteId: string) => {
             status: "COMPLETED",
           },
         });
+        console.log(nextStep)
+        const invites = await prisma.managerInvitation.findMany({
+          where: {
+            siteId,
+            stepType: nextStep
+          }
+        })
+
+        const promises = invites.map((invite) => {
+          return createManager(invite.email, invite.type, newStep.id, invite.phoneNumber)
+        })
+        
+        await Promise.all(promises)
         return newStep;
+      }else{
+        await prisma.site.update({
+          where: {
+            id: siteId
+          },
+          data: {
+            status: "COMPLETED"
+          }
+        })
       }
     }
   } catch (error) {
