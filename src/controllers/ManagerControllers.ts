@@ -2,6 +2,8 @@ import e, { Request, Response } from "express";
 import prisma from "../config/db";
 import { ManagerValidation, StepTypes } from "@prisma/client";
 import { cancelStep } from "./StepsControllers";
+import { RequestWithImages } from "@/types";
+import { createSignature } from "./SignatureControllers";
 
 export const createManager = async (
   email: string,
@@ -42,14 +44,24 @@ export const createManagerController = async (req: Request, res: Response) => {
   }
 };
 
-export const validateManager = async (id: string) => {
+export const validateManager = async (id: string, signaturePath: string, res ?: Response) => {
   try {
+    if(!signaturePath){
+      return false
+      // throw new Error("Signature not found")
+    }
+    const signature = await createSignature(signaturePath)
+    if(!signature){
+      return false
+    }
+    
     const manager = await prisma.manager.update({
       where: {
         id,
       },
       data: {
         validation: "VALID",
+        signatureId: signature.id
       },
     });
     return manager;
@@ -60,12 +72,18 @@ export const validateManager = async (id: string) => {
 };
 
 export const validateManagerController = async (
-  req: Request,
+  req: RequestWithImages,
   res: Response
 ) => {
   try {
     const { managerId } = req.params;
-    const manager = await validateManager(managerId);
+    const signature = req.images?.signature[0]
+
+    console.log(req.images)
+    if(!signature){
+      return res.status(400).json("signature not found")
+    }
+    const manager = await validateManager(managerId, signature, res);
     return res.status(200).json(manager);
   } catch (error) {
     console.log(error);

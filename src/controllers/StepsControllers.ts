@@ -183,3 +183,24 @@ export const testFeature = async (req: Request, res: Response) => {
     return res.status(500).json("internal server error");
   }
 };
+
+export const startValidationPhase = async (stepId: string) => {
+  try {
+    const step = await prisma.step.update({
+      where: {
+        id: stepId,
+      },
+      data: {
+        status: "VALIDATION",
+      },
+    });
+
+    //TODO: Send Validation Emails
+
+    return step;
+
+  }catch(error){
+    console.log(error)
+    return false
+  }
+}

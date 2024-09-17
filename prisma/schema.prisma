@@ -16,6 +16,8 @@ model User {
   image       String?
   phoneNumber String?
   userType    userTypes @default(SUBCONTRACTOR)
+  signature   SignaNum? @relation(fields: [signatureId], references: [id], onDelete: Cascade)
+  signatureId String?
 
   moderator     Moderator?
   subcontractor SubContractor?
@@ -60,7 +62,6 @@ model SubContractor {
   status      Float   @default(0)
   fullName    String
   address     String
-  //SignaNum
   CAF         Int     @default(0)
   SPOC        String
   deployment  Boolean @default(false)
@@ -140,7 +141,10 @@ model Manager {
   email       String
   validation  ManagerValidation @default(PENDING)
   type        String
-  phoneNumber String @default("0541129519")
+  phoneNumber String            @default("0541129519")
+
+  signature   SignaNum? @relation(fields: [signatureId], references: [id], onDelete: Cascade)
+  signatureId String?
 
   step   Step   @relation(fields: [stepId], references: [id], onDelete: Cascade)
   stepId String
@@ -166,6 +170,14 @@ model Images {
   step Step @relation(fields: [stepId], references: [id], onDelete: Cascade)
 }
 
+model SignaNum {
+  id        String    @id @default(uuid())
+  path      String
+  createdAt DateTime  @default(now())
+  Manager   Manager[]
+  User      User[]
+}
+
 enum ManagerValidation {
   VALID
   PENDING
@@ -185,6 +197,7 @@ enum StepTypes {
 enum StepStatus {
   COMPLETED
   PENDING
+  VALIDATION
   FAILED
 }
 
