@@ -1,20 +1,21 @@
 import e, { Request, Response } from "express";
 import prisma from "../config/db";
-import { ManagerValidation } from "@prisma/client";
+import { ManagerValidation, StepTypes } from "@prisma/client";
 import { cancelStep } from "./StepsControllers";
 
 export const createManager = async (
   email: string,
   type: string,
-  stepId: string
+  stepId: string,
+  phoneNumber: string
 ) => {
   try {
-    
     const manager = await prisma.manager.create({
       data: {
         email,
         type,
         stepId,
+        phoneNumber: phoneNumber
       },
     });
     return manager;
@@ -25,14 +26,15 @@ export const createManager = async (
 };
 
 export const createManagerController = async (req: Request, res: Response) => {
-  const { email, type, stepId } = req.body as {
+  const { email, type, stepId, phoneNumber } = req.body as {
     email: string;
     validation: ManagerValidation;
     type: string;
     stepId: string;
+    phoneNumber: string;
   };
   try {
-    const manager = await createManager(email, type, stepId);
+    const manager = await createManager(email, type, stepId, phoneNumber);
     return res.status(200).json(manager);
   } catch (error) {
     console.log(error);
@@ -126,3 +128,31 @@ export const replicateManagers = async (stepId: string, newStepId: string) => {
     throw Error("Failed to replicate managers");
   }
 };
+
+export const createPendingInvite = async (
+  email: string,
+  phoneNumber: string,
+  type: string,
+  stepType: StepTypes,
+  siteId: string
+) => {
+  try {
+
+    const invite = await prisma.managerInvitation.create({
+      data: {
+        email,
+        phoneNumber,
+        type,
+        stepType,
+        siteId,
+      },
+    });
+    
+    return invite;
+  }catch(error){
+    console.log(error);
+    throw Error("Failed to create pending invite");
+  }
+    
+  };
+  

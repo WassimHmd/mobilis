@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import prisma from "../config/db";
 import { DocTypes } from "@prisma/client";
+//@ts-ignore
+import buildReport from './../utils/pdf';
 
 export const createDocument = async (req: Request, res: Response) => {
   const {
@@ -8,15 +10,16 @@ export const createDocument = async (req: Request, res: Response) => {
     data,
     siteId,
   }: { type: DocTypes; data: object; siteId: string } = req.body;
-  const string_data: string = JSON.stringify(data);
   try {
     const document = await prisma.document.create({
       data: {
         type,
-        data: string_data,
+        data,
         siteId,
       },
     });
+    
+    await buildReport("SA1.hbs", document.data)
     res.status(201).json(document);
   } catch (error: any) {
     console.log(error);

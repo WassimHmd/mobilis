@@ -89,11 +89,12 @@ model Site {
   subcontractorId String
   bureauId        String?
 
-  subcontractor SubContractor @relation(fields: [subcontractorId], references: [userId])
-  negociator    Negociator?   @relation(fields: [negociatorId], references: [userId])
-  Bureau        Bureau?       @relation(fields: [bureauId], references: [userId])
-  Document      Document[]
-  Step          Step[]
+  subcontractor     SubContractor       @relation(fields: [subcontractorId], references: [userId])
+  negociator        Negociator?         @relation(fields: [negociatorId], references: [userId])
+  Bureau            Bureau?             @relation(fields: [bureauId], references: [userId])
+  Document          Document[]
+  Step              Step[]
+  ManagerInvitation ManagerInvitation[]
 }
 
 model Negociator {
@@ -113,7 +114,7 @@ model Bureau {
 model Document {
   id   String   @id @default(cuid())
   type DocTypes
-  data String
+  data Json
 
   site   Site   @relation(fields: [siteId], references: [id], onDelete: Cascade)
   siteId String
@@ -135,13 +136,25 @@ model Step {
 }
 
 model Manager {
-  id         String            @id @default(uuid())
-  email      String
-  validation ManagerValidation @default(PENDING)
-  type       String
+  id          String            @id @default(uuid())
+  email       String
+  validation  ManagerValidation @default(PENDING)
+  type        String
+  phoneNumber String @default("0541129519")
 
   step   Step   @relation(fields: [stepId], references: [id], onDelete: Cascade)
   stepId String
+}
+
+model ManagerInvitation {
+  id          String    @id @default(uuid())
+  email       String
+  phoneNumber String
+  type        String
+  stepType    StepTypes
+
+  site   Site   @relation(fields: [siteId], references: [id], onDelete: Cascade)
+  siteId String
 }
 
 model Images {

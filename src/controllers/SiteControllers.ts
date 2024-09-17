@@ -15,18 +15,60 @@ import {
   updateStep,
 } from "./StepsControllers";
 
-import { RequestWithImages } from './../types';
-
-
+import { RequestWithImages } from "./../types";
+import { createManager, createPendingInvite } from "./ManagerControllers";
 
 export const createSite = async (req: Request, res: Response) => {
   try {
+    const {
+      type,
+      startDate,
+      endDate,
+      code,
+      name,
+      region,
+      wilaya,
+      location,
+      progression,
+      subcontractorId,
+    } = req.body;
     const site = await prisma.site.create({
       data: {
-        ...req.body,
+        type,
+        startDate,
+        endDate,
+        code,
+        name,
+        region,
+        wilaya,
+        location,
+        progression,
+        subcontractorId,
       },
     });
-    createStep(site.id, "SA1");
+    const step = await createStep(site.id, "SA1");
+    const managers = req.body.managers;
+    if (!managers) return res.status(400).json("Managers not found");
+    const promises = managers.map((manager: any) => {
+      if (manager.step === "SA1") {
+        return createManager(
+          manager.email,
+          manager.type,
+          step.id,
+          manager.phoneNumber
+        );
+      } else {
+        return createPendingInvite(
+          manager.email,
+          manager.phoneNumber,
+          manager.type,
+          manager.step,
+          site.id
+        );
+      }
+    });
+
+    await Promise.all(promises);
     res.status(201).json(site);
   } catch (error: any) {
     console.log(error);
@@ -98,39 +140,29 @@ export const deleteSite = async (req: Request, res: Response) => {
   }
 };
 
-export const getReport = async (
-  req: Request,
-  res: Response,
-  next: Function
-): Promise<void> => {
-  try {
-    const { perteId } = req.params;
+// export const getReport = async (
+//   req: Request,
+//   res: Response,
+//   next: Function
+// ): Promise<void> => {
+//   try {
+//     const { perteId } = req.params;
 
-    const paths = [
-      { path: "articles.article", populate: "categorie" },
-      { path: "nature_perte" },
-    ];
+//     const report = await buildReport(
+//       "SA1.hbs",
+//       { perte },
+//       {
+//         format: "A4",
+//         printBackground: true,
+//       }
+//     );
 
-    const perte = await Perte.findById(perteId).populate(paths).lean();
-    if (!perte) {
-      return next(new HttpError.NotFoundError("perte not found"));
-    }
-    console.log(perte);
-    const report = await buildReport(
-      "SA1.hbs",
-      { perte },
-      {
-        format: "A4",
-        printBackground: true,
-      }
-    );
-
-    const stream = Readable.from(report);
-    stream.pipe(res);
-  } catch (error) {
-    next(error);
-  }
-};
+//     const stream = Readable.from(report);
+//     stream.pipe(res);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
 export const siteCancelCurrentStep = async (req: Request, res: Response) => {
   try {
     const { siteId } = req.params;
@@ -180,21 +212,20 @@ export const inviteNegociator = async (req: Request, res: Response) => {
 
     if (!user) {
       //TODO: mailing logic
-      return res.status(400).json("Email invitations not implemented yet")
+      return res.status(400).json("Email invitations not implemented yet");
     } else {
       await prisma.site.update({
         where: { id: siteId },
         data: { negociatorId: user.id },
       });
 
-      return res.status(200).json("Negociator Added to Site successfully")
+      return res.status(200).json("Negociator Added to Site successfully");
     }
   } catch (err) {
     console.error(err);
     return res.status(200).json(err);
   }
 };
-
 
 export const inviteBureau = async (req: Request, res: Response) => {
   try {
@@ -209,14 +240,14 @@ export const inviteBureau = async (req: Request, res: Response) => {
 
     if (!user) {
       //TODO: mailing logic
-      return res.status(400).json("Email invitations not implemented yet")
+      return res.status(400).json("Email invitations not implemented yet");
     } else {
       await prisma.site.update({
         where: { id: siteId },
         data: { bureauId: user.id },
       });
 
-      return res.status(200).json("Bureau Added to Site successfully")
+      return res.status(200).json("Bureau Added to Site successfully");
     }
   } catch (err) {
     console.error(err);
@@ -224,29 +255,32 @@ export const inviteBureau = async (req: Request, res: Response) => {
   }
 };
 
-export const addImagesToSite = async (req: RequestWithImages, res: Response) => {
+export const addImagesToSite = async (
+  req: RequestWithImages,
+  res: Response
+) => {
   try {
     const { siteId } = req.params;
     const { images } = req;
-    
+
     if (!images) return res.status(400).json("Images not found");
 
-    const step = await getCurrentStep(siteId)
+    const step = await getCurrentStep(siteId);
     if (!step) return res.status(400).json("Step not found");
 
     await prisma.images.createMany({
-      data: images.images.map((img: string)=> ({
+      data: images.images.map((img: string) => ({
         stepId: step.id,
         path: img,
       })),
-    })
+    });
 
     return res.status(200).json("Images added successfully");
   } catch (err) {
     console.error(err);
     return res.status(400).json(err);
   }
-}
+};
 
 export const siteGetAllSteps = async (req: Request, res: Response) => {
   try {
@@ -257,4 +291,4 @@ export const siteGetAllSteps = async (req: Request, res: Response) => {
     console.error(err);
     return res.status(200).json(err);
   }
-}
+};
