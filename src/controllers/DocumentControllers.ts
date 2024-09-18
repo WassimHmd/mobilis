@@ -3,6 +3,8 @@ import prisma from "../config/db";
 import { DocTypes } from "@prisma/client";
 //@ts-ignore
 import buildReport from './../utils/pdf';
+import path from "path";
+import fs from 'fs';
 
 export const createDocument = async (req: Request, res: Response) => {
   const {
@@ -19,7 +21,7 @@ export const createDocument = async (req: Request, res: Response) => {
       },
     });
     
-    await buildReport("SA1.hbs", document.data)
+    await buildReport("SA1.hbs", document.data, document.id)
     res.status(201).json(document);
   } catch (error: any) {
     console.log(error);
@@ -88,3 +90,20 @@ export const deleteDocument = async (req: Request, res: Response) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+export const downloadDocumentById = async (req: Request, res: Response) => {
+  const { id }: { id?: string } = req.params;
+
+  try {
+    // const documentPath = path.join(__dirname, "../documents", `${id}.pdf`);
+    // if (!fs.existsSync(documentPath)) {
+    //   return res.status(404).json({ message: "Document not found" });
+    // }
+    res.setHeader(`Content-Disposition`, `attachment; filename="${id}.pdf"`);
+    return res.sendFile( id + ".pdf", { root: "src/documents" });
+  }catch(error){
+    console.log(error)
+    return res.status(500).json({message: "Internal server error"})
+  }
+}
+

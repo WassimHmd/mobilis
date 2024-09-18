@@ -26,7 +26,7 @@ const hbs = handlebars.create({
   defaultLayout: false,
 });
 
-const buildReport = async (template, data, options) => {
+const buildReport = async (template, data, fileName) => {
   const getTemplate = async (template) => {
     const templatePath = path.join(templatesPath, template);
 
@@ -41,12 +41,12 @@ const buildReport = async (template, data, options) => {
   const html = hbs.compile(t)(data);
   console.log(data)
 
-  const pdf = await getPdf(html, options);
+  const pdf = await getPdf(html, { format: "A4", printBackground: true });
   const documentsDir = path.join(process.cwd(), "src/documents");
   if (!fs.existsSync(documentsDir)) {
     fs.mkdirSync(documentsDir);
   }
-  fs.writeFileSync(path.join(documentsDir, "test.pdf"), pdf);
+  fs.writeFileSync(path.join(documentsDir, `${fileName}.pdf`), pdf);
 
   return pdf;
 };

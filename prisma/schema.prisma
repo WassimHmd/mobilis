@@ -116,6 +116,7 @@ model Document {
   id   String   @id @default(cuid())
   type DocTypes
   data Json
+  path String? 
 
   site   Site   @relation(fields: [siteId], references: [id], onDelete: Cascade)
   siteId String
