@@ -10,6 +10,7 @@ import manager from "./routes/manager";
 import bureau from "./routes/bureau";
 import images from "./routes/images";
 import user from "./routes/user"
+import steps from "./routes/steps"
 
 import { testFeature } from "@/controllers/StepsControllers";
 
@@ -83,7 +84,7 @@ router.use("/images", images)
 
 router.use("/user", user)
 
-router.use("/step/:id", testFeature);
+router.use("/step/", steps);
 // router.post("/test", uploadFile("test"), (req: any, res) => {
 //   if (!req.images) {
 //     return res.status(400).json({ message: "No file uploaded!" });
