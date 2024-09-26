@@ -1,10 +1,23 @@
-import { deleteImage, getImagesByStep } from "@/controllers/ImageControllers";
-import { Router } from "express"
+import {
+  addImagesToCollection,
+  deleteImage,
+  getImageCollection,
+  getImagesByStep,
+} from "@/controllers/ImageControllers";
+import { uploadFile } from "@/middleware/uploadImage";
+import { Router } from "express";
 
 const router = Router();
 
-router.get("/:stepId", getImagesByStep)
+router.post(
+  "/collection/:collectionId",
+  uploadFile("substep"),
+  addImagesToCollection
+);
+router.get("/collection/:collectionId", getImageCollection);
 
-router.delete("/:imageId", deleteImage)
+router.get("/:stepId", getImagesByStep);
 
-export default router
+router.delete("/:imageId", deleteImage);
+
+export default router;

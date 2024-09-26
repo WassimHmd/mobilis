@@ -136,11 +136,12 @@ model Step {
   Manager      Manager[]
   Images       Images[]
   SA1Candidate SA1Candidate[]
+  SubStepOC    SubStepOC[]
 }
 
 model SA1Candidate {
-  id String @id @default(cuid())
-  stepId String 
+  id     String @id @default(cuid())
+  stepId String
   step   Step   @relation(fields: [stepId], references: [id], onDelete: Cascade)
 
   long     String
@@ -148,6 +149,32 @@ model SA1Candidate {
   location String
 
   status CandidateStatus @default(PENDING)
+}
+
+model SubStepOC {
+  id        String          @id @default(cuid())
+  stepId    String
+  step      Step            @relation(fields: [stepId], references: [id], onDelete: Cascade)
+  status    SubStepOCStatus @default(ACTIVE)
+  createdAt DateTime        @default(now())
+  index     Int
+
+  indoor   ImageCollection? @relation("indoorCollection", fields: [indoorId], references: [id], onDelete: SetNull)
+  indoorId String?
+
+  outdoor   ImageCollection? @relation("outdoorCollection", fields: [outdoorId], references: [id], onDelete: SetNull)
+  outdoorId String?
+
+  Images            Images[]
+  imageCollection   ImageCollection? @relation("defaultCollection", fields: [imageCollectionId], references: [id], onDelete: SetNull)
+  imageCollectionId String?
+
+  @@index([stepId])
+}
+
+enum SubStepOCStatus {
+  ACTIVE
+  INACTIVE
 }
 
 enum CandidateStatus {
@@ -183,10 +210,23 @@ model ManagerInvitation {
 model Images {
   id        String   @id @default(uuid())
   path      String
-  stepId    String
+  stepId    String?
   createdAt DateTime @default(now())
 
-  step Step @relation(fields: [stepId], references: [id], onDelete: Cascade)
+  collectionId String?
+  subStepId    String?
+
+  step       Step?            @relation(fields: [stepId], references: [id], onDelete: Cascade)
+  subStep    SubStepOC?       @relation(fields: [subStepId], references: [id], onDelete: Cascade)
+  collection ImageCollection? @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+}
+
+model ImageCollection {
+  id          String      @id @default(cuid())
+  Images      Images[]
+  indoorStep  SubStepOC[] @relation("indoorCollection")
+  outdoorStep SubStepOC[] @relation("outdoorCollection")
+  defaultStep SubStepOC[] @relation("defaultCollection")
 }
 
 model SignaNum {

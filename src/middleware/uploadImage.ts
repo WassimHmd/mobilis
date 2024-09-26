@@ -4,7 +4,7 @@ import path from "path";
 import fs from "fs";
 import crypto from "crypto";
 
-type FileFolders = "site" | "step" | "signature"
+type FileFolders = "site" | "step" | "signature" | "substep";
 
 interface CustomRequest extends Request {
   images?: Record<string, any>;

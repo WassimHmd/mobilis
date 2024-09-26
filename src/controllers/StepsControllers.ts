@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import prisma from "../config/db";
-import { Site, Step, StepTypes } from "@prisma/client";
+import { Site, Step, StepTypes, SubStepOCStatus } from "@prisma/client";
 import { createManager, replicateManagers } from "./ManagerControllers";
 //@ts-ignore
 import { sendEmail } from "./../utils/sendMail";
@@ -23,6 +23,11 @@ export const createStep = async (
         payload,
       },
     });
+
+    if (type === "OC") {
+      await createSubStepOC(step.id, "ACTIVE", 0);
+    }
+
     return step;
   } catch (error) {
     console.log(error);
@@ -55,7 +60,7 @@ export const getAllSteps = async (siteId: string) => {
       },
       include: {
         Images: true,
-        SA1Candidate:true
+        SA1Candidate: true,
       },
     });
 
@@ -73,17 +78,20 @@ const addSA1Candidate = async (stepId: string, data: SA1Candidate) => {
       ...data,
       stepId,
     },
-  })
+  });
 
-  return candidate
+  return candidate;
 };
 
-export const addSA1CandidateController = async (req: Request, res: Response) => {
+export const addSA1CandidateController = async (
+  req: Request,
+  res: Response
+) => {
   try {
     const { stepId } = req.params;
-    const {long, lat, location} = req.body; // Assuming the candidate data comes in the request body
+    const { long, lat, location } = req.body; // Assuming the candidate data comes in the request body
 
-    const candidate = await addSA1Candidate(stepId, {long, lat, location});
+    const candidate = await addSA1Candidate(stepId, { long, lat, location });
 
     res.status(201).json(candidate);
   } catch (error) {
@@ -94,40 +102,37 @@ export const addSA1CandidateController = async (req: Request, res: Response) => 
 
 export const chooseSA1Candidate = async (req: Request, res: Response) => {
   try {
-    const { candidateId } = req.params; 
+    const { candidateId } = req.params;
 
     const candidate = await prisma.sA1Candidate.update({
       where: {
-        id: candidateId
+        id: candidateId,
       },
       data: {
-        status: "CHOSEN"
+        status: "CHOSEN",
       },
       include: {
-        step: true
-      }
-    })
+        step: true,
+      },
+    });
 
     const site = await prisma.site.update({
       where: {
-        id: candidate.step.siteId
+        id: candidate.step.siteId,
       },
       data: {
         long: candidate.long,
         lat: candidate.lat,
-        location: candidate.location
-      }
-    })
+        location: candidate.location,
+      },
+    });
 
-    return res.status(200).json(site)
-
-  }catch (error) {
-    console.error(error)
+    return res.status(200).json(site);
+  } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Failed to choose candidate" });
   }
-}
-
-
+};
 
 export const nextStep = async (siteId: string) => {
   const stepOrder: StepTypes[] = [
@@ -286,6 +291,85 @@ export const startValidationPhase = async (stepId: string) => {
     //TODO: Send Validation Emails
 
     return step;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};
+
+export const createSubStepOC = async (
+  stepId: string,
+  status: SubStepOCStatus = "ACTIVE",
+  index: number
+) => {
+  try {
+    const result = await prisma.$transaction(async (prisma) => {
+      // Create indoor and outdoor ImageCollections in parallel
+      const [indoorCollection, outdoorCollection] = await Promise.all([
+        prisma.imageCollection.create({ data: {} }),
+        prisma.imageCollection.create({ data: {} }),
+      ]);
+
+      // Create subStepOC and reference the created collections
+      const subStep = await prisma.subStepOC.create({
+        data: {
+          stepId,
+          status,
+          index,
+          indoorId: indoorCollection.id,
+          outdoorId: outdoorCollection.id,
+        },
+      });
+
+      return subStep; // The result returned by the transaction
+    });
+
+    return result;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};
+
+export const nextSubStepOC = async (stepId: string) => {
+  try {
+    const subStep = await prisma.subStepOC.findFirst({
+      where: {
+        stepId,
+        status: "ACTIVE",
+      },
+      orderBy: {
+        index: "desc",
+      },
+    });
+    const updatedSubStep = await prisma.subStepOC.update({
+      where: {
+        id: subStep?.id,
+      },
+      data: {
+        status: "INACTIVE",
+      },
+    });
+
+    let nextSubStep;
+    if (subStep) {
+      nextSubStep = await createSubStepOC(stepId, "ACTIVE", subStep.index + 1);
+    }
+
+    return nextSubStep;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};
+
+export const nextSubStepOCController = async (req: Request, res: Response) => {
+  try {
+    const { stepId } = req.params;
+
+    const subStep = await nextSubStepOC(stepId);
+
+    res.status(200).json(subStep);
   } catch (error) {
     console.log(error);
     return false;
