@@ -4,6 +4,44 @@ import { Router } from "express";
 
 const router = Router();
 
-router.post("/signature/:userId", uploadFile("signature"), addSignature)
+/**
+ * @swagger
+ * /api/v1/user/signature/{userId}:
+ *   post:
+ *     summary: Add user signature
+ *     description: Adds user signature
+ *     tags:
+ *       - User
+ *
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The ID of the User.
+ *
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               signature:
+ *                 type: string
+ *                 format: binary
+ *
+ *     responses:
+ *       200:
+ *         description: Signature added
+ *       400:
+ *         description: User not found
+ *
+ *       500:
+ *         description: Internal Server Error
+ */
 
-export default router
+router.post("/signature/:userId", uploadFile("signature"), addSignature);
+
+export default router;

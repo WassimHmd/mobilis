@@ -37,12 +37,6 @@ router.use("/auth", auth);
  *     description: Placeholder for the sites routes.
  */
 router.use("/sites", sites);
-/**
- * @swagger
- * tags:
- *   name: Sites routes endpoint
- *   description: CRUD operations for managing subcontractor
- */
 
 /**
  * @swagger
@@ -53,28 +47,10 @@ router.use("/sites", sites);
  */
 
 router.use("/subcontractor", subcontractors);
-/**
- * @swagger
- * tags:
- *   name: Sites routes endpoint
- *   description: CRUD operations for managing negociator
- */
 
 router.use("/negociator", negociator);
-/**
- * @swagger
- * tags:
- *   name: Bureau routes endpoint
- *   description: CRUD operations for managing Bureau
- */
 
 router.use("/bureau", bureau);
-/**
- * @swagger
- * tags:
- *   name: Sites routes endpoint
- *   description: CRUD operations for managing moderator
- */
 
 router.use("/moderator", moderator);
 
