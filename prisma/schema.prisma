@@ -26,8 +26,20 @@ model User {
   resetTokens   ResetToken[]
   //tetincrementa a chaque changement li lazem y'deconnecti les sessions lokhrin
   ver           Int            @default(0)
+  Notification  Notification[]
 
   @@index([email])
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  title     String
+  message   String?
+  targetId  String
+  target    User     @relation(fields: [targetId], references: [id], onDelete: Cascade)
+  payload   Json     @default("{}")
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
 }
 
 model ResetToken {

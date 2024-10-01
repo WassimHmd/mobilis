@@ -11,6 +11,7 @@ import bureau from "./routes/bureau";
 import images from "./routes/images";
 import user from "./routes/user";
 import steps from "./routes/steps";
+import notifications from "./routes/notifications";
 
 import { testFeature } from "@/controllers/StepsControllers";
 
@@ -63,5 +64,7 @@ router.use("/images", images);
 router.use("/user", user);
 
 router.use("/step/", steps);
+
+router.use("/notifications/", notifications);
 
 export default router;
