@@ -2,16 +2,16 @@ import { Request, Response } from "express";
 import prisma from "../config/db";
 import { DocTypes } from "@prisma/client";
 //@ts-ignore
-import buildReport from './../utils/pdf';
+import buildReport from "./../utils/pdf";
 import path from "path";
-import fs from 'fs';
+import fs from "fs";
 
 export const createDocument = async (req: Request, res: Response) => {
   const {
     type,
     data,
     siteId,
-  }: { type: DocTypes; data: object; siteId: string } = req.body;
+  }: { type: DocTypes; data: object; siteId: number } = req.body;
   try {
     const document = await prisma.document.create({
       data: {
@@ -20,8 +20,8 @@ export const createDocument = async (req: Request, res: Response) => {
         siteId,
       },
     });
-    
-    await buildReport("SA1.hbs", document.data, document.id)
+
+    await buildReport("SA1.hbs", document.data, document.id);
     res.status(201).json(document);
   } catch (error: any) {
     console.log(error);
@@ -60,7 +60,7 @@ export const updateDocument = async (req: Request, res: Response) => {
     type,
     data,
     siteId,
-  }: { type: DocTypes; data: object; siteId: string } = req.body;
+  }: { type: DocTypes; data: object; siteId: number } = req.body;
   const string_data: string = JSON.stringify(data);
   try {
     const document = await prisma.document.update({
@@ -100,10 +100,9 @@ export const downloadDocumentById = async (req: Request, res: Response) => {
     //   return res.status(404).json({ message: "Document not found" });
     // }
     res.setHeader(`Content-Disposition`, `attachment; filename="${id}.pdf"`);
-    return res.sendFile( id + ".pdf", { root: "src/documents" });
-  }catch(error){
-    console.log(error)
-    return res.status(500).json({message: "Internal server error"})
+    return res.sendFile(id + ".pdf", { root: "src/documents" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
   }
-}
-
+};

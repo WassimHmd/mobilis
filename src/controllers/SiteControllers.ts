@@ -31,6 +31,7 @@ export const createSite = async (req: Request, res: Response) => {
       location,
       progression,
       subcontractorId,
+      moderatorId,
     } = req.body;
     const site = await prisma.site.create({
       data: {
@@ -44,6 +45,7 @@ export const createSite = async (req: Request, res: Response) => {
         location,
         progression,
         subcontractorId,
+        moderatorId,
       },
     });
     const step = await createStep(site.id, "SA1");
@@ -80,7 +82,7 @@ export const getSiteById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const site = await prisma.site.findUnique({
-      where: { id },
+      where: { id: parseInt(id) },
       include: {
         subcontractor: true,
         negociator: true,
@@ -116,7 +118,7 @@ export const updateSite = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const site = await prisma.site.update({
-      where: { id },
+      where: { id: parseInt(id) },
       data: req.body,
     });
     res.json(site);
@@ -130,7 +132,7 @@ export const deleteSite = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     await prisma.site.update({
-      where: { id },
+      where: { id: parseInt(id) },
       data: { status: "CANCELLED" },
     });
     res.status(204).send();
@@ -166,7 +168,7 @@ export const deleteSite = async (req: Request, res: Response) => {
 export const siteCancelCurrentStep = async (req: Request, res: Response) => {
   try {
     const { siteId } = req.params;
-    const stepId = (await getCurrentStep(siteId))?.id;
+    const stepId = (await getCurrentStep(parseInt(siteId)))?.id;
     if (!stepId) return res.status(400).json("Step not found");
     const newStep = await cancelStep(stepId);
     return res.status(200).json(newStep);
@@ -179,11 +181,11 @@ export const siteCancelCurrentStep = async (req: Request, res: Response) => {
 export const siteNextStep = async (req: Request, res: Response) => {
   try {
     const { siteId } = req.params;
-    const newStep = await nextStep(siteId);
+    const newStep = await nextStep(parseInt(siteId));
     return res.status(200).json(newStep);
   } catch (err) {
     console.error(err);
-    return res.status(200).json(err);
+    return res.status(500).json(err);
   }
 };
 
@@ -191,7 +193,7 @@ export const updateCurrentStep = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const { payload } = req.body;
-    const currentStep = await getCurrentStep(id);
+    const currentStep = await getCurrentStep(parseInt(id));
     if (currentStep) updateStep(currentStep.id, payload);
   } catch (err) {
     console.error(err);
@@ -215,7 +217,7 @@ export const inviteNegociator = async (req: Request, res: Response) => {
       return res.status(400).json("Email invitations not implemented yet");
     } else {
       await prisma.site.update({
-        where: { id: siteId },
+        where: { id: parseInt(siteId) },
         data: { negociatorId: user.id },
       });
 
@@ -243,7 +245,7 @@ export const inviteBureau = async (req: Request, res: Response) => {
       return res.status(400).json("Email invitations not implemented yet");
     } else {
       await prisma.site.update({
-        where: { id: siteId },
+        where: { id: parseInt(siteId) },
         data: { bureauId: user.id },
       });
 
@@ -265,7 +267,7 @@ export const addImagesToSite = async (
 
     if (!images) return res.status(400).json("Images not found");
 
-    const step = await getCurrentStep(siteId);
+    const step = await getCurrentStep(parseInt(siteId));
     if (!step) return res.status(400).json("Step not found");
 
     await prisma.images.createMany({
@@ -285,7 +287,7 @@ export const addImagesToSite = async (
 export const siteGetAllSteps = async (req: Request, res: Response) => {
   try {
     const { siteId } = req.params;
-    const steps = await getAllSteps(siteId);
+    const steps = await getAllSteps(parseInt(siteId));
     return res.status(200).json(steps);
   } catch (err) {
     console.error(err);

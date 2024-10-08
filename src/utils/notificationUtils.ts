@@ -13,14 +13,18 @@ export const notifyUser = async ({
   payload: object;
 }) => {
   try {
-    const notification = prisma.notification.create({
-      data: {
-        targetId,
-        title,
-        message,
-        payload,
-      },
-    });
+    console.log("targetId: ", targetId);
+    prisma.notification
+      .create({
+        data: {
+          targetId,
+          title,
+          message,
+          payload,
+        },
+      })
+      .then((notification) => console.log(notification));
+    // console.log(notification);
 
     io.in(userSockets[targetId]).emit("notification", {
       title,
@@ -31,4 +35,8 @@ export const notifyUser = async ({
     console.log(error);
     return false;
   }
+};
+
+export const formatSite = (siteId: number) => {
+  return `#${siteId.toString().padStart(5, "0")}`;
 };

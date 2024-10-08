@@ -65,6 +65,7 @@ model Moderator {
 
   region String
   admin  Boolean @default(false)
+  Site   Site[]
 }
 
 model SubContractor {
@@ -83,7 +84,7 @@ model SubContractor {
 }
 
 model Site {
-  id          String     @id @default(cuid())
+  id          Int        @id @default(autoincrement())
   type        SiteTypes
   startDate   DateTime   @default(now())
   endDate     DateTime
@@ -101,10 +102,12 @@ model Site {
   negociatorId    String?
   subcontractorId String
   bureauId        String?
+  moderatorId     String
 
   subcontractor     SubContractor       @relation(fields: [subcontractorId], references: [userId])
   negociator        Negociator?         @relation(fields: [negociatorId], references: [userId])
   Bureau            Bureau?             @relation(fields: [bureauId], references: [userId])
+  Moderator         Moderator           @relation(fields: [moderatorId], references: [userId])
   Document          Document[]
   Step              Step[]
   ManagerInvitation ManagerInvitation[]
@@ -130,8 +133,8 @@ model Document {
   data Json
   path String?
 
-  site   Site   @relation(fields: [siteId], references: [id], onDelete: Cascade)
-  siteId String
+  site   Site @relation(fields: [siteId], references: [id], onDelete: Cascade)
+  siteId Int
 
   //TODO: Add Step relation when steps are implemented 
 }
@@ -144,7 +147,7 @@ model Step {
   createdAt DateTime   @default(now())
 
   site         Site           @relation(fields: [siteId], references: [id], onDelete: Cascade)
-  siteId       String
+  siteId       Int
   Manager      Manager[]
   Images       Images[]
   SA1Candidate SA1Candidate[]
@@ -215,8 +218,8 @@ model ManagerInvitation {
   type        String
   stepType    StepTypes
 
-  site   Site   @relation(fields: [siteId], references: [id], onDelete: Cascade)
-  siteId String
+  site   Site @relation(fields: [siteId], references: [id], onDelete: Cascade)
+  siteId Int
 }
 
 model Images {

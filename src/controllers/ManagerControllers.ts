@@ -17,7 +17,7 @@ export const createManager = async (
         email,
         type,
         stepId,
-        phoneNumber: phoneNumber
+        phoneNumber: phoneNumber,
       },
     });
     return manager;
@@ -44,24 +44,28 @@ export const createManagerController = async (req: Request, res: Response) => {
   }
 };
 
-export const validateManager = async (id: string, signaturePath: string, res ?: Response) => {
+export const validateManager = async (
+  id: string,
+  signaturePath: string,
+  res?: Response
+) => {
   try {
-    if(!signaturePath){
-      return false
+    if (!signaturePath) {
+      return false;
       // throw new Error("Signature not found")
     }
-    const signature = await createSignature(signaturePath)
-    if(!signature){
-      return false
+    const signature = await createSignature(signaturePath);
+    if (!signature) {
+      return false;
     }
-    
+
     const manager = await prisma.manager.update({
       where: {
         id,
       },
       data: {
         validation: "VALID",
-        signatureId: signature.id
+        signatureId: signature.id,
       },
     });
     return manager;
@@ -77,11 +81,11 @@ export const validateManagerController = async (
 ) => {
   try {
     const { managerId } = req.params;
-    const signature = req.images?.signature[0]
+    const signature = req.images?.signature[0];
 
-    console.log(req.images)
-    if(!signature){
-      return res.status(400).json("signature not found")
+    console.log(req.images);
+    if (!signature) {
+      return res.status(400).json("signature not found");
     }
     const manager = await validateManager(managerId, signature, res);
     return res.status(200).json(manager);
@@ -152,10 +156,9 @@ export const createPendingInvite = async (
   phoneNumber: string,
   type: string,
   stepType: StepTypes,
-  siteId: string
+  siteId: number
 ) => {
   try {
-
     const invite = await prisma.managerInvitation.create({
       data: {
         email,
@@ -165,12 +168,10 @@ export const createPendingInvite = async (
         siteId,
       },
     });
-    
+
     return invite;
-  }catch(error){
+  } catch (error) {
     console.log(error);
     throw Error("Failed to create pending invite");
   }
-    
-  };
-  
+};

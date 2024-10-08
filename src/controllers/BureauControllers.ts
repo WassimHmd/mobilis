@@ -10,9 +10,9 @@ export const createBureau = async (req: any, res: Response) => {
       },
     });
     if (siteId) {
-      if (await prisma.site.findUnique({ where: { id: siteId } })) {
+      if (await prisma.site.findUnique({ where: { id: parseInt(siteId) } })) {
         await prisma.site.update({
-          where: { id: siteId },
+          where: { id: parseInt(siteId) },
           data: { bureauId: bureau.userId },
         });
       }

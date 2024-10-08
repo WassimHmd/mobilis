@@ -2,6 +2,7 @@ import {
   addSA1CandidateController,
   chooseSA1Candidate,
   nextSubStepOCController,
+  startValidationPhaseController,
   testFeature,
 } from "@/controllers/StepsControllers";
 import { Router } from "express";
@@ -109,5 +110,7 @@ router.post("/candidate/add/:stepId", addSA1CandidateController);
  *         description: Internal Server Error
  */
 router.post("/candidate/choose/:candidateId", chooseSA1Candidate);
+
+router.post("/validation/:stepId", startValidationPhaseController);
 
 export default router;

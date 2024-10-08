@@ -4,6 +4,8 @@ import { Site, Step, StepTypes, SubStepOCStatus } from "@prisma/client";
 import { createManager, replicateManagers } from "./ManagerControllers";
 //@ts-ignore
 import { sendEmail } from "./../utils/sendMail";
+import { NotificationObject } from "@/types";
+import { formatSite, notifyUser } from "@/utils/notificationUtils";
 
 type SA1Candidate = {
   long: string;
@@ -11,7 +13,7 @@ type SA1Candidate = {
   location: string;
 };
 export const createStep = async (
-  siteId: string,
+  siteId: number,
   type: StepTypes,
   payload: object = {}
 ) => {
@@ -35,14 +37,14 @@ export const createStep = async (
   }
 };
 
-export const getCurrentStep = async (siteId: string) => {
+export const getCurrentStep = async (siteId: number) => {
   if (!siteId) throw Error("siteId is required");
   console.log(siteId);
   try {
     const step = await prisma.step.findFirst({
       where: {
         siteId,
-        status: "PENDING",
+        status: { in: ["PENDING", "VALIDATION"] },
       },
     });
     return step;
@@ -52,7 +54,7 @@ export const getCurrentStep = async (siteId: string) => {
   }
 };
 
-export const getAllSteps = async (siteId: string) => {
+export const getAllSteps = async (siteId: number) => {
   try {
     const steps = await prisma.step.findMany({
       where: {
@@ -134,7 +136,7 @@ export const chooseSA1Candidate = async (req: Request, res: Response) => {
   }
 };
 
-export const nextStep = async (siteId: string) => {
+export const nextStep = async (siteId: number) => {
   const stepOrder: StepTypes[] = [
     "SA1",
     "SA2",
@@ -153,6 +155,17 @@ export const nextStep = async (siteId: string) => {
         stepId: step?.id,
       },
     });
+
+    const stepCompleteNotif = (step: string) => ({
+      title: `${step} completed for site ${formatSite(siteId)}`,
+      message: "Step completed",
+      payload: { siteId },
+    });
+
+    if (step.status !== "VALIDATION") {
+      throw Error("Step is not in validation phase");
+    }
+
     for (let manager of managers) {
       if (
         manager.validation === "PENDING" ||
@@ -166,6 +179,36 @@ export const nextStep = async (siteId: string) => {
       if (index < stepOrder.length - 1) {
         const nextStep = stepOrder[index + 1];
         const newStep = await createStep(siteId, nextStep);
+        prisma.site
+          .findUnique({
+            where: {
+              id: siteId,
+            },
+          })
+          .then(async (site) => {
+            console.log(site);
+            if (site) {
+              notifyUser({
+                targetId: site.subcontractorId,
+                ...stepCompleteNotif(step.type),
+              });
+              notifyUser({
+                targetId: site.moderatorId,
+                ...stepCompleteNotif(step.type),
+              });
+              if (site.bureauId)
+                notifyUser({
+                  targetId: site.bureauId,
+                  ...stepCompleteNotif(step.type),
+                });
+              if (site.negociatorId)
+                notifyUser({
+                  targetId: site.negociatorId,
+                  ...stepCompleteNotif(step.type),
+                });
+            }
+          })
+          .catch((err) => console.log(err));
         await prisma.step.update({
           where: {
             id: step.id,
@@ -278,11 +321,50 @@ export const startValidationPhase = async (stepId: string) => {
         status: "VALIDATION",
       },
     });
+
+    const stepValidationNotif = (step: string, siteId: number) => ({
+      title: `${step} step awaiting validation ${formatSite(siteId)}`,
+      message: "Step awaiting validation",
+      payload: { siteId },
+    });
+
     const managers = await prisma.manager.findMany({
       where: {
         stepId,
       },
     });
+
+    prisma.site
+      .findUnique({
+        where: {
+          id: step.siteId,
+        },
+      })
+      .then(async (site) => {
+        console.log(site);
+        if (site) {
+          notifyUser({
+            targetId: site.subcontractorId,
+            ...stepValidationNotif(step.type, step.siteId),
+          });
+          notifyUser({
+            targetId: site.moderatorId,
+            ...stepValidationNotif(step.type, step.siteId),
+          });
+          if (site.bureauId)
+            notifyUser({
+              targetId: site.bureauId,
+              ...stepValidationNotif(step.type, step.siteId),
+            });
+          if (site.negociatorId)
+            notifyUser({
+              targetId: site.negociatorId,
+              ...stepValidationNotif(step.type, step.siteId),
+            });
+        }
+      })
+      .catch((err) => console.log(err));
+
     if (!managers) {
       await nextStep(step.siteId);
       return step;
@@ -294,6 +376,29 @@ export const startValidationPhase = async (stepId: string) => {
   } catch (error) {
     console.log(error);
     return false;
+  }
+};
+
+export const startValidationPhaseController = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const { stepId } = req.params;
+    const status = (
+      await prisma.step.findUnique({
+        where: {
+          id: stepId,
+        },
+      })
+    )?.status;
+    if (status !== "PENDING")
+      return res.status(200).json("Step already in validation phase");
+    const step = await startValidationPhase(stepId);
+    return res.status(200).json(step);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json("Internal Server Error.");
   }
 };
 
