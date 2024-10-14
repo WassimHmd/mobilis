@@ -8,6 +8,17 @@ export const createNegociator = async (req: any, res: Response) => {
       data: {
         userId: req.user.id,
       },
+      include: {
+        user: {
+          select: {
+            id: true,
+            email: true,
+            firstName: true,
+            lastName: true,
+            phoneNumber: true,
+          },
+        },
+      },
     });
     if (siteId) {
       if (await prisma.site.findUnique({ where: { id: siteId } })) {
@@ -21,8 +32,8 @@ export const createNegociator = async (req: any, res: Response) => {
     res.status(201).json(negociator);
   } catch (error: any) {
     console.log(error);
-    await prisma.user.delete({where: {id: req.user.id}})
-    await prisma.negociator.delete({where: {userId: req.user.id}})
+    await prisma.user.delete({ where: { id: req.user.id } });
+    await prisma.negociator.delete({ where: { userId: req.user.id } });
     res.status(400).json({ error: error.message });
   }
 };

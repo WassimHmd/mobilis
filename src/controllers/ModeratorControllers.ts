@@ -10,6 +10,17 @@ export const createModerator = async (req: any, res: Response) => {
         userId: req.user.id,
         region,
       },
+      include: {
+        user: {
+          select: {
+            id: true,
+            email: true,
+            firstName: true,
+            lastName: true,
+            phoneNumber: true,
+          },
+        },
+      },
     });
 
     res.status(201).json(moderator);
