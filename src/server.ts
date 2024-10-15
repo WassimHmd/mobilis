@@ -6,6 +6,7 @@ import path from "path";
 import dotenv from "dotenv";
 import routes from "./router/v1";
 import setupSwagger from "./config/swagger";
+import cookieParser from "cookie-parser";
 // FIXME: change usage so the log of database connection is printed on here(low priority)
 import { PrismaClient } from "@prisma/client";
 import io from "./config/socket";
@@ -24,6 +25,9 @@ setupSwagger(app);
 // Use JSON parser
 app.use(express.json());
 
+// Use Cookie parser
+app.use(cookieParser());
+
 // Use logger
 const accessLogStream = fs.createWriteStream(
   path.join(__dirname, "access.log"),
@@ -36,7 +40,7 @@ const accessLogStream = fs.createWriteStream(
 app.use(
   morgan("common", {
     stream: accessLogStream,
-    skip: (req: Request, res: Response) => res.statusCode < 500,
+    skip: (_req: Request, res: Response) => res.statusCode < 500,
   })
 );
 

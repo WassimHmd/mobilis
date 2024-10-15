@@ -1,3 +1,4 @@
+import { User } from "@prisma/client";
 import { Request } from "express";
 
 export interface RequestWithImages extends Request {
@@ -9,4 +10,9 @@ export interface NotificationObject {
   message?: string;
   payload: object;
   id?: string;
+}
+
+export interface AuthRequest extends Request {
+  user?: User; // Adjust User to match your actual User type
+  role?: string;
 }

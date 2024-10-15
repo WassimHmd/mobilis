@@ -10,10 +10,17 @@ import {
   siteCancelCurrentStep,
   siteGetAllSteps,
   siteNextStep,
+  siteValidationPhase,
   updateCurrentStep,
   updateSite,
 } from "../../../controllers/SiteControllers";
 import { uploadFile } from "@/middleware/uploadImage";
+import {
+  checkAccessSite,
+  checkRole,
+  checkStepAccess,
+  verifyToken,
+} from "@/middleware/authMiddleware";
 
 const router = Router();
 
@@ -70,7 +77,7 @@ const router = Router();
  *         description: Server error
  */
 
-router.post("/", createSite);
+router.post("/", verifyToken, checkRole(["admin", "MODERATOR"]), createSite);
 
 /**
  * @swagger
@@ -101,7 +108,12 @@ router.post("/", createSite);
  *         description: Internal Server Error
  */
 
-router.post("/cancelStep/:siteId", siteCancelCurrentStep);
+router.post(
+  "/cancelStep/:siteId",
+  verifyToken,
+  checkStepAccess,
+  siteCancelCurrentStep
+);
 
 /**
  * @swagger
@@ -132,7 +144,7 @@ router.post("/cancelStep/:siteId", siteCancelCurrentStep);
  *         description: Internal Server Error
  */
 
-router.post("/nextStep/:siteId", siteNextStep);
+router.post("/nextStep/:siteId", verifyToken, checkStepAccess, siteNextStep);
 
 /**
  * @swagger
@@ -173,7 +185,12 @@ router.post("/nextStep/:siteId", siteNextStep);
  *         description: Internal Server Error
  */
 
-router.post("/invite/negociator/:siteId", inviteNegociator);
+router.post(
+  "/invite/negociator/:siteId",
+  verifyToken,
+  checkAccessSite(["SUBCONTRACTOR", "MODERATOR"]),
+  inviteNegociator
+);
 
 /**
  * @swagger
@@ -214,7 +231,25 @@ router.post("/invite/negociator/:siteId", inviteNegociator);
  *         description: Internal Server Error
  */
 
-router.post("/invite/bureau/:siteId", inviteBureau);
+router.post(
+  "/invite/bureau/:siteId",
+  verifyToken,
+  checkAccessSite(["SUBCONTRACTOR", "MODERATOR"]),
+  inviteBureau
+);
+
+router.post(
+  "/testing/:siteId",
+  verifyToken,
+  checkAccessSite(["NEGOCIATOR"]),
+  (req, res) => {
+    return res.status(200).json({
+      success: true,
+    });
+  }
+);
+
+router.post("/validation/:siteId", siteValidationPhase);
 
 /**
  * @swagger
@@ -256,7 +291,13 @@ router.post("/invite/bureau/:siteId", inviteBureau);
  *         description: Internal Server Error
  */
 
-router.post("/addImages/:siteId", uploadFile("step"), addImagesToSite);
+router.post(
+  "/addImages/:siteId",
+  verifyToken,
+  checkStepAccess,
+  uploadFile("step"),
+  addImagesToSite
+);
 
 /**
  * @swagger
@@ -281,7 +322,7 @@ router.post("/addImages/:siteId", uploadFile("step"), addImagesToSite);
  *       500:
  *         description: Server error
  */
-router.get("/", getAllSites);
+router.get("/", verifyToken, checkRole(["admin"]), getAllSites);
 
 /**
  * @swagger
@@ -312,7 +353,12 @@ router.get("/", getAllSites);
  *       500:
  *         description: Server error
  */
-router.get("/:id", getSiteById);
+router.get(
+  "/:id",
+  verifyToken,
+  checkAccessSite(["BUREAU", "MODERATOR", "NEGOCIATOR", "SUBCONTRACTOR"]),
+  getSiteById
+);
 
 /**
  * @swagger
@@ -345,7 +391,12 @@ router.get("/:id", getSiteById);
  *         description: Server error
  */
 
-router.get("/steps/:siteId", siteGetAllSteps);
+router.get(
+  "/steps/:siteId",
+  verifyToken,
+  checkAccessSite(["BUREAU", "MODERATOR", "NEGOCIATOR", "SUBCONTRACTOR"]),
+  siteGetAllSteps
+);
 
 /**
  * @swagger
@@ -411,7 +462,7 @@ router.get("/steps/:siteId", siteGetAllSteps);
  *         description: Server error
  */
 
-router.put("/updateStep/:id", updateCurrentStep);
+router.put("/updateStep/:id", verifyToken, checkStepAccess, updateCurrentStep);
 
 /**
  * @swagger
@@ -469,7 +520,12 @@ router.put("/updateStep/:id", updateCurrentStep);
  *         description: Server error
  */
 
-router.put("/:id", updateSite);
+router.put(
+  "/:id",
+  verifyToken,
+  checkAccessSite(["BUREAU", "MODERATOR", "NEGOCIATOR", "SUBCONTRACTOR"]),
+  updateSite
+);
 
 /**
  * @swagger
@@ -495,6 +551,6 @@ router.put("/:id", updateSite);
  *       500:
  *         description: Server error
  */
-router.delete("/:id", deleteSite);
+router.delete("/:id", verifyToken, checkAccessSite(["MODERATOR"]), deleteSite);
 
 export default router;

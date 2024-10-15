@@ -60,6 +60,9 @@ export const login = async (req: Request, res: Response, next: Function) => {
 
     const user = await prisma.user.findUnique({
       where: { email },
+      include: {
+        moderator: true,
+      },
     });
 
     if (!user || !bcrypt.compareSync(password, user.password)) {
@@ -67,7 +70,15 @@ export const login = async (req: Request, res: Response, next: Function) => {
     }
 
     const token: string = jwt.sign(
-      { email: user.email, ver: user.ver },
+      {
+        email: user.email,
+        ver: user.ver,
+        role: user.moderator
+          ? user.moderator.admin
+            ? "admin"
+            : "MODERATOR"
+          : user.userType,
+      },
       process.env.JWT_SECRET || "secret@2025",
       { expiresIn: "1d" }
     );

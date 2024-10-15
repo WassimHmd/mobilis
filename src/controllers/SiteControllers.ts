@@ -12,13 +12,14 @@ import {
   getAllSteps,
   getCurrentStep,
   nextStep,
+  startValidationPhase,
   updateStep,
 } from "./StepsControllers";
 
-import { RequestWithImages } from "./../types";
+import { AuthRequest, RequestWithImages } from "./../types";
 import { createManager, createPendingInvite } from "./ManagerControllers";
 
-export const createSite = async (req: Request, res: Response) => {
+export const createSite = async (req: AuthRequest, res: Response) => {
   try {
     const {
       type,
@@ -33,6 +34,9 @@ export const createSite = async (req: Request, res: Response) => {
       subcontractorId,
       moderatorId,
     } = req.body;
+    if (!req.user) {
+      return res.status(403).json("Operation Forbidden");
+    }
     const site = await prisma.site.create({
       data: {
         type,
@@ -45,7 +49,7 @@ export const createSite = async (req: Request, res: Response) => {
         location,
         progression,
         subcontractorId,
-        moderatorId,
+        moderatorId: req.user.id,
       },
     });
     const step = await createStep(site.id, "SA1");
@@ -183,9 +187,32 @@ export const siteNextStep = async (req: Request, res: Response) => {
     const { siteId } = req.params;
     const newStep = await nextStep(parseInt(siteId));
     return res.status(200).json(newStep);
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json(err);
+  } catch (err: any) {
+    // console.error(err);
+    return res.status(500).json(err.message);
+  }
+};
+
+export const siteValidationPhase = async (req: Request, res: Response) => {
+  try {
+    const { siteId } = req.params;
+    // const step = await prisma.step.updateMany({
+    //   where: {
+    //     siteId: parseInt(siteId),
+    //     status: { in: ["PENDING", "VALIDATION"] },
+    //   },
+    //   data: {
+    //     status: "VALIDATION",
+    //   },
+    // });
+    const step = await getCurrentStep(parseInt(siteId));
+    if (!step) return res.status(400).json("Step not found");
+    const newStep = await startValidationPhase(step.id);
+
+    return res.status(200).json(newStep);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json("Internal Server Error");
   }
 };
 

@@ -146,110 +146,103 @@ export const nextStep = async (siteId: number) => {
     "OC",
     "DOS",
   ];
-  try {
-    const step = await getCurrentStep(siteId);
-    console.log("step: ", step);
-    if (!step) throw Error("Step unavailable");
-    const managers = await prisma.manager.findMany({
-      where: {
-        stepId: step?.id,
-      },
-    });
 
-    const stepCompleteNotif = (step: string) => ({
-      title: `${step} completed for site ${formatSite(siteId)}`,
-      message: "Step completed",
-      payload: { siteId },
-    });
+  const step = await getCurrentStep(siteId);
+  console.log("step: ", step);
+  if (!step) throw Error("Step unavailable");
+  const managers = await prisma.manager.findMany({
+    where: {
+      stepId: step?.id,
+    },
+  });
 
-    if (step.status !== "VALIDATION") {
-      throw Error("Step is not in validation phase");
+  const stepCompleteNotif = (step: string) => ({
+    title: `${step} completed for site ${formatSite(siteId)}`,
+    message: "Step completed",
+    payload: { siteId },
+  });
+
+  if (step.status !== "VALIDATION") {
+    throw Error("Step is not in validation phase");
+  }
+
+  for (let manager of managers) {
+    if (manager.validation === "PENDING" || manager.validation === "REFUSED") {
+      throw Error("Manager validation is not completed");
     }
-
-    for (let manager of managers) {
-      if (
-        manager.validation === "PENDING" ||
-        manager.validation === "REFUSED"
-      ) {
-        throw Error("Manager validation is not completed");
-      }
-    }
-    if (step) {
-      const index = stepOrder.indexOf(step.type);
-      if (index < stepOrder.length - 1) {
-        const nextStep = stepOrder[index + 1];
-        const newStep = await createStep(siteId, nextStep);
-        prisma.site
-          .findUnique({
-            where: {
-              id: siteId,
-            },
-          })
-          .then(async (site) => {
-            console.log(site);
-            if (site) {
-              notifyUser({
-                targetId: site.subcontractorId,
-                ...stepCompleteNotif(step.type),
-              });
-              notifyUser({
-                targetId: site.moderatorId,
-                ...stepCompleteNotif(step.type),
-              });
-              if (site.bureauId)
-                notifyUser({
-                  targetId: site.bureauId,
-                  ...stepCompleteNotif(step.type),
-                });
-              if (site.negociatorId)
-                notifyUser({
-                  targetId: site.negociatorId,
-                  ...stepCompleteNotif(step.type),
-                });
-            }
-          })
-          .catch((err) => console.log(err));
-        await prisma.step.update({
-          where: {
-            id: step.id,
-          },
-          data: {
-            status: "COMPLETED",
-          },
-        });
-        console.log(nextStep);
-        const invites = await prisma.managerInvitation.findMany({
-          where: {
-            siteId,
-            stepType: nextStep,
-          },
-        });
-
-        const promises = invites.map((invite) => {
-          return createManager(
-            invite.email,
-            invite.type,
-            newStep.id,
-            invite.phoneNumber
-          );
-        });
-
-        await Promise.all(promises);
-        return newStep;
-      } else {
-        await prisma.site.update({
+  }
+  if (step) {
+    const index = stepOrder.indexOf(step.type);
+    if (index < stepOrder.length - 1) {
+      const nextStep = stepOrder[index + 1];
+      const newStep = await createStep(siteId, nextStep);
+      prisma.site
+        .findUnique({
           where: {
             id: siteId,
           },
-          data: {
-            status: "COMPLETED",
-          },
-        });
-      }
+        })
+        .then(async (site) => {
+          console.log(site);
+          if (site) {
+            notifyUser({
+              targetId: site.subcontractorId,
+              ...stepCompleteNotif(step.type),
+            });
+            notifyUser({
+              targetId: site.moderatorId,
+              ...stepCompleteNotif(step.type),
+            });
+            if (site.bureauId)
+              notifyUser({
+                targetId: site.bureauId,
+                ...stepCompleteNotif(step.type),
+              });
+            if (site.negociatorId)
+              notifyUser({
+                targetId: site.negociatorId,
+                ...stepCompleteNotif(step.type),
+              });
+          }
+        })
+        .catch((err) => console.log(err));
+      await prisma.step.update({
+        where: {
+          id: step.id,
+        },
+        data: {
+          status: "COMPLETED",
+        },
+      });
+      console.log(nextStep);
+      const invites = await prisma.managerInvitation.findMany({
+        where: {
+          siteId,
+          stepType: nextStep,
+        },
+      });
+
+      const promises = invites.map((invite) => {
+        return createManager(
+          invite.email,
+          invite.type,
+          newStep.id,
+          invite.phoneNumber
+        );
+      });
+
+      await Promise.all(promises);
+      return newStep;
+    } else {
+      await prisma.site.update({
+        where: {
+          id: siteId,
+        },
+        data: {
+          status: "COMPLETED",
+        },
+      });
     }
-  } catch (error) {
-    console.log(error);
-    throw Error("Failed to get next step");
   }
 };
 

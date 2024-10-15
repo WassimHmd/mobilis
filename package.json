@@ -21,6 +21,7 @@
     "@types/node": "^22.0.0",
     "@types/pg": "^8.11.6",
     "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "cuid": "^3.0.0",
     "dotenv": "^16.4.5",
@@ -46,6 +47,7 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
+    "@types/cookie-parser": "^1.4.7",
     "@types/cors": "^2.8.17",
     "@types/morgan": "^1.9.9",
     "@types/swagger-jsdoc": "^6.0.4",
