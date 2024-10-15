@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Table Layout Example</title>
+    <title>{{pageTitle}}</title>
     <style>
       /* For screen display */
       body {
@@ -41,7 +41,6 @@
         width: 100%;
         height: 200mm; /* Adjust height as needed */
         background-color: white;
-        /* border: 1px solid black; */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -58,8 +57,8 @@
   <body>
     <div class="container" style="position: relative">
       <img
-        src="logo.png"
-        alt="mobilis"
+        src="{{logoSrc}}"
+        alt="{{logoAlt}}"
         style="
           position: absolute;
           width: 180px;
@@ -68,74 +67,91 @@
           top: -15px;
         "
       />
-      <div class="title">Photos de la façade de l'édifice</div>
+      <div class="title">{{facadeTitle}}</div>
       <div class="content">
         <div class="square">
-          <img src="logo.png" alt="Image of the facade" />
+          <img src="{{facadeImageSrc}}" alt="{{facadeImageAlt}}" />
         </div>
       </div>
     </div>
+
     <div class="container">
-      <div class="title">Photos de la terrasse</div>
+      <div class="title">{{terraceTitle}}</div>
       <div class="content">
         <div class="square">
-          <img src="" alt="Photos de la terrasse" />
+          <img src="{{terraceImageSrc}}" alt="{{terraceImageAlt}}" />
         </div>
       </div>
     </div>
+
     <div class="container">
-      <div class="title">Photos du local</div>
+      <div class="title">{{localTitle}}</div>
       <div class="content">
         <div class="square">
-          <img src="" alt="Photos du local" />
+          <img src="{{localImageSrc}}" alt="{{localImageAlt}}" />
         </div>
       </div>
     </div>
+
     <div class="container">
-      <div class="title">Photos de l'emplacement des mats et antennes</div>
+      <div class="title">{{mastsTitle}}</div>
       <div class="content">
         <div class="square">
-          <img src="" alt="Photos de l'emplacement des mats et antennes" />
+          <img src="{{mastsImageSrc}}" alt="{{mastsImageAlt}}" />
         </div>
       </div>
     </div>
+
     <div class="container">
-      <div class="title">Photos de la gaine technique</div>
+      <div class="title">{{technicalDuctTitle}}</div>
       <div class="content">
         <div class="square">
-          <img src="" alt="Photos de la gaine technique" />
+          <img
+            src="{{technicalDuctImageSrc}}"
+            alt="{{technicalDuctImageAlt}}"
+          />
         </div>
       </div>
     </div>
+
     <div class="container">
-      <div class="title">Photos du coffret électricité</div>
+      <div class="title">{{electricCabinetTitle}}</div>
       <div class="content">
         <div class="square">
-          <img src="" alt="Photos du coffret électricité" />
+          <img
+            src="{{electricCabinetImageSrc}}"
+            alt="{{electricCabinetImageAlt}}"
+          />
         </div>
       </div>
     </div>
+
     <div class="container">
-      <div class="title">Photos de l'accès au site</div>
+      <div class="title">{{siteAccessTitle}}</div>
       <div class="content">
         <div class="square">
-          <img src="" alt="Photos de l'accès au site" />
+          <img src="{{siteAccessImageSrc}}" alt="{{siteAccessImageAlt}}" />
         </div>
       </div>
     </div>
+
     <div class="container">
-      <div class="title">Photos de l'accès aux emplacements</div>
+      <div class="title">{{accessToLocationsTitle}}</div>
       <div class="content">
         <div class="square">
-          <img src="" alt="Photos de l'accès aux emplacements" />
+          <img
+            src="{{accessToLocationsImageSrc}}"
+            alt="{{accessToLocationsImageAlt}}"
+          />
         </div>
       </div>
     </div>
+
     <div class="container">
-      <div class="title">Photos de la zone de grutage</div>
+      <div class="title">{{craneZoneTitle}}</div>
       <div class="content">
         <div class="square">
-          <img src="" alt="Photos de la zone de grutage" />
+          <img src="{{craneZoneImageSrc}}" alt="{{craneZoneImageAlt}}" />
         </div>
       </div>
     </div>

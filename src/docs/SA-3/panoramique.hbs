@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Panoramique 360°</title>
+    <title>{{pageTitle}}</title>
     <style>
       /* For screen display */
       body {
@@ -61,8 +61,8 @@
   <body>
     <div class="container" style="position: relative">
       <img
-        src="logo.png"
-        alt="mobilis"
+        src="{{logoSrc}}"
+        alt="{{logoAlt}}"
         style="
           position: absolute;
           width: 180px;
@@ -71,10 +71,10 @@
           top: -8px;
         "
       />
-      <div class="title">Panoramique 360°</div>
+      <div class="title">{{panoramaTitle}}</div>
       <div class="content">
         <div class="square">
-          <img src="panoramique.png" alt="Image of the facade" />
+          <img src="{{panoramaImageSrc}}" alt="{{panoramaAltText}}" />
         </div>
       </div>
     </div>
