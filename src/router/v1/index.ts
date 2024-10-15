@@ -13,7 +13,7 @@ import user from "./routes/user";
 import steps from "./routes/steps";
 import notifications from "./routes/notifications";
 
-import { testFeature } from "@/controllers/StepsControllers";
+import { testFeature } from "../../controllers/StepsControllers";
 
 const router = Router({ mergeParams: true });
 
@@ -66,5 +66,7 @@ router.use("/user", user);
 router.use("/step/", steps);
 
 router.use("/notifications/", notifications);
+
+router.post("/test", testFeature);
 
 export default router;

@@ -12,6 +12,7 @@ import {
   getAllSteps,
   getCurrentStep,
   nextStep,
+  startValidationPhase,
   updateStep,
 } from "./StepsControllers";
 
@@ -186,6 +187,20 @@ export const siteNextStep = async (req: Request, res: Response) => {
   } catch (err) {
     console.error(err);
     return res.status(500).json(err);
+  }
+};
+
+export const siteValidationPhase = async (req: Request, res: Response) => {
+  try {
+    const { siteId } = req.params;
+    const step = await getCurrentStep(parseInt(siteId));
+    if (!step) return res.status(400).json("Step not found");
+    const newStep = await startValidationPhase(step.id);
+
+    return res.status(200).json(newStep);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json("Internal Server Error");
   }
 };
 

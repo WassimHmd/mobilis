@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import prisma from "../config/db";
-import { RequestWithImages } from "@/types";
+import { RequestWithImages } from "../types";
 
 export const deleteImage = async (req: Request, res: Response) => {
   try {

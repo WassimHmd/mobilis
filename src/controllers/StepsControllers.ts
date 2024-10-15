@@ -4,8 +4,7 @@ import { Site, Step, StepTypes, SubStepOCStatus } from "@prisma/client";
 import { createManager, replicateManagers } from "./ManagerControllers";
 //@ts-ignore
 import { sendEmail } from "./../utils/sendMail";
-import { NotificationObject } from "@/types";
-import { formatSite, notifyUser } from "@/utils/notificationUtils";
+import { formatSite, notifyUser } from "../utils/notificationUtils";
 
 type SA1Candidate = {
   long: string;
@@ -371,6 +370,9 @@ export const startValidationPhase = async (stepId: string) => {
     }
 
     //TODO: Send Validation Emails
+    managers.map((manager) => {
+      sendEmail(manager.email, "Step Validation", "lien validation");
+    });
 
     return step;
   } catch (error) {

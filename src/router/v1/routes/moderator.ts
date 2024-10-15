@@ -4,8 +4,8 @@ import {
   getAllModerators,
   getModeratorById,
   updateModerator,
-} from "@/controllers/ModeratorControllers";
-import { registerMiddleware } from "@/middleware/authMiddleware";
+} from "../../../controllers/ModeratorControllers";
+import { registerMiddleware } from "../../../middleware/authMiddleware";
 import { Router } from "express";
 
 const router = Router();
@@ -51,7 +51,7 @@ const router = Router();
  *       500:
  *         description: Server error
  */
-router.post("/", registerMiddleware("MODERATOR"), createModerator)
+router.post("/", registerMiddleware("MODERATOR"), createModerator);
 
 /**
  * @swagger
@@ -67,7 +67,7 @@ router.post("/", registerMiddleware("MODERATOR"), createModerator)
  *       500:
  *         description: Server error
  */
-router.get("/", getAllModerators)
+router.get("/", getAllModerators);
 
 /**
  * @swagger
@@ -92,7 +92,7 @@ router.get("/", getAllModerators)
  *       500:
  *         description: Server error
  */
-router.get("/:userId", getModeratorById)
+router.get("/:userId", getModeratorById);
 
 /**
  * @swagger
@@ -139,7 +139,7 @@ router.get("/:userId", getModeratorById)
  *       500:
  *         description: Server error
  */
-router.put("/:userId", updateModerator)
+router.put("/:userId", updateModerator);
 
 /**
  * @swagger
@@ -166,9 +166,6 @@ router.put("/:userId", updateModerator)
  *         description: Server error
  */
 
-router.delete("/:userId", deleteModerator)
-
-
-
+router.delete("/:userId", deleteModerator);
 
 export default router;

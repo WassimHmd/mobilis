@@ -5,7 +5,7 @@ import {
   getAllDocuments,
   getDocumentById,
   updateDocument,
-} from "@/controllers/DocumentControllers";
+} from "../../../controllers/DocumentControllers";
 import { Router } from "express";
 
 const router = Router();

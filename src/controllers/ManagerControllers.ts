@@ -2,7 +2,7 @@ import e, { Request, Response } from "express";
 import prisma from "../config/db";
 import { ManagerValidation, StepTypes } from "@prisma/client";
 import { cancelStep } from "./StepsControllers";
-import { RequestWithImages } from "@/types";
+import { RequestWithImages } from "../types";
 import { createSignature } from "./SignatureControllers";
 
 export const createManager = async (

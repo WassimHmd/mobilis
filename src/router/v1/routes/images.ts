@@ -3,8 +3,8 @@ import {
   deleteImage,
   getImageCollection,
   getImagesByStep,
-} from "@/controllers/ImageControllers";
-import { uploadFile } from "@/middleware/uploadImage";
+} from "../../../controllers/ImageControllers";
+import { uploadFile } from "../../../middleware/uploadImage";
 import { Router } from "express";
 
 const router = Router();

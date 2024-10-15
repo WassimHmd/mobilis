@@ -1,5 +1,5 @@
-import { addSignature } from "@/controllers/SignatureControllers";
-import { uploadFile } from "@/middleware/uploadImage";
+import { addSignature } from "../../../controllers/SignatureControllers";
+import { uploadFile } from "../../../middleware/uploadImage";
 import { Router } from "express";
 
 const router = Router();

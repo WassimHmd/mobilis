@@ -4,7 +4,7 @@ import {
   nextSubStepOCController,
   startValidationPhaseController,
   testFeature,
-} from "@/controllers/StepsControllers";
+} from "../../../controllers/StepsControllers";
 import { Router } from "express";
 
 const router = Router();

@@ -1,7 +1,7 @@
 import {
   getNotificationsByUser,
   readNotification,
-} from "@/controllers/NotificationControllers";
+} from "../../../controllers/NotificationControllers";
 import { Router } from "express";
 
 const router = Router();

@@ -4,8 +4,8 @@ import {
   getAllNegociators,
   getNegociatorById,
   updateNegociator,
-} from "@/controllers/NegociatorControllers";
-import { registerMiddleware } from "@/middleware/authMiddleware";
+} from "../../../controllers/NegociatorControllers";
+import { registerMiddleware } from "../../../middleware/authMiddleware";
 import { Router } from "express";
 
 const router = Router();

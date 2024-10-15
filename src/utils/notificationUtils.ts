@@ -1,5 +1,5 @@
-import prisma from "@/config/db";
-import io, { userSockets } from "@/config/socket";
+import prisma from "../config/db";
+import io, { userSockets } from "../config/socket";
 
 export const notifyUser = async ({
   targetId,

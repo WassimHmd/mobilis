@@ -10,10 +10,11 @@ import {
   siteCancelCurrentStep,
   siteGetAllSteps,
   siteNextStep,
+  siteValidationPhase,
   updateCurrentStep,
   updateSite,
 } from "../../../controllers/SiteControllers";
-import { uploadFile } from "@/middleware/uploadImage";
+import { uploadFile } from "../../../middleware/uploadImage";
 
 const router = Router();
 
@@ -215,6 +216,8 @@ router.post("/invite/negociator/:siteId", inviteNegociator);
  */
 
 router.post("/invite/bureau/:siteId", inviteBureau);
+
+router.post("/validation/:siteId", siteValidationPhase);
 
 /**
  * @swagger

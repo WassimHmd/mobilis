@@ -4,8 +4,8 @@ import {
   getAllBureaus,
   getBureauById,
   updateBureau,
-} from "@/controllers/BureauControllers";
-import { registerMiddleware } from "@/middleware/authMiddleware";
+} from "../../../controllers/BureauControllers";
+import { registerMiddleware } from "../../../middleware/authMiddleware";
 import { Router } from "express";
 
 const router = Router();

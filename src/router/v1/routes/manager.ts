@@ -2,8 +2,8 @@ import {
   cancelManagerController,
   createManagerController,
   validateManagerController,
-} from "@/controllers/ManagerControllers";
-import { uploadFile } from "@/middleware/uploadImage";
+} from "../../../controllers/ManagerControllers";
+import { uploadFile } from "../../../middleware/uploadImage";
 import { Router } from "express";
 
 const router = Router();

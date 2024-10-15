@@ -1,8 +1,8 @@
 import { io as Client } from "socket.io-client";
 import io, { userSockets } from "src/config/socket";
 import { strict as assert } from "assert";
-import { NotificationObject } from "@/types";
-import { notifyUser } from "@/utils/notificationUtils";
+import { NotificationObject } from "../types";
+import { notifyUser } from "../utils/notificationUtils";
 
 describe("Socket.IO Server", () => {
   let clientSocket: any;
