@@ -16,21 +16,35 @@ model User {
   image       String?
   phoneNumber String?
   userType    userTypes @default(SUBCONTRACTOR)
+  signature   SignaNum? @relation(fields: [signatureId], references: [id], onDelete: Cascade)
+  signatureId String?
 
   moderator     Moderator?
   subcontractor SubContractor?
-
-  resetTokens  ResetToken[]
-  @@index([email])
-
+  Negociator    Negociator?
+  Bureau        Bureau?
+  resetTokens   ResetToken[]
   //tetincrementa a chaque changement li lazem y'deconnecti les sessions lokhrin
-  ver        Int         @default(0)
-  Negociator Negociator?
-  Bureau     Bureau?
+  ver           Int            @default(0)
+  Notification  Notification[]
+
+  @@index([email])
 }
+
+model Notification {
+  id        String   @id @default(uuid())
+  title     String
+  message   String?
+  targetId  String
+  target    User     @relation(fields: [targetId], references: [id], onDelete: Cascade)
+  payload   Json     @default("{}")
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
 model ResetToken {
   id        String   @id @default(cuid())
-  owner     User     @relation(fields: [ownerId], references: [id])
+  owner     User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   ownerId   String
   token     String
   createdAt DateTime @default(now())
@@ -46,21 +60,21 @@ enum userTypes {
 }
 
 model Moderator {
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @id @unique
 
   region String
   admin  Boolean @default(false)
+  Site   Site[]
 }
 
 model SubContractor {
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @id @unique
 
   status      Float   @default(0)
   fullName    String
   address     String
-  //SignaNum
   CAF         Int     @default(0)
   SPOC        String
   deployment  Boolean @default(false)
@@ -70,44 +84,217 @@ model SubContractor {
 }
 
 model Site {
-  id          String    @id @default(cuid())
+  id          Int        @id @default(autoincrement())
   type        SiteTypes
-  startDate   DateTime
+  startDate   DateTime   @default(now())
   endDate     DateTime
   code        Int
   name        String
   region      String
   wilaya      Wilayas
   location    String
-  progression Int       @default(0)
+  progression Int        @default(0)
+  status      SiteStatus @default(ONGOING)
+  lat         String     @default("N/A")
+  long        String     @default("N/A")
 
   //step
   negociatorId    String?
   subcontractorId String
   bureauId        String?
+  moderatorId     String
 
-  subcontractor SubContractor @relation(fields: [subcontractorId], references: [userId])
-  negociator    Negociator?   @relation(fields: [negociatorId], references: [userId])
-  Bureau        Bureau?       @relation(fields: [bureauId], references: [userId])
+  subcontractor     SubContractor       @relation(fields: [subcontractorId], references: [userId])
+  negociator        Negociator?         @relation(fields: [negociatorId], references: [userId])
+  Bureau            Bureau?             @relation(fields: [bureauId], references: [userId])
+  Moderator         Moderator           @relation(fields: [moderatorId], references: [userId])
+  Document          Document[]
+  Step              Step[]
+  ManagerInvitation ManagerInvitation[]
 }
 
 model Negociator {
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @id @unique
 
   sites Site[]
 }
 
 model Bureau {
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @id @unique
 
   sites Site[]
 }
 
+model Document {
+  id   String   @id @default(cuid())
+  type DocTypes
+  data Json
+  path String?
+
+  site   Site @relation(fields: [siteId], references: [id], onDelete: Cascade)
+  siteId Int
+
+  //TODO: Add Step relation when steps are implemented 
+}
+
+model Step {
+  id        String     @id @default(cuid())
+  status    StepStatus @default(PENDING)
+  payload   Json       @default("{}")
+  type      StepTypes
+  createdAt DateTime   @default(now())
+
+  site         Site           @relation(fields: [siteId], references: [id], onDelete: Cascade)
+  siteId       Int
+  Manager      Manager[]
+  Images       Images[]
+  SA1Candidate SA1Candidate[]
+  SubStepOC    SubStepOC[]
+}
+
+model SA1Candidate {
+  id     String @id @default(cuid())
+  stepId String
+  step   Step   @relation(fields: [stepId], references: [id], onDelete: Cascade)
+
+  long     String
+  lat      String
+  location String
+
+  status CandidateStatus @default(PENDING)
+}
+
+model SubStepOC {
+  id        String          @id @default(cuid())
+  stepId    String
+  step      Step            @relation(fields: [stepId], references: [id], onDelete: Cascade)
+  status    SubStepOCStatus @default(ACTIVE)
+  createdAt DateTime        @default(now())
+  index     Int
+
+  indoor   ImageCollection? @relation("indoorCollection", fields: [indoorId], references: [id], onDelete: SetNull)
+  indoorId String?
+
+  outdoor   ImageCollection? @relation("outdoorCollection", fields: [outdoorId], references: [id], onDelete: SetNull)
+  outdoorId String?
+
+  Images            Images[]
+  imageCollection   ImageCollection? @relation("defaultCollection", fields: [imageCollectionId], references: [id], onDelete: SetNull)
+  imageCollectionId String?
+
+  @@index([stepId])
+}
+
+enum SubStepOCStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum CandidateStatus {
+  PENDING
+  CHOSEN
+}
+
+model Manager {
+  id          String            @id @default(uuid())
+  email       String
+  validation  ManagerValidation @default(PENDING)
+  type        String
+  phoneNumber String            @default("0541129519")
+
+  signature   SignaNum? @relation(fields: [signatureId], references: [id], onDelete: Cascade)
+  signatureId String?
+
+  step   Step   @relation(fields: [stepId], references: [id], onDelete: Cascade)
+  stepId String
+}
+
+model ManagerInvitation {
+  id          String    @id @default(uuid())
+  email       String
+  phoneNumber String
+  type        String
+  stepType    StepTypes
+
+  site   Site @relation(fields: [siteId], references: [id], onDelete: Cascade)
+  siteId Int
+}
+
+model Images {
+  id        String   @id @default(uuid())
+  path      String
+  stepId    String?
+  createdAt DateTime @default(now())
+
+  collectionId String?
+  subStepId    String?
+
+  step       Step?            @relation(fields: [stepId], references: [id], onDelete: Cascade)
+  subStep    SubStepOC?       @relation(fields: [subStepId], references: [id], onDelete: Cascade)
+  collection ImageCollection? @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+}
+
+model ImageCollection {
+  id          String      @id @default(cuid())
+  Images      Images[]
+  indoorStep  SubStepOC[] @relation("indoorCollection")
+  outdoorStep SubStepOC[] @relation("outdoorCollection")
+  defaultStep SubStepOC[] @relation("defaultCollection")
+}
+
+model SignaNum {
+  id        String    @id @default(uuid())
+  path      String
+  createdAt DateTime  @default(now())
+  Manager   Manager[]
+  User      User[]
+}
+
+enum ManagerValidation {
+  VALID
+  PENDING
+  REFUSED
+}
+
+enum StepTypes {
+  SA1
+  SA2
+  SA3
+  SA4
+  ANF
+  DOS
+  OC
+}
+
+enum StepStatus {
+  COMPLETED
+  PENDING
+  VALIDATION
+  FAILED
+}
+
+enum DocTypes {
+  RECEIPT
+  SA1
+  SA2
+  SA3
+  SA4
+  ANF
+}
+
 enum SiteTypes {
   PYLON
   TERASSE
+}
+
+enum SiteStatus {
+  ONGOING
+  COMPLETED
+  CANCELLED
+  SUSPENDED
+  LATE
 }
 
 enum Wilayas {

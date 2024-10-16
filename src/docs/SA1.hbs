@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulaire de Recherche de Site</title>
+    <style>
+      
+      
+
+      body {
+        
+        width: 210mm; /* or a fixed size like 210mm for A4 */
+        padding: 20mm;
+      }      
+      
+      table {
+        width: 800px;
+        max-height: 1200px;
+        border-collapse: collapse;
+        font-family: "Arial";
+        table-layout: fixed;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        text-align: left;
+        height: 20px;
+      }
+      .no-border {
+        border: none;
+      }
+      .header {
+        text-align: center;
+        font-weight: bold;
+      }
+      .map {
+        height: 500px;
+      }
+
+      .gray {
+        background-color: #c0c0c0;
+      }
+      .right {
+        text-align: right;
+      }
+
+      .left {
+        text-align: left;
+      }
+      .separator {
+        border: none;
+        height: 8px;
+      }
+      .break {
+        page-break-before: always;
+        padding-top: 200mm;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td colspan="2" class="no-border">
+          <img src="logo.png" alt="Mobilis Logo" height="40" />
+        </td>
+        <td colspan="2" class="header gray" style="font-size: 28px">SA-1</td>
+      </tr>
+      <tr>
+        <td colspan="2" class="no-border"></td>
+        <td
+          colspan="2"
+          class="header no-border"
+          rowspan="3"
+          style="height: 60px"
+        >
+          Formulaire de Recherche de Site
+        </td>
+      </tr>
+      <tr></tr>
+      <tr></tr>
+      <tr>
+        <td class="header right gray">Nom du site:</td>
+        <td>{{nom_du_site}}</td>
+        <td class="header right gray">Code Site:</td>
+        <td>{{code_site}}</td>
+      </tr>
+      <tr>
+        <td class="header right gray">Ville:</td>
+        <td>{{ville}}</td>
+        <td class="header right gray">Wilaya:</td>
+        <td>{{wilaya}}</td>
+      </tr>
+      <tr class="separator"></tr>
+      <tr>
+        <td colspan="4" class="header gray">Coordonnées et Configuration</td>
+      </tr>
+      <tr>
+        <td class="header left gray">Longitude:</td>
+        <td>{{longitude}}</td>
+        <td class="header right gray">Band de BTS:</td>
+        <td>{{band_bts}}</td>
+      </tr>
+      <tr>
+        <td class="header left gray">Latitude:</td>
+        <td>{{latitude}}</td>
+        <td class="header right gray">Configuration BTS:</td>
+        <td>{{configuration_bts}}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td class="header gray">Secteur 1</td>
+        <td class="header gray">Secteur 2</td>
+        <td class="header gray">Secteur 3</td>
+      </tr>
+      <tr>
+        <td class="header gray right">Azimuth (°):</td>
+        <td>{{secteur_1.azimuth}}</td>
+        <td>{{secteur_2.azimuth}}</td>
+        <td>{{secteur_3.azimuth}}</td>
+      </tr>
+      <tr>
+        <td class="header gray right">E & M Inclinaison (°):</td>
+        <td>{{secteur_1.inclinaison}}</td>
+        <td>{{secteur_2.inclinaison}}</td>
+        <td>{{secteur_3.inclinaison}}</td>
+      </tr>
+      <tr>
+        <td class="header gray right">Hauteur d'antenne (m):</td>
+        <td>{{secteur_1.hauteur_antenne}}</td>
+        <td>{{secteur_2.hauteur_antenne}}</td>
+        <td>{{secteur_3.hauteur_antenne}}</td>
+      </tr>
+      <tr>
+        <td colspan="4" class="header map">MAP</td>
+      </tr>
+      <tr>
+        <td class="header gray">Rayon maximum de recherche:</td>
+        <td>{{rayon_recherche}}</td>
+        <td class="header gray">échelle:</td>
+        <td>{{echelle}}</td>
+      </tr>
+
+      <tr class="separator"></tr>
+
+      <tr>
+        <td colspan="4" class="header gray">Informations additionnelles</td>
+      </tr>
+
+      <tr>
+        <td colspan="4" style="height: 100px">
+          {{informations_additionnelles}}
+        </td>
+      </tr>
+      <tr class="separator"></tr>
+      <tr>
+        <td class="header gray left">Responsable RF: (Ingineur)</td>
+        <td>{{responsable_rf_ingenieur}}</td>
+        <td rowspan="2">Signature:</td>
+        <td rowspan="2">{{signature_ingenieur}}</td>
+      </tr>
+      <tr>
+        <td class="header gray left">Date:</td>
+        <td>{{date_ingenieur}}</td>
+      </tr>
+
+      <tr class="separator"></tr>
+
+      <tr>
+        <td class="header gray left">Responsable RF: (Manager)</td>
+        <td>{{responsable_rf_manager}}</td>
+        <td rowspan="2">Signature:</td>
+        <td rowspan="2">{{signature_manager}}</td>
+      </tr>
+      <tr>
+        <td class="header gray left">Date:</td>
+        <td>{{date_manager}}</td>
+      </tr>
+    </table>
+
+    <table class="break">
+      <tr>
+        <td colspan="2" class="no-border">
+          <img src="C:\Users\wassim\Desktop\projects\mobilis\src\assets\mobilisLogo.png" alt="Mobilis Logo" height="40" />
+        </td>
+        <td colspan="2" class="header gray" style="font-size: 28px">SA-1</td>
+      </tr>
+      <tr>
+        <td colspan="2" class="no-border"></td>
+        <td
+          colspan="2"
+          class="header no-border"
+          rowspan="3"
+          style="height: 60px"
+        >
+          Formulaire de Recherche de Site
+        </td>
+      </tr>
+      <tr></tr>
+      <tr></tr>
+      <tr>
+        <td class="header right gray">Nom du site:</td>
+        <td>{{nom_du_site}}</td>
+        <td class="header right gray">Code Site:</td>
+        <td>{{code_site}}</td>
+      </tr>
+      <tr>
+        <td class="header right gray">Ville:</td>
+        <td>{{ville}}</td>
+        <td class="header right gray">Wilaya:</td>
+        <td>{{wilaya}}</td>
+      </tr>
+      <tr class="separator"></tr>
+      <tr>
+        <td
+          colspan="4"
+          class="header"
+          style="height: 340px; vertical-align: bottom; text-align: left"
+        >
+          CANDIDAT X <br />
+          <br />
+          Long: {{candidat_x.long}}<br />
+          Lat: {{candidat_x.lat}}<br />
+          Addr: {{candidat_x.addr}}<br />
+        </td>
+      </tr>
+      <tr class="separator"></tr>
+      <tr>
+        <td
+          colspan="4"
+          class="header"
+          style="height: 340px; vertical-align: bottom; text-align: left"
+        >
+          CANDIDAT Y <br />
+          <br />
+          Long: {{candidat_y.long}}<br />
+          Lat: {{candidat_y.lat}}<br />
+          Addr: {{candidat_y.addr}}<br />
+        </td>
+      </tr>
+      <tr class="separator"></tr>
+      <tr>
+        <td
+          colspan="4"
+          class="header"
+          style="height: 340px; vertical-align: bottom; text-align: left"
+        >
+          CANDIDAT Z <br />
+          <br />
+          Long: {{candidat_z.long}}<br />
+          Lat: {{candidat_z.lat}}<br />
+          Addr: {{candidat_z.addr}}<br />
+        </td>
+      </tr>
+      <tr class="separator"></tr>
+    </table>
+  </body>
+</html>

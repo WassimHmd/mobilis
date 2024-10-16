@@ -8,6 +8,7 @@ import routes from "./router/v1";
 import setupSwagger from "./config/swagger";
 // FIXME: change usage so the log of database connection is printed on here(low priority)
 import { PrismaClient } from "@prisma/client";
+import io from "./config/socket";
 // Load environment variables
 dotenv.config();
 
@@ -47,4 +48,7 @@ app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
 
+io.listen(3000);
+
+console.log("[socket] Server is listenting on port 3000 ");
 export default app;

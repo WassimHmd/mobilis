@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{pageTitle}}</title>
+    <style>
+      /* For screen display */
+      body {
+        font-family: Arial, sans-serif;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: scroll;
+      }
+
+      .container {
+        border: 1px solid black;
+        width: 195mm; /* A4 width */
+        height: 260mm; /* A4 height */
+        margin: 10mm; /* Margin for print */
+        box-sizing: border-box;
+      }
+
+      .title {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        padding: 10px;
+        background-color: #e0e0e0;
+        border-bottom: 1px solid black;
+      }
+
+      .content {
+        background-color: white;
+        padding: 10px;
+      }
+
+      .square {
+        width: 100%;
+        height: 200mm; /* Adjust height as needed */
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+
+      .square img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain; /* Ensure image fits within the square */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" style="position: relative">
+      <img
+        src="{{logoSrc}}"
+        alt="{{logoAlt}}"
+        style="
+          position: absolute;
+          width: 180px;
+          z-index: 3;
+          left: -15px;
+          top: -15px;
+        "
+      />
+      <div class="title">{{facadeTitle}}</div>
+      <div class="content">
+        <div class="square">
+          <img src="{{facadeImageSrc}}" alt="{{facadeImageAlt}}" />
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="title">{{terraceTitle}}</div>
+      <div class="content">
+        <div class="square">
+          <img src="{{terraceImageSrc}}" alt="{{terraceImageAlt}}" />
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="title">{{localTitle}}</div>
+      <div class="content">
+        <div class="square">
+          <img src="{{localImageSrc}}" alt="{{localImageAlt}}" />
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="title">{{mastsTitle}}</div>
+      <div class="content">
+        <div class="square">
+          <img src="{{mastsImageSrc}}" alt="{{mastsImageAlt}}" />
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="title">{{technicalDuctTitle}}</div>
+      <div class="content">
+        <div class="square">
+          <img
+            src="{{technicalDuctImageSrc}}"
+            alt="{{technicalDuctImageAlt}}"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="title">{{electricCabinetTitle}}</div>
+      <div class="content">
+        <div class="square">
+          <img
+            src="{{electricCabinetImageSrc}}"
+            alt="{{electricCabinetImageAlt}}"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="title">{{siteAccessTitle}}</div>
+      <div class="content">
+        <div class="square">
+          <img src="{{siteAccessImageSrc}}" alt="{{siteAccessImageAlt}}" />
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="title">{{accessToLocationsTitle}}</div>
+      <div class="content">
+        <div class="square">
+          <img
+            src="{{accessToLocationsImageSrc}}"
+            alt="{{accessToLocationsImageAlt}}"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="title">{{craneZoneTitle}}</div>
+      <div class="content">
+        <div class="square">
+          <img src="{{craneZoneImageSrc}}" alt="{{craneZoneImageAlt}}" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

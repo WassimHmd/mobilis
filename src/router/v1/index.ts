@@ -1,11 +1,25 @@
 import { Router } from "express";
 import auth from "./routes/auth";
+
 import sites from "./routes/sites";
 import subcontractors from "./routes/subcontractor";
 import negociator from "./routes/negociator";
 import moderator from "./routes/moderator";
+import documents from "./routes/documents";
+import manager from "./routes/manager";
+import bureau from "./routes/bureau";
+import images from "./routes/images";
+import user from "./routes/user";
+import steps from "./routes/steps";
+import notifications from "./routes/notifications";
 
-const router = Router();
+import { testFeature } from "../../controllers/StepsControllers";
+
+const router = Router({ mergeParams: true });
+
+interface CustomRequest extends Request {
+  images?: any;
+}
 
 /**
  * @swagger
@@ -24,14 +38,6 @@ router.use("/auth", auth);
  *     description: Placeholder for the sites routes.
  */
 router.use("/sites", sites);
-/**
- * @swagger
- * tags:
- *   name: Sites routes endpoint
- *   description: CRUD operations for managing subcontractor
- */
-
-
 
 /**
  * @swagger
@@ -42,22 +48,25 @@ router.use("/sites", sites);
  */
 
 router.use("/subcontractor", subcontractors);
-/**
- * @swagger
- * tags:
- *   name: Sites routes endpoint
- *   description: CRUD operations for managing negociator
- */
 
 router.use("/negociator", negociator);
-/**
- * @swagger
- * tags:
- *   name: Sites routes endpoint
- *   description: CRUD operations for managing moderator
- */
+
+router.use("/bureau", bureau);
 
 router.use("/moderator", moderator);
 
+router.use("/documents", documents);
+
+router.use("/manager", manager);
+
+router.use("/images", images);
+
+router.use("/user", user);
+
+router.use("/step/", steps);
+
+router.use("/notifications/", notifications);
+
+router.post("/test", testFeature);
 
 export default router;

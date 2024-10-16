@@ -1,11 +1,20 @@
 import { Router } from "express";
 import {
+  addImagesToSite,
   createSite,
   deleteSite,
   getAllSites,
   getSiteById,
+  inviteBureau,
+  inviteNegociator,
+  siteCancelCurrentStep,
+  siteGetAllSteps,
+  siteNextStep,
+  siteValidationPhase,
+  updateCurrentStep,
   updateSite,
 } from "../../../controllers/SiteControllers";
+import { uploadFile } from "../../../middleware/uploadImage";
 
 const router = Router();
 
@@ -62,8 +71,195 @@ const router = Router();
  *         description: Server error
  */
 
-
 router.post("/", createSite);
+
+/**
+ * @swagger
+
+ * /api/v1/sites/cancelStep/{siteId}:
+ *   post:
+ *     summary: Cancel current step
+ *     description: Cancels the currect step
+ *     tags:
+ *       - Sites
+
+ *     parameters:
+ *       - in: path
+ *         name: siteId
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The ID of the Site.
+ *       
+
+ *     responses:
+ *       200:
+ *         description: Step Successfully Canceled
+ *       400:
+ *         description: Step not found
+
+ *       500:
+ *         description: Internal Server Error
+ */
+
+router.post("/cancelStep/:siteId", siteCancelCurrentStep);
+
+/**
+ * @swagger
+
+ * /api/v1/sites/nextStep/{siteId}:
+ *   post:
+ *     summary: Advance to next step
+ *     description: Advances the site to the next step
+ *     tags:
+ *       - Sites
+
+ *     parameters:
+ *       - in: path
+ *         name: siteId
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The ID of the Site.
+ *       
+
+ *     responses:
+ *       200:
+ *         description: Step Successfully Canceled
+ *       400:
+ *         description: Step not found
+
+ *       500:
+ *         description: Internal Server Error
+ */
+
+router.post("/nextStep/:siteId", siteNextStep);
+
+/**
+ * @swagger
+
+ * /api/v1/sites/invite/negociator/{siteId}:
+ *   post:
+ *     summary: Invite negociator to validate step
+ *     description: Invites negociator to project
+ *     tags:
+ *       - Sites
+
+ *     parameters:
+ *       - in: path
+ *         name: siteId
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The ID of the Site.
+ * 
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json: 
+ *           schema:
+ *             type: object 
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 example: "user@email.com"
+
+ *     responses:
+ *       200:
+ *         description: Step Successfully Canceled
+ *       400:
+ *         description: Step not found
+
+ *       500:
+ *         description: Internal Server Error
+ */
+
+router.post("/invite/negociator/:siteId", inviteNegociator);
+
+/**
+ * @swagger
+
+ * /api/v1/sites/invite/bureau/{siteId}:
+ *   post:
+ *     summary: Invite bureau to validate step
+ *     description: Invites bureau to project
+ *     tags:
+ *       - Sites
+
+ *     parameters:
+ *       - in: path
+ *         name: siteId
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The ID of the Site.
+ * 
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json: 
+ *           schema:
+ *             type: object 
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 example: "user@email.com"
+
+ *     responses:
+ *       200:
+ *         description: Step Successfully Canceled
+ *       400:
+ *         description: Step not found
+
+ *       500:
+ *         description: Internal Server Error
+ */
+
+router.post("/invite/bureau/:siteId", inviteBureau);
+
+router.post("/validation/:siteId", siteValidationPhase);
+
+/**
+ * @swagger
+
+ * /api/v1/sites/addImages/{siteId}:
+ *   post:
+ *     summary: Add images to site
+ *     description: Adds images to site
+ *     tags:
+ *       - Sites
+
+ *     parameters:
+ *       - in: path
+ *         name: siteId
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The ID of the Site.
+ * 
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object 
+ *             properties:
+ *               images:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                   format: binary
+ *     responses:
+ *       200:
+ *         description: Images added successfully
+ *       400:
+ *         description: Bad request
+
+ *       500:
+ *         description: Internal Server Error
+ */
+
+router.post("/addImages/:siteId", uploadFile("step"), addImagesToSite);
 
 /**
  * @swagger
@@ -120,6 +316,39 @@ router.get("/", getAllSites);
  *         description: Server error
  */
 router.get("/:id", getSiteById);
+
+/**
+ * @swagger
+ * /api/v1/sites/steps/{siteId}:
+ *   get:
+ *     summary: Get all steps
+ *     description: Returns all steps for a given siteId
+ *     tags:
+ *       - Sites
+ *     parameters:
+ *       - in: path
+ *         name: siteId
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The ID of the Site to retrieve steps for
+ *
+ *     responses:
+ *       200:
+ *         description: Steps found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Step'
+ *       404:
+ *         description: Steps not found
+ *       500:
+ *         description: Server error
+ */
+
+router.get("/steps/:siteId", siteGetAllSteps);
 
 /**
  * @swagger
@@ -184,8 +413,66 @@ router.get("/:id", getSiteById);
  *       500:
  *         description: Server error
  */
-router.put("/:id", updateSite);
 
+router.put("/updateStep/:id", updateCurrentStep);
+
+/**
+ * @swagger
+ * /api/v1/sites/{id}:
+ *   put:
+ *     summary: Update a Site
+ *     description: Updates a single Site by ID.
+ *     tags:
+ *       - Sites
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The ID of the Site to update.
+ *
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 example: The Best Site Ever
+ *               type:
+ *                 type: string
+ *                 example: PYLON
+ *               startDate:
+ *                 type: string
+ *                 example: 2023-01-01T00:00:00.000Z
+ *               endDate:
+ *                 type: string
+ *                 example: 2023-01-01T00:00:00.000Z
+ *               region:
+ *                 type: string
+ *                 example: DZ-01
+ *               wilaya:
+ *                 type: string
+ *                 example: ALGER
+ *               location:
+ *                 type: string
+ *                 example: 123 Main St
+ *
+ *     responses:
+ *       200:
+ *         description: Site updated successfully
+ *       400:
+ *         description: Bad request
+ *       404:
+ *         description: Site not found
+ *       500:
+ *         description: Server error
+ */
+
+router.put("/:id", updateSite);
 
 /**
  * @swagger

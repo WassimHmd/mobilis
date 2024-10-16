@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import prisma from "../config/db";
-import { updateNegociator } from "@/controllers/NegociatorControllers";
 
 export const createModerator = async (req: any, res: Response) => {
   try {
@@ -10,6 +9,17 @@ export const createModerator = async (req: any, res: Response) => {
       data: {
         userId: req.user.id,
         region,
+      },
+      include: {
+        user: {
+          select: {
+            id: true,
+            email: true,
+            firstName: true,
+            lastName: true,
+            phoneNumber: true,
+          },
+        },
       },
     });
 

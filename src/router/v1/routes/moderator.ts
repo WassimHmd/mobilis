@@ -4,8 +4,8 @@ import {
   getAllModerators,
   getModeratorById,
   updateModerator,
-} from "@/controllers/ModeratorControllers";
-import { registerMiddleware } from "@/middleware/authMiddleware";
+} from "../../../controllers/ModeratorControllers";
+import { registerMiddleware } from "../../../middleware/authMiddleware";
 import { Router } from "express";
 
 const router = Router();
@@ -51,7 +51,7 @@ const router = Router();
  *       500:
  *         description: Server error
  */
-router.post("/", registerMiddleware("MODERATOR"), createModerator)
+router.post("/", registerMiddleware("MODERATOR"), createModerator);
 
 /**
  * @swagger
@@ -67,7 +67,7 @@ router.post("/", registerMiddleware("MODERATOR"), createModerator)
  *       500:
  *         description: Server error
  */
-router.get("/", getAllModerators)
+router.get("/", getAllModerators);
 
 /**
  * @swagger
@@ -92,7 +92,7 @@ router.get("/", getAllModerators)
  *       500:
  *         description: Server error
  */
-router.get("/:id", getModeratorById)
+router.get("/:userId", getModeratorById);
 
 /**
  * @swagger
@@ -139,7 +139,7 @@ router.get("/:id", getModeratorById)
  *       500:
  *         description: Server error
  */
-router.put("/:id", updateModerator)
+router.put("/:userId", updateModerator);
 
 /**
  * @swagger
@@ -166,68 +166,6 @@ router.put("/:id", updateModerator)
  *         description: Server error
  */
 
-router.delete("/:id", deleteModerator)
-
-
-/**
- * @swagger
- * /moderators/{id}:
- *   put:
- *     summary: Update a moderator by ID
- *     tags: [Moderators]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: Moderator ID
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               region:
- *                 type: string
- *                 example: "South"
- *               otherField:
- *                 type: string
- *                 example: "Some value"
- *     responses:
- *       200:
- *         description: Moderator updated successfully
- *       400:
- *         description: Bad request
- *       404:
- *         description: Moderator not found
- *       500:
- *         description: Server error
- */
-router.put("/:id", updateModerator);
-
-/**
- * @swagger
- * /moderators/{id}:
- *   delete:
- *     summary: Delete a moderator by ID
- *     tags: [Moderators]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: Moderator ID
- *     responses:
- *       204:
- *         description: No content, moderator deleted successfully
- *       404:
- *         description: Moderator not found
- *       500:
- *         description: Server error
- */
-router.delete("/:id", deleteModerator);
+router.delete("/:userId", deleteModerator);
 
 export default router;

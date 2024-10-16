@@ -14,6 +14,17 @@ export const createSubContractor = async (req: any, res: Response) => {
         maintenance,
         userId: req.user.id,
       },
+      include: {
+        user: {
+          select: {
+            id: true,
+            email: true,
+            firstName: true,
+            lastName: true,
+            phoneNumber: true,
+          },
+        },
+      },
     });
     res.status(201).json(subContractor);
   } catch (error: any) {

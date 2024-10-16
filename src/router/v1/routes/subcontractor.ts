@@ -6,11 +6,9 @@ import {
   updateSubContractor,
   deleteSubContractor,
 } from "../../../controllers/SubcontractorControllers";
-import { registerMiddleware } from "@/middleware/authMiddleware";
+import { registerMiddleware } from "../../../middleware/authMiddleware";
 
 const router = Router();
-
-
 
 /**
  * @swagger
@@ -71,7 +69,7 @@ const router = Router();
  *       500:
  *         description: Server error
  */
-router.post("/", registerMiddleware("SUBCONTRACTOR"), createSubContractor)
+router.post("/", registerMiddleware("SUBCONTRACTOR"), createSubContractor);
 
 /**
  * @swagger
@@ -87,7 +85,7 @@ router.post("/", registerMiddleware("SUBCONTRACTOR"), createSubContractor)
  *       500:
  *         description: Server error
  */
-router.get("/", getAllSubContractors)
+router.get("/", getAllSubContractors);
 
 /**
  * @swagger
@@ -114,7 +112,7 @@ router.get("/", getAllSubContractors)
  *       500:
  *         description: Server error
  */
-router.get("/:id", getSubContractorById)
+router.get("/:userId", getSubContractorById);
 
 /**
  * @swagger
@@ -178,7 +176,7 @@ router.get("/:id", getSubContractorById)
  *       500:
  *         description: Server error
  */
-router.put("/:id", updateSubContractor)
+router.put("/:userId", updateSubContractor);
 
 /**
  * @swagger
@@ -203,7 +201,6 @@ router.put("/:id", updateSubContractor)
  *       500:
  *         description: Server error
  */
-router.delete("/:id", deleteSubContractor)
-
+router.delete("/:userId", deleteSubContractor);
 
 export default router;
