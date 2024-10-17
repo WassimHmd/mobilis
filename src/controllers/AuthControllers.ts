@@ -43,7 +43,7 @@ export const register = async (
 
     res.cookie("token", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
 
-    return res.status(200).json(user);
+    return res.status(200).json({ user, token });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ error: err });
@@ -74,7 +74,7 @@ export const login = async (req: Request, res: Response, next: Function) => {
 
     res.cookie("token", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
 
-    return res.status(200).json(user);
+    return res.status(200).json({ user, token });
   } catch (err) {
     return res.status(500).json({ error: err });
   }
