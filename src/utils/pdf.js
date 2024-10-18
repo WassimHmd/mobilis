@@ -5,13 +5,16 @@ const puppeteer = require("puppeteer");
 const handlebars = require("handlebars");
 const moment = require("moment");
 
-
-const getPdf = async (html, options = { format: "A4", printBackground: true }) => {
-  const browser = await puppeteer.launch();
+const getPdf = async (
+  html,
+  options = { format: "A4", printBackground: true }
+) => {
+  const browser = await puppeteer.launch({
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
   const page = await browser.newPage();
   await page.setContent(html);
 
-  
   const pdf = await page.pdf(options);
   await browser.close();
 
@@ -39,7 +42,7 @@ const buildReport = async (template, data, fileName) => {
 
   const t = await getTemplate(template);
   const html = hbs.compile(t)(data);
-  console.log(data)
+  console.log(data);
 
   const pdf = await getPdf(html, { format: "A4", printBackground: true });
   const documentsDir = path.join(process.cwd(), "src/documents");
