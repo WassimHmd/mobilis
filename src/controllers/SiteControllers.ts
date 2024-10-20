@@ -87,6 +87,7 @@ export const getSiteById = async (req: Request, res: Response) => {
       include: {
         subcontractor: true,
         negociator: true,
+        steps: true,
       },
     });
     if (!site) {

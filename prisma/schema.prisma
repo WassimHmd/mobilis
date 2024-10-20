@@ -109,7 +109,7 @@ model Site {
   Bureau            Bureau?             @relation(fields: [bureauId], references: [userId])
   Moderator         Moderator           @relation(fields: [moderatorId], references: [userId])
   Document          Document[]
-  Step              Step[]
+  steps             Step[]
   ManagerInvitation ManagerInvitation[]
 }
 
