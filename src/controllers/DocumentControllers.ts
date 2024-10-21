@@ -5,6 +5,7 @@ import { DocTypes } from "@prisma/client";
 import buildReport from "./../utils/pdf";
 import path from "path";
 import fs from "fs";
+import { getCurrentStep } from "./StepsControllers";
 
 export const createDocument = async (req: Request, res: Response) => {
   const {
@@ -13,10 +14,19 @@ export const createDocument = async (req: Request, res: Response) => {
     siteId,
   }: { type: DocTypes; data: object; siteId: number } = req.body;
   try {
+    const step = await getCurrentStep(siteId);
+
+    if (!step) {
+      return res.status(404).json({ error: "Step not found" });
+    }
+
+    const stepId = step.id;
+
     const document = await prisma.document.create({
       data: {
         type,
         data,
+        stepId,
         siteId,
       },
     });

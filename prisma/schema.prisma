@@ -137,6 +137,8 @@ model Document {
   siteId Int
 
   //TODO: Add Step relation when steps are implemented 
+  step   Step   @relation(fields: [stepId], references: [id], onDelete: Cascade)
+  stepId String
 }
 
 model Step {
@@ -152,6 +154,7 @@ model Step {
   Images       Images[]
   SA1Candidate SA1Candidate[]
   SubStepOC    SubStepOC[]
+  Document     Document[]
 }
 
 model SA1Candidate {
