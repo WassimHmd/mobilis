@@ -106,6 +106,7 @@ export const getAllSites = async (_req: Request, res: Response) => {
       include: {
         subcontractor: true,
         negociator: true,
+        steps: true,
       },
     });
     // const sites = await prisma.site

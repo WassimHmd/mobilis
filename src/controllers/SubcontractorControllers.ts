@@ -88,7 +88,10 @@ export const deleteSubContractor = async (req: Request, res: Response) => {
     await prisma.subContractor.delete({
       where: { userId },
     });
-    res.status(204).send();
+    await prisma.user.delete({
+      where: { id: userId },
+    });
+    res.status(204).json("SubContractor deleted successfully");
   } catch (error: any) {
     console.log(error);
     res.status(500).json({ error: error.message });

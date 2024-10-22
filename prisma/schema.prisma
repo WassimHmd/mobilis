@@ -88,7 +88,7 @@ model Site {
   type        SiteTypes
   startDate   DateTime   @default(now())
   endDate     DateTime
-  code        Int
+  code        Int        @unique
   name        String
   region      String
   wilaya      Wilayas
