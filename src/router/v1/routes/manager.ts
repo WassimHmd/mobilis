@@ -1,6 +1,7 @@
 import {
   cancelManagerController,
   createManagerController,
+  getManagersByStepController,
   validateManagerController,
 } from "../../../controllers/ManagerControllers";
 import { uploadFile } from "../../../middleware/uploadImage";
@@ -125,5 +126,7 @@ router.post(
  */
 
 router.post("/cancel/:managerId", cancelManagerController);
+
+router.get("/:stepId", getManagersByStepController);
 
 export default router;

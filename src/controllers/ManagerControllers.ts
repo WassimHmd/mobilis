@@ -175,3 +175,22 @@ export const createPendingInvite = async (
     throw Error("Failed to create pending invite");
   }
 };
+
+export const getManagersByStepController = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const { stepId } = req.params;
+    const managers = await prisma.manager.findMany({
+      where: {
+        stepId,
+      },
+    });
+
+    return res.status(200).json(managers);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json("Internal server error");
+  }
+};
