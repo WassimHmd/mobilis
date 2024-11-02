@@ -371,7 +371,11 @@ export const startValidationPhase = async (stepId: string) => {
 
     //TODO: Send Validation Emails
     managers.map((manager) => {
-      sendEmail(manager.email, "Step Validation", "lien validation");
+      sendEmail(
+        manager.email,
+        "Step Validation",
+        `https://follow-me-test-version.netlify.app/validation/form/${manager.id}`
+      );
     });
 
     return step;

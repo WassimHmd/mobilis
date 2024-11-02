@@ -194,3 +194,31 @@ export const getManagersByStepController = async (
     return res.status(500).json("Internal server error");
   }
 };
+
+export const getManagerDetailsController = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const { managerId } = req.params;
+    const manager = await prisma.manager.findUnique({
+      where: { id: managerId },
+      include: {
+        step: {
+          include: {
+            site: {
+              include: {
+                steps: true, // Include all steps associated with the site
+              },
+            },
+            Document: true,
+          },
+        },
+      },
+    });
+    return res.status(200).json(manager);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json("Internal server error");
+  }
+};

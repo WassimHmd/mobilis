@@ -1,6 +1,7 @@
 import {
   cancelManagerController,
   createManagerController,
+  getManagerDetailsController,
   getManagersByStepController,
   validateManagerController,
 } from "../../../controllers/ManagerControllers";
@@ -126,6 +127,8 @@ router.post(
  */
 
 router.post("/cancel/:managerId", cancelManagerController);
+
+router.get("/details/:managerId", getManagerDetailsController);
 
 router.get("/:stepId", getManagersByStepController);
 

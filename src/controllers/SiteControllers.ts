@@ -33,6 +33,8 @@ export const createSite = async (req: Request, res: Response) => {
       progression,
       subcontractorId,
       moderatorId,
+      long,
+      lat,
     } = req.body;
     const site = await prisma.site.create({
       data: {
@@ -47,6 +49,8 @@ export const createSite = async (req: Request, res: Response) => {
         progression,
         subcontractorId,
         moderatorId,
+        long,
+        lat,
       },
     });
     const step = await createStep(site.id, "SA1");
