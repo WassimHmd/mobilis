@@ -131,7 +131,7 @@ export const replicateManagers = async (stepId: string, newStepId: string) => {
       },
       select: {
         email: true,
-        validation: true,
+        // validation: true,
         type: true,
       },
     });
