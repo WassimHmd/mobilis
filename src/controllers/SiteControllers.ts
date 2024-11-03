@@ -91,7 +91,11 @@ export const getSiteById = async (req: Request, res: Response) => {
       include: {
         subcontractor: true,
         negociator: true,
-        steps: true,
+        steps: {
+          include: {
+            Document: true,
+          },
+        },
       },
     });
     if (!site) {
@@ -110,7 +114,11 @@ export const getAllSites = async (_req: Request, res: Response) => {
       include: {
         subcontractor: true,
         negociator: true,
-        steps: true,
+        steps: {
+          include: {
+            Document: true,
+          },
+        },
       },
     });
     // const sites = await prisma.site
