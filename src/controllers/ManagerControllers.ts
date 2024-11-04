@@ -95,7 +95,7 @@ export const validateManagerController = async (
   }
 };
 
-export const cancelManager = async (id: string) => {
+export const cancelManager = async (id: string, comment: string) => {
   try {
     const manager = await prisma.manager.update({
       where: {
@@ -105,7 +105,7 @@ export const cancelManager = async (id: string) => {
         validation: "REFUSED",
       },
     });
-    await cancelStep(manager.stepId);
+    await cancelStep(manager.stepId, comment);
   } catch (error) {
     console.log(error);
     throw Error("Failed to cancel manager");
@@ -115,7 +115,8 @@ export const cancelManager = async (id: string) => {
 export const cancelManagerController = async (req: Request, res: Response) => {
   try {
     const { managerId } = req.params;
-    const manager = await cancelManager(managerId);
+    const { comment } = req.body;
+    const manager = await cancelManager(managerId, comment);
     return res.status(200).json(manager);
   } catch (error) {
     console.log(error);
@@ -209,6 +210,7 @@ export const getManagerDetailsController = async (
             site: {
               include: {
                 steps: true, // Include all steps associated with the site
+                subcontractor: true,
               },
             },
             Document: true,

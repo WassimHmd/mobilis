@@ -12,7 +12,9 @@ export const createDocument = async (req: Request, res: Response) => {
     type,
     data,
     siteId,
-  }: { type: DocTypes; data: object; siteId: number } = req.body;
+    comment,
+  }: { type: DocTypes; data: object; siteId: number; comment: string } =
+    req.body;
   try {
     const step = await getCurrentStep(siteId);
 
@@ -28,6 +30,12 @@ export const createDocument = async (req: Request, res: Response) => {
         data,
         stepId,
         siteId,
+      },
+    });
+    await prisma.step.update({
+      where: { id: stepId },
+      data: {
+        comment,
       },
     });
 

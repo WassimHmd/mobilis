@@ -147,6 +147,7 @@ model Step {
   payload   Json       @default("{}")
   type      StepTypes
   createdAt DateTime   @default(now())
+  comment   String     @default("N/A")
 
   site         Site           @relation(fields: [siteId], references: [id], onDelete: Cascade)
   siteId       Int
@@ -206,6 +207,8 @@ model Manager {
   validation  ManagerValidation @default(PENDING)
   type        String
   phoneNumber String            @default("0541129519")
+  createdAt   DateTime          @default(now())
+  sentAt      DateTime?
 
   signature   SignaNum? @relation(fields: [signatureId], references: [id], onDelete: Cascade)
   signatureId String?

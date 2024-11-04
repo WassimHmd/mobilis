@@ -252,7 +252,7 @@ export const nextStep = async (siteId: number) => {
   }
 };
 
-export const cancelStep = async (stepId: string) => {
+export const cancelStep = async (stepId: string, comment: string) => {
   try {
     // const stepId = (await getCurrentStep(siteId))?.id
     const step = await prisma.step.update({
@@ -261,6 +261,7 @@ export const cancelStep = async (stepId: string) => {
       },
       data: {
         status: "FAILED",
+        comment,
       },
     });
     const newStep = await createStep(step.siteId, step.type);
@@ -376,6 +377,14 @@ export const startValidationPhase = async (stepId: string) => {
         "Step Validation",
         `https://follow-me-test-version.netlify.app/validation/form/${manager.id}`
       );
+      prisma.manager.update({
+        where: {
+          id: manager.id,
+        },
+        data: {
+          sentAt: new Date(),
+        },
+      });
     });
 
     return step;

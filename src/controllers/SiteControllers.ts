@@ -183,9 +183,10 @@ export const deleteSite = async (req: Request, res: Response) => {
 export const siteCancelCurrentStep = async (req: Request, res: Response) => {
   try {
     const { siteId } = req.params;
+    const { comment } = req.body;
     const stepId = (await getCurrentStep(parseInt(siteId)))?.id;
     if (!stepId) return res.status(400).json("Step not found");
-    const newStep = await cancelStep(stepId);
+    const newStep = await cancelStep(stepId, comment);
     return res.status(200).json(newStep);
   } catch (error: any) {
     console.log(error);
