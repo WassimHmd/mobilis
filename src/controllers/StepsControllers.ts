@@ -63,6 +63,7 @@ export const getAllSteps = async (siteId: number) => {
         Images: true,
         SA1Candidate: true,
         Document: true,
+        site: true,
       },
     });
 
