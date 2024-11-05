@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulaire de Recherche de Site</title>
+  <style>
+    table {
+      width: 800px;
+      max-height: 1141px;
+      border-collapse: collapse;
+      font-family: "Arial";
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      border: 1px solid black;
+      /* padding: 8px; */
+      text-align: left;
+      height: 20px;
+    }
+
+    .no-border {
+      border: none;
+    }
+
+    .header {
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .map {
+      height: 500px;
+    }
+
+    .gray {
+      background-color: #c0c0c0;
+    }
+
+    .right {
+      text-align: left;
+    }
+
+    .left {
+      text-align: left;
+    }
+
+    .separator {
+      border: none;
+      height: 20px;
+    }
+
+    .checkbox span {
+      height: 15px;
+      width: 15px !important;
+      border: 1px solid black;
+      padding: 0 7.5px;
+      margin: 0 20px;
+    }
+
+    .vide {
+      border: solid 1px gainsboro;
+      text-align: right;
+      border-right: black;
+    }
+
+    .vide2 {
+      border: solid 1px gainsboro;
+      text-align: right;
+      border-right: 1px solid black;
+      border-bottom: 1px solid black;
+    }
+
+    .vide3 {
+      border: solid 1px gainsboro;
+      text-align: left;
+      border-right: 1px solid black;
+      border-bottom: 1px solid black;
+    }
+
+    .bleu {
+      color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <td colspan="4" class="no-border">
+        <img src="logo.png" alt="Mobilis Logo" height="40" />
+      </td>
+      <td colspan="4" class="header gray" style="font-size: 28px">SA-4</td>
+    </tr>
+    <tr>
+      <td colspan="4" class="no-border"></td>
+      <td colspan="4" class="header no-border" rowspan="3" style="height: 60px">
+        Formulaire de Signature de Contrat
+      </td>
+    </tr>
+    <tr></tr>
+    <tr></tr>
+    <tr>
+      <td colspan="2" class="header right gray">Nom du site:</td>
+      <td colspan="2">{{Nom_du_site}}</td>
+      <td colspan="2" class="header right gray">Code Site:</td>
+      <td colspan="2">{{Code_Site}}</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="header right gray">Region:</td>
+      <td colspan="2">{{Region}}</td>
+      <td colspan="2" class="header right gray">Candidat(a,b,c...):</td>
+      <td colspan="2">{{Candidat}}</td>
+    </tr>
+    <tr class="separator"></tr>
+    <tr>
+      <td colspan="2" class="header right gray">Nom de Négociateur:</td>
+      <td colspan="2">{{Nom_de_Negociateur}}</td>
+      <td colspan="2" class="header right gray">Mobile:</td>
+      <td colspan="2">{{Mobile}} </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="header right gray">Société:</td>
+      <td colspan="2" colspan="2">{{Societe}}</td>
+      <td colspan="2" class="header right gray">Téléphone:</td>
+      <td colspan="2">{{Telephone}}</td>
+    </tr>
+    <tr class="separator"></tr>
+    <tr>
+      <td colspan="8" class="header gray">Informations Générales</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="header left gray">Adresse du Site:</td>
+      <td colspan="6">{{Adresse_du_Site}}</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="header left gray">Ville:</td>
+      <td colspan="2">{{Ville}}</td>
+      <td colspan="2" class="header right gray">Wilaya:</td>
+      <td colspan="2">{{Wilaya}}</td>
+    </tr>
+    <tr class="separator"></tr>
+    <tr>
+      <td colspan="2" class="header left gray">Type de Propriété:</td>
+      <td colspan="2">{{Type_de_Propriete}}</td>
+      <td colspan="2" class="header right gray">Typologie de site:</td>
+      <td colspan="2">{{Typologie_de_site}}</td>
+    </tr>
+    <tr class="separator"></tr>
+    <tr>
+      <td colspan="2" class="header left gray">Nom de contact:</td>
+      <td colspan="2">{{Nom_de_contact}}</td>
+      <td colspan="2" class="header right gray">Mobile:</td>
+      <td colspan="2">{{Mobile_Generales}}</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="header left gray">Téléphone:</td>
+      <td colspan="2">{{Telephone_Generales}}</td>
+      <td colspan="2" class="header right gray">Fax:</td>
+      <td colspan="2">{{Fax_Generales}}</td>
+    </tr>
+    <tr class="separator"></tr>
+    <tr>
+      <td colspan="8" class="header gray">Informations Contractuelles</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="header left gray">Montant de loyer annuel:</td>
+      <td colspan="2">{{Montant_de_loyer_annuel}}</td>
+      <td colspan="2" class="header right gray">Superficie louée:</td>
+      <td colspan="2">{{Superficie_louee}}</td>
+    </tr>
+    <tr class="separator"></tr>
+    <tr>
+      <td colspan="2" class="header left gray">Nom du Bailleur:</td>
+      <td colspan="2">{{Nom_du_Bailleur}}</td>
+      <td colspan="2" class="header right gray">Mobile:</td>
+      <td colspan="2">{{Mobile_Contractuelles}}</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="header left gray">Adresse de Bailleur:</td>
+      <td colspan="6" class="header left gray">{{Adresse_de_Bailleur}}</td>
+    </tr>
+    <tr>
+      <td colspan="2" class="header left gray">Téléphone:</td>
+      <td colspan="2">{{Telephone_Contractuelles}}</td>
+      <td colspan="2" class="header right gray">Fax:</td>
+      <td colspan="2">{{fax_Contractuelles}}</td>
+    </tr>
+    <tr class="separator"></tr>
+    <tr>
+      <td colspan="2" class="header gray right">Loyer 'hors grille':</td>
+      <td colspan="2" class="checkbox">
+        oui
+        <span>
+          {{#if loyer}}
+          x
+          {{/if}}
+        </span>
+         non 
+        <span>
+          {{#if !loyer}}
+          x
+          {{/if}}
+        </span>
+      </td>
+    </tr>
+    <tr class="separator"></tr>
+    <tr>
+      <td colspan="4" rowspan="2" class="header gray right">
+        Modification de contrat:
+      </td>
+      <td colspan="4">{{ Modification_de_contrat1}}</td>
+    </tr>
+    <tr>
+      <td colspan="4">{{ Modification_de_contrat2}}</td>
+    </tr>
+    <tr class="separator"></tr>
+    <tr>
+      <td colspan="4" class="header gray">Document(cocher si presents):</td>
+      <td rowspan="2" class="header gray">Public:</td>
+      <td colspan="3" class="header gray">prive:</td>
+    </tr>
+
+    <tr>
+      <td colspan="2" class="header gray bleu">consigne au notaire le :</td>
+      <td colspan="2">{{date_consignation}}</td>
+      <td colspan="1" class="header gray">societe</td>
+      <td colspan="1" class="header gray">individu</td>
+      <td colspan="1" class="header gray">copropriete</td>
+    </tr>
+    <tr>
+      <td colspan="4" class="vide">Document d'identite</td>
+      <td>{{documents11}}</td>
+      <td colspan="1">{{documents12}}</td>
+      <td colspan="1">{{documents13}}</td>
+      <td colspan="1">{{documents14}}</td>
+  
+    </tr>
+    <tr>
+      <td colspan="4" class="vide">Titre de Propriété</td>
+      <td>{{documents21}}</td>
+          <td colspan="1">{{documents22}}</td>
+      <td colspan="1">{{documents23}}</td>
+      <td colspan="1">{{documents24}}</td>
+ 
+    </tr>
+    <tr>
+      <td colspan="4" class="vide">Procuration</td>
+      <td>{{documents31}}</td>
+       <td colspan="1">{{documents32}}</td>
+      <td colspan="1">{{documents33}}</td>
+      <td colspan="1">{{documents34}}</td>
+   
+    </tr>
+    <tr>
+      <td colspan="4" class="vide">copie de Status</td>
+      <td>{{documents41}}</td>
+      <td>{{documents42}}</td>
+      <td class=" header gray">n/a</td>
+      <td class=" header gray">n/a</td>
+  
+    </tr>
+    <tr>
+      <td colspan="4" class="vide">Acte de naissance</td>
+      <td class=" header gray">n/a</td>
+      <td>{{documents52}}</td>
+      <td>{{documents53}}</td>
+      <td class=" header gray">n/a</td>
+
+  
+    </tr>
+    <tr>
+      <td colspan="4" class="vide">extrait de registe de commerce</td>
+      <td class=" header gray">n/a</td>
+      <td>{{documents62}}</td>
+      <td class=" header gray">n/a</td>
+      <td>{{documents64}}</td>
+
+
+    
+    </tr>
+    <tr>
+      <td colspan="4" class="vide">Reglement copropriété</td>
+      <td class=" header gray">n/a</td>
+      <td class=" header gray">n/a</td>
+      <td>{{documents73}}</td>
+      <td>{{documents74}}</td>
+
+
+    
+    </tr>
+    <tr>
+      <td colspan="4" class="vide2">copie du permis de construire</td>
+      <td class=" header gray">n/a</td>
+      <td>{{documents82}}</td>
+      <td>{{documents83}}</td>
+      <td>{{documents84}}</td>
+
+
+   
+    </tr>
+
+    <tr class="separator"></tr>
+    <tr class="separator"></tr>
+    <tr class="separator"></tr>
+    <tr>
+      <td colspan="2" class="header gray left">Négociateur</td>
+      <td colspan="2">{{Negociateur}}</td>
+      <td colspan="4" rowspan="2">Signature: <img src="{{Signature_Negociateur}}" alt="siganture"></td>
+   
+    </tr>
+    <tr>
+      <td colspan="2" class="header gray left">Date:</td>
+      <td colspan="2">{{date_negociateur}}</td>
+    </tr>
+
+    <tr class="separator"></tr>
+    <tr>
+      <td colspan="2" class="header gray left">Responsable Nationl Aquisition </td>
+      <td colspan="2">{{Responsable_Nationl_Aquisition}}</td>
+      <td colspan="4" rowspan="2">Signature pour validation :   <img src="{{Signature_validation}}" alt="siganture"></td>
+ 
+    </tr>
+    <tr>
+      <td colspan="2" class="header gray left">Date:</td>
+      <td colspan="2">{{Date_Responsable_Nationl_Aquisition}}</td>
+    </tr>
+    <tr class="separator"></tr>
+    <tr>
+      <td colspan="8" class="vide3">en cas de Modification de contrat standard ou de loyer "hors grille"
+    </tr>
+    </tr>
+    <tr>
+      <td colspan="2" class="header gray left">Responsable Nationl Aquisition </td>
+      <td colspan="2">{{Responsable_Nationl_Aquisition_hors_grille}}</td>
+      <td colspan="4" rowspan="2">Signature pour validation : <img src="{{Signature_Responsable_Nationl_Aquisition_hors_grille}}" alt="siganture"></td>
+
+    </tr>
+    <tr>
+      <td colspan="2" class="header gray left">Date:</td>
+      <td colspan="2">{{date_Responsable_Nationl_Aquisition_hors_grille}}</td>
+    </tr>
+  </table>
+
+
+</body>
+
+</html>
