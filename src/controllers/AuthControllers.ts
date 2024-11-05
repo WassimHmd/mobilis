@@ -4,8 +4,6 @@ import jwt from "jsonwebtoken";
 import prisma from "../config/db";
 
 import dotenv from "dotenv";
-import crypto from "crypto";
-import { sendEmail } from "@/utils/sendMail";
 dotenv.config();
 
 // register global

@@ -3,7 +3,7 @@ import prisma from "../config/db";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { userTypes } from "@prisma/client";
-import { sendEmail } from "@/utils/sendMail";
+import { sendEmail } from "../utils/sendMail";
 import crypto from "crypto";
 
 export const checkRole = (role: string) => {
