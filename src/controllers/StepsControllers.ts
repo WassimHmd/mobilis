@@ -62,6 +62,7 @@ export const getAllSteps = async (siteId: number) => {
       include: {
         Images: true,
         SA1Candidate: true,
+        Document: true,
       },
     });
 
