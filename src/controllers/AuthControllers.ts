@@ -4,6 +4,8 @@ import jwt from "jsonwebtoken";
 import prisma from "../config/db";
 
 import dotenv from "dotenv";
+import crypto from "crypto";
+import { sendEmail } from "@/utils/sendMail";
 dotenv.config();
 
 // register global
@@ -34,6 +36,8 @@ export const register = async (
       },
     });
 
+    delete (user as { password?: string }).password;
+
     req.user = user;
     const token: string = jwt.sign(
       { email: user.email, ver: user.ver },
@@ -41,9 +45,9 @@ export const register = async (
       { expiresIn: "1d" }
     );
 
-    res.cookie("token", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
+    // res.cookie("token", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
 
-    return res.status(200).json({ user, token });
+    return res.status(200).json({ user });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ error: err });
@@ -65,6 +69,12 @@ export const login = async (req: Request, res: Response, next: Function) => {
     if (!user || !bcrypt.compareSync(password, user.password)) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
+
+    if (!user.valid) {
+      return res.status(401).json({ message: "Please validate your email" });
+    }
+
+    console.log(user.valid);
 
     const token: string = jwt.sign(
       { email: user.email, ver: user.ver },
@@ -158,5 +168,59 @@ export const resetPassword = async (req: Request, res: Response) => {
   } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "Something went wrong" });
+  }
+};
+
+export const validateEmail = async (req: Request, res: Response) => {
+  try {
+    const { token } = req.body;
+
+    if (!token) {
+      return res.status(400).json({ message: "Token is required" });
+    }
+
+    const validation = await prisma.emailValidation.findUnique({
+      where: {
+        token,
+      },
+      include: {
+        user: {
+          select: {
+            email: true,
+          },
+        },
+      },
+    });
+    if (!validation) {
+      return res.status(400).json({ message: "Invalid token" });
+    }
+    if (validation?.createdAt < new Date(Date.now() - 24 * 60 * 60 * 1000)) {
+      return res.status(403).json({ message: "Token expired" });
+    }
+
+    const user = await prisma.user.update({
+      where: {
+        id: validation.userId,
+      },
+      data: {
+        valid: true,
+      },
+    });
+
+    prisma.emailValidation.update({
+      where: {
+        id: validation.id,
+      },
+      data: {
+        valid: true,
+      },
+    });
+
+    return res
+      .status(200)
+      .json({ message: "Email has been validated successfully" });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: err });
   }
 };

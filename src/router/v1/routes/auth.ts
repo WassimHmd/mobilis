@@ -4,6 +4,7 @@ import {
   login,
   register,
   resetPassword,
+  validateEmail,
 } from "../../../controllers/AuthControllers";
 
 const router = Router();
@@ -165,5 +166,7 @@ router.post("/forgotPassword", forgotPassword);
  *         description: Server error
  */
 router.post("/resetPassword", resetPassword);
+
+router.post("/validate", validateEmail);
 
 export default router;

@@ -3,6 +3,8 @@ import prisma from "../config/db";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { userTypes } from "@prisma/client";
+import { sendEmail } from "@/utils/sendMail";
+import crypto from "crypto";
 
 export const checkRole = (role: string) => {
   return (
@@ -49,6 +51,20 @@ export const registerMiddleware = (userType: userTypes) => {
           userType: userType,
         },
       });
+      //TODO: Add Validation link
+
+      const validation = await prisma.emailValidation.create({
+        data: {
+          token: crypto.randomBytes(64).toString("base64url"),
+          userId: user.id,
+        },
+      });
+
+      sendEmail(
+        email,
+        "Validation du compte Followme",
+        `Cliquez ce <a href = "localhost:5173/validateEmail/${validation.token}">lien</a> pour vérifier votre compte Follow Me `
+      );
 
       req.user = user;
       const token: string = jwt.sign(
@@ -57,10 +73,10 @@ export const registerMiddleware = (userType: userTypes) => {
         { expiresIn: "1d" }
       );
 
-      res.cookie("token", token, {
-        httpOnly: true,
-        maxAge: 24 * 60 * 60 * 1000,
-      });
+      // res.cookie("token", token, {
+      //   httpOnly: true,
+      //   maxAge: 24 * 60 * 60 * 1000,
+      // });
 
       next();
     } catch (err) {
@@ -71,7 +87,7 @@ export const registerMiddleware = (userType: userTypes) => {
 };
 
 export const verifyToken = async (
-  req: Request & { email?: string, ver?: string },
+  req: Request & { email?: string; ver?: string },
   res: Response,
   next: Function
 ) => {
@@ -85,18 +101,19 @@ export const verifyToken = async (
   jwt.verify(
     String(token),
     process.env.JWT_SECRET || "secret",
-    (err, user: any ) => {
+    (err, user: any) => {
       if (err) {
         return res.status(401).json({ message: "Invalide token" });
       }
       req.email = user.email;
-      req.ver = user.ver
+      req.ver = user.ver;
     }
   );
 
   const user = await prisma.user.findUnique({
     where: { email: req.email },
-  })
-  if(user?.ver != req.ver) return res.status(401).json({ message: "Invalide token" });
+  });
+  if (user?.ver != req.ver)
+    return res.status(401).json({ message: "Invalide token" });
   next();
 };
