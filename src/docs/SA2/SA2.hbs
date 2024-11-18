@@ -1,85 +1,24 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      table {
-        width: 800px;
-
-        border-collapse: collapse;
-        font-family: "Arial";
-        table-layout: fixed;
-      }
-      th,
-      td {
-        border: 1px solid black;
-        /* padding: 8px; */
-        text-align: left;
-        height: 20px;
-      }
-
-      .no-border {
-        border: none;
-      }
-      .header {
-        text-align: center;
-        font-weight: bold;
-      }
-      .map {
-        height: 500px;
-      }
-
-      .gray {
-        background-color: #c0c0c0;
-      }
-      .right {
-        text-align: left;
-      }
-
-      .left {
-        text-align: left;
-      }
-      .separator {
-        border: none;
-        height: 20px;
-      }
-
-      .checkbox span {
-        height: 15px;
-        width: 15px !important;
-        border: 1px solid black;
-        padding: 0 7.5px;
-        margin: 0 20px;
-      }
-      .vide {
-        border: solid 1px gainsboro;
-        text-align: right;
-        border-right: black;
-      }
-      .vide2 {
-        border: solid 1px gainsboro;
-        text-align: right;
-        border-right: 1px solid black;
-        border-bottom: 1px solid black;
-      }
-      .vide3 {
-        border: solid 1px gainsboro;
-        text-align: left;
-        border-right: 1px solid black;
-        border-bottom: 1px solid black;
-      }
-      .bleu {
-        color: blue;
-      }
-      .multiline {
-        /* width: 600px; */
-        word-wrap: break-word;
-        white-space: normal;
-        vertical-align: top;
-        text-align: left;
-      }
+      table { width: 800px; border-collapse: collapse; font-family: "Arial";
+      table-layout: fixed; } th, td { border: 1px solid black; /* padding: 8px;
+      */ text-align: left; height: 20px; } .no-border { border: none; } .header
+      { text-align: center; font-weight: bold; } .map { height: 500px; } .gray {
+      background-color: #c0c0c0; } .right { text-align: left; } .left {
+      text-align: left; } .separator { border: none; height: 20px; } .checkbox
+      span { height: 15px; width: 15px !important; border: 1px solid black;
+      padding: 0 7.5px; margin: 0 20px; } .vide { border: solid 1px gainsboro;
+      text-align: right; border-right: black; } .vide2 { border: solid 1px
+      gainsboro; text-align: right; border-right: 1px solid black;
+      border-bottom: 1px solid black; } .vide3 { border: solid 1px gainsboro;
+      text-align: left; border-right: 1px solid black; border-bottom: 1px solid
+      black; } .bleu { color: blue; } .multiline { /* width: 600px; */
+      word-wrap: break-word; white-space: normal; vertical-align: top;
+      text-align: left; } .pagebreak { page-break-after: always; }
     </style>
   </head>
   <body>
@@ -249,7 +188,7 @@
       </tr>
       <tr>
         <td colspan="2" class="header left gray">Latitude:</td>
-        <td colspan="2">[{latitude_site_theorique}]</td>
+        <td colspan="2">{{latitude_site_theorique}}</td>
         <td colspan="2" class="header right gray">Latitude:</td>
         <td colspan="2">{{latitude_candidat}}</td>
       </tr>
@@ -312,15 +251,20 @@
       <tr>
         <td colspan="2" rowspan="4" class="vide3">
           Diagramme des obstacles<br />
-          Croquis sommaire <br />
-          Carte <br />
+          Croquis sommaire
+          <br />
+          Carte
+          <br />
           Photo d'ensemble
         </td>
         <td colspan="2">{{#if diag_obstacles}} x {{/if}}</td>
         <td colspan="2" rowspan="4" class="vide3">
-          Panoramique 360° <br />
-          Photo de local <br />
-          Photo de la terrasse <br />
+          Panoramique 360°
+          <br />
+          Photo de local
+          <br />
+          Photo de la terrasse
+          <br />
           Autres
         </td>
         <td colspan="2">{{#if panoramique}} x {{/if}}</td>
@@ -333,7 +277,7 @@
         <td colspan="2">{{#if carte}} x {{/if}}</td>
         <td colspan="2">{{#if photo_terasse}} x {{/if}}</td>
       </tr>
-      <tr>
+      <tr class="pagebreak">
         <td colspan="2">{{#if photo_ensemble}} x {{/if}}</td>
         <td colspan="2">{{#if autres}} x {{/if}}</td>
       </tr>
@@ -341,8 +285,11 @@
       <tr>
         <td colspan="2" class="header gray right">validation Acquisition:</td>
         <td colspan="6" class="checkbox">
-          Validé <span>{{#if acq_validated}} x {{/if}}</span> Rejeté
-          <span>{{#if acq_rejected}} x {{/if}}</span> Gelé
+          Validé
+          <span>{{#if acq_validated}} x {{/if}}</span>
+          Rejeté
+          <span>{{#if acq_rejected}} x {{/if}}</span>
+          Gelé
           <span>{{#if acq_gele}} x {{/if}}</span>
         </td>
       </tr>
@@ -361,8 +308,11 @@
       <tr>
         <td colspan="2" class="header gray right">validation Radio:</td>
         <td colspan="6" class="checkbox">
-          Validé <span>{{#if rad_validated}} x {{/if}}</span> Rejeté
-          <span>{{#if rad_rejected}} x {{/if}}</span> Gelé
+          Validé
+          <span>{{#if rad_validated}} x {{/if}}</span>
+          Rejeté
+          <span>{{#if rad_rejected}} x {{/if}}</span>
+          Gelé
           <span>{{#if rad_gele}} x {{/if}}</span>
         </td>
       </tr>

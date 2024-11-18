@@ -182,7 +182,9 @@
           <td class="header left gray" style="border-bottom: none">
             Autres informations:
           </td>
-          <td style="border-bottom: none; border-right: none">{{Autres_informations}}</td>
+          <td
+            style="border-bottom: none; border-right: none"
+          >{{Autres_informations}}</td>
           <td
             style="border-bottom: none; border-left: none; border-right: none"
           ></td>
@@ -289,7 +291,9 @@
           <td class="header left gray" style="border-bottom: none">
             Antennes présentes sur le site:
           </td>
-          <td style="border-bottom: none; border-right: none">{{Antennes_presentes_site}}</td>
+          <td
+            style="border-bottom: none; border-right: none"
+          >{{Antennes_presentes_site}}</td>
           <td
             style="border-bottom: none; border-left: none; border-right: none"
           ></td>
@@ -360,7 +364,7 @@
         </tr>
         <tr>
           <td class="header left gray">Type équipement:</td>
-          <td>{{Type équipement}}</td>
+          <td>{{Type_equipement}}</td>
           <td class="header gray left">Percement nécessaire:</td>
           <td>{{Percement_necessaire}}</td>
         </tr>
@@ -568,7 +572,7 @@
           <td class="header left gray">Alimentation disponible sur site:</td>
           <td>{{Alimentation_disponible_site}}</td>
           <td class="header gray left">Nouveau branchement nécessaire:</td>
-          <td>{{Nouveau_branchement_necessaire}}</td>
+          <td>{{Nouveau_branchement_necessaire_energie}}</td>
         </tr>
         <tr>
           <td class="header left gray">Capacité électrique:</td>
@@ -693,9 +697,9 @@
         </tr>
         <tr>
           <td class="header left gray">Type de BTS:</td>
-          <td style="text-align: center">RBS2102</td>
+          <td style="text-align: center">{{Type_bts}}</td>
           <td class="header gray left">Configuration BTS:</td>
-          <td style="text-align: center">4+4+4</td>
+          <td style="text-align: center">{{Config_bts}}</td>
         </tr>
         <tr>
           <td
@@ -728,15 +732,15 @@
         </tr>
         <tr>
           <td class="header left gray">HBA toit:</td>
-          <td>{{HBA toit_sec1}}</td>
-          <td>{{HBA toit_sec2}}</td>
-          <td>{{HBA toit_sec3}}</td>
+          <td>{{HBA_toit_sec1}}</td>
+          <td>{{HBA_toit_sec2}}</td>
+          <td>{{HBA_toit_sec3}}</td>
         </tr>
         <tr>
           <td class="header left gray">HBA sol:</td>
-          <td>{{HBA sol_sec1}}</td>
-          <td>{{HBA sol_sec2}}</td>
-          <td>{{HBA sol_sec3}}</td>
+          <td>{{HBA_sol_sec1}}</td>
+          <td>{{HBA_sol_sec2}}</td>
+          <td>{{HBA_sol_sec3}}</td>
         </tr>
         <tr>
           <td class="header left gray">Type d'antenne:</td>
@@ -824,9 +828,11 @@
           <td rowspan="2" class="header left gray">
             Nouveau support d'antenne nécessaire:
           </td>
-          <td rowspan="2" colspan="3">{{Nouveau_support_antenne_necessaire}}</td>
-        
-         
+          <td
+            rowspan="2"
+            colspan="3"
+          >{{Nouveau_support_antenne_necessaire}}</td>
+
         </tr>
         <!-- page 3 -->
         <!-- --------------------------------- -->
@@ -844,7 +850,7 @@
           <td class="header left gray">LS disponible sur site:</td>
           <td>{{LS_disponible_site}}</td>
           <td class="header gray left">Nouveau branchement nécessaire:</td>
-          <td>{{Nouveau_branchement_necessaire}}</td>
+          <td>{{Nouveau_branchement_necessaire_liaison}}</td>
         </tr>
         <tr>
           <td class="header left gray">
@@ -1082,9 +1088,10 @@
                 margin-bottom: 0px;
                 text-align: center;
               "
-            > {{#if Validation_Acquisition}}
-            x
-            {{/if}}</span>
+            >
+              {{#if Validation_Acquisition}}
+                x
+              {{/if}}</span>
           </td>
           <td style="padding: 0; border-right: none; border-left: none">
             Rejeté
@@ -1101,8 +1108,8 @@
                 text-align: center;
               "
             >{{#if non_Validation_Acquisition}}
-            x
-            {{/if}}</span>
+                x
+              {{/if}}</span>
           </td>
           <td style="padding: 0; border-left: none">
             Gelé
@@ -1119,8 +1126,8 @@
                 text-align: center;
               "
             >{{#if gele_Acquisition}}
-            x
-            {{/if}}</span>
+                x
+              {{/if}}</span>
           </td>
         </tr>
         <tr>
@@ -1128,7 +1135,7 @@
           <td>{{Responsable_Acq}}</td>
           <td class="no-border left">Signature:</td>
           <td class="no-border" style="border-right: 1px solid black">
-            <img src="{{Signature_Responsable_Acq}}" alt="Signature">
+            {{!-- <img src="{{Signature_Responsable_Acq}}" alt="Signature" /> --}}
           </td>
         </tr>
         <tr>
@@ -1177,8 +1184,8 @@
                 text-align: center;
               "
             >{{#if Validation_Radio}}
-            x
-            {{/if}}</span>
+                x
+              {{/if}}</span>
           </td>
           <td style="padding: 0; border-right: none; border-left: none">
             Rejeté
@@ -1195,8 +1202,8 @@
                 text-align: center;
               "
             >{{#if non_Validation_Radio}}
-            x
-            {{/if}}</span>
+                x
+              {{/if}}</span>
           </td>
           <td style="padding: 0; border-left: none">
             Gelé
@@ -1213,8 +1220,8 @@
                 text-align: center;
               "
             >{{#if gele_Radio}}
-            x
-            {{/if}}</span>
+                x
+              {{/if}}</span>
           </td>
         </tr>
         <tr>
@@ -1222,7 +1229,7 @@
           <td>{{Responsable_RF}}</td>
           <td class="no-border left">Signature:</td>
           <td class="no-border" style="border-right: 1px solid black">
-            <img src="{{Responsable_RF_Signature}}" alt="Signature">
+            {{!-- <img src="{{Responsable_RF_Signature}}" alt="Signature" /> --}}
           </td>
         </tr>
         <tr>
@@ -1274,8 +1281,8 @@
                 text-align: center;
               "
             >{{#if Validation_Construction}}
-            x
-            {{/if}}</span>
+                x
+              {{/if}}</span>
           </td>
           <td style="padding: 0; border-right: none; border-left: none">
             Rejeté
@@ -1292,8 +1299,8 @@
                 text-align: center;
               "
             >{{#if non_Validation_Construction}}
-            x
-            {{/if}}</span>
+                x
+              {{/if}}</span>
           </td>
           <td style="padding: 0; border-left: none">
             Gelé
@@ -1310,8 +1317,8 @@
                 text-align: center;
               "
             >{{#if gele_Construction}}
-            x
-            {{/if}}</span>
+                x
+              {{/if}}</span>
           </td>
         </tr>
         <tr>
@@ -1319,7 +1326,7 @@
           <td>{{Responsable_CW}}</td>
           <td class="no-border left">Signature:</td>
           <td class="no-border" style="border-right: 1px solid black">
-            <img src="{{Responsable_CW_Signature}}" alt="Signature">
+            {{!-- <img src="{{Responsable_CW_Signature}}" alt="Signature" /> --}}
           </td>
         </tr>
         <tr>
@@ -1369,8 +1376,8 @@
                 text-align: center;
               "
             >{{#if Validation_Transmission}}
-            x
-            {{/if}}</span>
+                x
+              {{/if}}</span>
           </td>
           <td style="padding: 0; border-right: none; border-left: none">
             Rejeté
@@ -1387,8 +1394,8 @@
                 text-align: center;
               "
             >{{#if non_Validation_Transmission}}
-            x
-            {{/if}}</span>
+                x
+              {{/if}}</span>
           </td>
           <td style="padding: 0; border-left: none">
             Gelé
@@ -1405,8 +1412,8 @@
                 text-align: center;
               "
             >{{#if gele_Transmission}}
-            x
-            {{/if}}</span>
+                x
+              {{/if}}</span>
           </td>
         </tr>
         <tr>
@@ -1414,7 +1421,7 @@
           <td>{{Responsable_Trans}}</td>
           <td class="no-border left">Signature:</td>
           <td class="no-border" style="border-right: 1px solid black">
-            <img src="{{Responsable_Trans_Signature}}" alt="Signature">
+            {{!-- <img src="{{Responsable_Trans_Signature}}" alt="Signature" /> --}}
           </td>
         </tr>
         <tr>
