@@ -39,7 +39,25 @@ export const createDocument = async (req: Request, res: Response) => {
       },
     });
 
-    await buildReport("SA1.hbs", document.data, document.id);
+    let template_file;
+    switch (type) {
+      case "SA1":
+        template_file = "SA1.hbs";
+        break;
+
+      case "SA2":
+        template_file = "SA2/SA2.hbs";
+        break;
+
+      case "SA3":
+        template_file = "SA3/SA3.hbs";
+        break;
+
+      default:
+        return res.status(404).json("Unknown document type.");
+    }
+
+    await buildReport(template_file, document.data, document.id);
     res.status(201).json(document);
   } catch (error: any) {
     console.log(error);

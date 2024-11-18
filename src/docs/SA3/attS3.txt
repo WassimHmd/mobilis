@@ -77,7 +77,7 @@ Dalles_beton_existantes
 Emplacements_BTS
 Espace_nacelle
 Alimentation_disponible_site
-Nouveau_branchement_necessaire
+Nouveau_branchement_necessaire_energie
 Capacite_electrique
 Longueur_cable_alimentation
 Section_cable_alimentation
@@ -144,7 +144,7 @@ Azimut_hub3_potentiel
 Adresse_hub3_potentiel
 Nouveau_support_antenne_necessaire
 LS_disponible_site
-Nouveau_branchement_necessaire
+Nouveau_branchement_necessaire_energie
 Localisation_boitier_raccordement
 Cheminement_LS
 Distance_repartiteur_boitier
@@ -177,3 +177,5 @@ Responsable_Trans
 Responsable_Trans_Signature
 Responsable_Trans_date
 Responsable_Trans_Commentaires
+Type_bts
+Config_bts
