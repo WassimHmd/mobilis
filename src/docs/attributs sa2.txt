@@ -1,0 +1,63 @@
+nom_du_site
+code_site
+qualite_radio
+candidat
+phase
+nom_negociateur
+mobile_negociateur
+societe_negociateur
+telephone_negociateur
+adresse_site
+commune
+wilaya
+nom_proprietaire
+telephone_proprietaire
+adresse_proprietaire
+mobile_proprietaire
+fax_proprietaire
+personne_a_contacter
+telephone_contact
+adresse_contact
+mobile_contact
+fax_contact
+autres_informations
+type_de_site
+hauteur
+nombre_etage
+annee_construction
+toit_plat
+local_disponible
+dimensions_local
+longitude_site_theorique
+longitude_candidat
+latitude_candidat
+source_coordonnees
+altitude
+zone
+environnement
+antennes_sur_site
+autres_sites_environnants
+type_propriete
+acces_24_24
+date_estimee_signature
+fiabilite_negociation
+diag_obstacles bool
+panoramique bool
+croquis_sommaire bool
+photo_local bool
+carte bool
+photo_terasse bool
+photo_ensemble bool
+autres bool
+acq_validated bool
+acq_rejected bool
+acq_gele bool
+responsable_acq
+data_validation_acq
+rad_validated bool
+rad_rejected bool
+rad_gele bool
+responsable_RF
+date_validation_RF
+negociateur_soustraitant
+date_negociateur_soustraitant
