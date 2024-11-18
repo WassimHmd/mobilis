@@ -1,0 +1,179 @@
+Nom_du_site
+Code_Site
+Qualité_radio
+Candidat
+Nom_Negociateur
+Mobile_Negociateur
+Societe
+Téléphone_Societe
+Adresse_du_site
+Ville
+Wilaya
+Nom_proprietaire
+Téléphone_proprietaire
+Adresse_proprietaire
+Mobile_proprietaire
+fax_proprietaire
+Personne_contacter
+Personne_contacter_Telephone
+Adresse_contact
+Mobile_contact
+Fax_contact
+Autres_informations
+Type_de_propriete
+Date_estimee_signature
+Fiabilite_negociation
+Longitude_theorique
+Longitude_Candidat
+Latitude_theorique
+Latitude_Candidat
+Reference_carte
+Altitude
+Source_coordonnees
+Zone
+Environnement
+Antennes_presentes_site
+Autres_sites_environnants
+Type_de_site
+Hauteur
+Cas_batiment
+Nombre_etages
+Annee_construction
+Toit_plat
+Local_disponible
+Dimensions_local
+Type équipement
+Percement_necessaire
+Dimensions_site
+Nombre_mats
+Commentaires_dimensions_structure_equipements
+Commentaires_generaux_construction
+Plans_As-built_existants
+Commentaires_degats_existants
+Restrictions_construction
+Commentaires_autre_opérateurs_existants
+Acces_24
+Acces_semaine
+Acces_Weekend
+Acces_semaine_pendant
+Acces_Weekend_pendant
+Itineraire_acces_site
+Commentaires_acces_emplacements
+Conditions_entee
+Boite_cles_installer
+Ascenseur
+Dimensions_poids_Ascenseur
+Monte_charges
+Dimensions_poids_Monte_charges
+Droit_passage_demande
+Commentaires_droit_passage
+Nouvelle_route_necessaire
+Longueur_estimee
+Disponible
+Nacelle_necessaire
+clôture_equipement_existante
+Nouvelle_clôture_necessaire
+Dalles_beton_existantes
+Emplacements_BTS
+Espace_nacelle
+Alimentation_disponible_site
+Nouveau_branchement_necessaire
+Capacite_electrique
+Longueur_cable_alimentation
+Section_cable_alimentation
+Localisation_branchement_principal
+Cheminement_cable_alimentation
+Commentaires_energie
+Mise_a_terre
+Longueur_MAT
+MAT_courant_AC
+Ceinturage_existant
+Barre_principale_MAT
+Descente_terre
+Emplacement_MAT_bâtiment_principal
+Commentaires_descente_terre
+Parafoudre_existant
+Necessaire
+Parafoudre_radioactif
+Parafoudre_radioactif_Commentaires
+Systeme_permanent_necessaire
+Systeme_temporaire_necessaire
+Description_systeme_permanent
+Description_système_temporaire
+Azimut_sec1
+Azimut_sec2
+Azimut_sec3
+Nombre_antennes_sec1
+Nombre_antennes_sec2
+Nombre_antennes_sec3
+HBA toit_sec1
+HBA toit_sec2
+HBA toit_sec3
+HBA sol_sec1
+HBA sol_sec2
+HBA sol_sec3
+Type_antenne_sec1
+Type_antenne_sec2
+Type_antenne_sec3
+TMA_sec1
+TMA_sec2
+TMA_sec3
+Tilt_electrique_sec1
+Tilt_electrique_sec2
+Tilt_electrique_sec3
+Tilt_mecanique_sec1
+Tilt_mecanique_sec2
+Tilt_mecanique_sec3
+Longueur_feeder_sec1
+Longueur_feeder_sec2
+Longueur_feeder_sec3
+Diametre_feeder_sec1
+Diametre_feeder_sec2
+Diametre_feeder_sec3
+Combiner_sec1
+Combiner_sec2
+Combiner_sec3
+Visibilte_hub1_potentiel
+Azimut_hub1_potentiel
+Adresse_hub1_potentiel
+Visibilte_hub2_potentiel
+Azimut_hub2_potentiel
+Adresse_hub2_potentiel
+Visibilte_hub3_potentiel
+Azimut_hub3_potentiel
+Adresse_hub3_potentiel
+Nouveau_support_antenne_necessaire
+LS_disponible_site
+Nouveau_branchement_necessaire
+Localisation_boitier_raccordement
+Cheminement_LS
+Distance_repartiteur_boitier
+Distance_boitier_BTS
+#if Validation_Acquisition
+#if non_Validation_Acquisition
+#if gele_Acquisition
+Responsable_Acq
+Signature_Responsable_Acq
+Responsable_Acq_date
+Responsable_Acq_Commentaires
+#if Validation_Radio
+#if non_Validation_Radio
+#if gele_Radio
+Responsable_RF
+Responsable_RF_Signature
+Responsable_RF_date
+Responsable_RF_Commentaires
+#if Validation_Construction
+#if non_Validation_Construction
+#if gele_Construction
+Responsable_CW
+Responsable_CW_Signature
+Responsable_CW_date
+Responsable_CW_Commentaires
+#if Validation_Transmission
+#if non_Validation_Transmission
+#if gele_Transmission
+Responsable_Trans
+Responsable_Trans_Signature
+Responsable_Trans_date
+Responsable_Trans_Commentaires
