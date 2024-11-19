@@ -1483,7 +1483,7 @@
           </td>
         </tr>
         <tr class="separator"></tr>
- <!-- sidaliiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii -->
+        <!-- sidaliiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii -->
         <tr>
           <td colspan="12" class="minitd header right center">
             Aspect général
@@ -1721,7 +1721,7 @@
           </td>
           <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
         </tr>
-       
+
         <tr>
           <td colspan="12" class="minitd header right">Aspect général</td>
           <td colspan="3" class="minitd center grey3"></td>
@@ -3611,43 +3611,56 @@
           </td>
         </tr>
         <tr class="separator"></tr>
-<!-- tysiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiir -->
+        <!-- tysiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiir -->
+        <!-- tysiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiir -->
+        <!-- tysiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiir -->
+        <!-- tysiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiir -->
+        <!-- tysiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiir -->
+        <!-- tysiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiir -->
+        <!-- tysiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiir -->
+        <!-- tysiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiir -->
+        <!-- tysiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiir -->
+        <!-- tysiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiir -->
+        <!-- tysiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiir -->
+        <!-- tysiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiir -->
+        <!-- tysiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiir -->
+
         <tr>
           <td colspan="12" class="minitd right">- Mesure phase 1</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Mesure_phase_1_Coffret_SONELGAZ}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Mesure_phase_1_Coffret_SONELGAZ}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if So_Mesure_phase_1_Coffret_SONELGAZ}} x {{/if}}
           </td>
           <td colspan="12" class="minitd left">VALEUR :</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Mesure phase 2</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Mesure_phase_2_Coffret_SONELGAZ}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Mesure_phase_2_Coffret_SONELGAZ}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Mesure_phase_2_Coffret_SONELGAZ}} x {{/if}}
           </td>
           <td colspan="12" class="minitd left">VALEUR :</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Mesure phase 3</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Mesure_phase_3_Coffret_SONELGAZ}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Mesure_phase_3_Coffret_SONELGAZ}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Mesure_phase_3_Coffret_SONELGAZ}} x {{/if}}
           </td>
           <td colspan="12" class="minitd left">VALEUR :</td>
         </tr>
@@ -3656,7 +3669,9 @@
           <td colspan="1" class="minitd">NC</td>
           <td colspan="1" class="minitd">C</td>
           <td colspan="1" class="minitd">SO</td>
-          <td colspan="12" class="minitd header right center">OBSERVATIONS</td>
+          <td colspan="12" class="minitd header right center">
+            {{TERRE_OBSERVATIONS}}
+          </td>
         </tr>
 
         <tr>
@@ -3664,7 +3679,9 @@
             Shelter ou Local Technique
           </td>
           <td colspan="3" class="minitd grey3"></td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Shelter_ou_Local_Technique_TERRE_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
@@ -3672,376 +3689,414 @@
           </td>
 
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Barrette_de_terre_principale_sur_isolateurs_TERRE}} x
+            {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Barrette_de_terre_principale_sur_isolateurs_TERRE}} x
+            {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Barrette_de_terre_principale_sur_isolateurs_TERRE}} x
+            {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Barrette_de_terre_principale_sur_isolateurs_TERRE_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Barrette de terre sous trémie sur isolateurs
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Barrette_de_terre_sous_trémie_sur_isolateurs_TERRE}} x
+            {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Barrette_de_terre_sous_trémie_sur_isolateurs_TERRE}} x
+            {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Barrette_de_terre_sous_trémie_sur_isolateurs_TERRE}} x
+            {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Barrette_de_terre_sous_trémie_sur_isolateurs_TERRE_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Air conditionné</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Air_conditionné_TERRE}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Air_conditionné_TERRE}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Air_conditionné_TERRE}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Air_conditionné_TERRE_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Trémie</td>
-          <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="1" class="minitd">{{#if NC_Trémie_TERRE}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if C_Trémie_TERRE}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if SO_Trémie_TERRE}} x {{/if}}</td>
+          <td colspan="12" class="minitd">{{Trémie_TERRE_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Chemin de câble</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Chemin_de_câble_TERRE}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Chemin_de_câble_TERRE}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Chemin_de_câble_TERRE}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Chemin_de_câble_TERRE_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- TGBT</td>
-          <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="1" class="minitd">{{#if NC_TGBT_TERRE}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if C_TGBT_TERRE}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if SO_TGBT_TERRE}} x {{/if}}</td>
+          <td colspan="12" class="minitd">{{TGBT_TERRE_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Porte TGBT</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Porte_TGBT_TERRE}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Porte_TGBT_TERRE}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Porte_TGBT_TERRE}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Porte_TGBT_TERRE_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Porte shelter</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Porte_shelter_TERRE}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Porte_shelter_TERRE}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Porte_shelter_TERRE}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Porte_shelter_TERRE_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Présence isolateur ceinturage
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Présence_isolateur_ceinturage_TERRE}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Présence_isolateur_ceinturage_TERRE}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Présence_isolateur_ceinturage_TERRE}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Présence_isolateur_ceinturage_TERRE_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Section de câbles adaptés</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Section_de_câbles_adaptés_TERRE}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Section_de_câbles_adaptés_TERRE}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Section_de_câbles_adaptés_TERRE}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Section_de_câbles_adaptés_TERRE_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Sertissage cosses</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Sertissage_cosses_TERRE}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Sertissage_cosses_TERRE}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Sertissage_cosses_TERRE}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Sertissage_cosses_TERRE_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd header right">Mats & Pôles</td>
           <td colspan="3" class="minitd grey3"></td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Mats_&_Pôles_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Structure mats & pôles</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Structure_mats_&_pôles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Structure_mats_&_pôles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Structure_mats_&_pôles}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Structure_mats_&_pôles_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Support d’antennes</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_support_d’antennes_Mats_&_Pôles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_support_d’antennes_Mats_&_Pôles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_support_d’antennes_Mats_&_Pôles}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{support_d’antennes_Mats_&_Pôles_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Support FH</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Support_FH_Mats_&_Pôles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Support_FH_Mats_&_Pôles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Support_FH_Mats_&_Pôles}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Support_FH_Mats_&_Pôles_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Présence barrette de terre
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Présence_barrette_de_terre_Mats_&_Pôles }} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Présence_barrette_de_terre_Mats_&_Pôles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Présence_barrette_de_terre_Mats_&_Pôles}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Présence_barrette_de_terre_Mats_&_Pôles_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Cheminement câble de terre
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Cheminement_câble_de_terre_Mats_&_Pôles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Cheminement_câble_de_terre_Mats_&_Pôles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Cheminement_câble_de_terre_Mats_&_Pôles}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Cheminement_câble_de_terre_Mats_&_Pôles_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Fixation câble de terre</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Fixation_câble_de_terre_Mats_&_Pôles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Fixation_câble_de_terre_Mats_&_Pôles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Fixation_câble_de_terre_Mats_&_Pôles}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Fixation_câble_de_terre_Mats_&_Pôles_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Section de câbles adaptés</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Section_de_câbles_adaptés_Mats_&_Pôles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Section_de_câbles_adaptés_Mats_&_Pôles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Section_de_câbles_adaptés_Mats_&_Pôles}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Section_de_câbles_adaptés_Mats_&_Pôles_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Sertissage cosses</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Sertissage_cosses_Mats_&_Pôles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Sertissage_cosses_Mats_&_Pôles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Sertissage_cosses_Mats_&_Pôles}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Sertissage_cosses_Mats_&_Pôles_OBSERVATIONS}}
+          </td>
         </tr>
 
         <tr>
           <td colspan="12" class="minitd header right">Pylône</td>
           <td colspan="3" class="minitd grey3"></td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Pylône_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Structure pylône</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Structure_pylône_pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Structure_pylône_pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Structure_pylône_pylône}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Structure_pylône_pylône_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Support d'antennes radio</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Support_d'antennes_radio_pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Support_d'antennes_radio_pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Support_d'antennes_radio_pylône}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Support_d'antennes_radio_pylône_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Support FH</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Support_FH_pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Support_FH_pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Support_FH_pylône}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Support_FH_pylône_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Echelle</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Echelle_Pylône}} x {{/if}}
           </td>
+          <td colspan="1" class="minitd">{{#if C_Echelle_Pylône}} x {{/if}}</td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Echelle_Pylône}} x {{/if}}
           </td>
-          <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Echelle_Pylône_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Présence barette de terre sous pylône
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Présence_barette_de_terre_sous_pylône_pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Présence_barette_de_terre_sous_pylône_pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Présence_barette_de_terre_sous_pylône_pylône}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Présence_barette_de_terre_sous_pylône_pylône_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Cheminement câble de terre
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Cheminement_câble_de_terre_pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Cheminement_câble_de_terre_pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Cheminement_câble_de_terre_pylône}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Cheminement_câble_de_terre_pylône_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Section de câbles adaptés</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Section_de_ecâbles_adaptés_pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Section_de_ecâbles_adaptés_pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Section_de_ecâbles_adaptés_pylône}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Section_de_ecâbles_adaptés_pylône_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Sertissage cosses</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Sertissage_cosses_pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Sertissage_cosses_pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Sertissage_cosses_pylône}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Sertissage_cosses_pylône_OBSERVATIONS}}
+          </td>
         </tr>
 
         <tr>
@@ -4049,65 +4104,79 @@
           <td colspan="1" class="minitd grey3"></td>
           <td colspan="1" class="minitd grey3"></td>
           <td colspan="1" class="minitd grey3"></td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Chemin_de_câbles_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - support du chemin de câble
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_support_du_chemin_de_câble_Chemin_de_câbles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_support_du_chemin_de_câble_Chemin_de_câbles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_support_du_chemin_de_câble_Chemin_de_câbles}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{support_du_chemin_de_câble_Chemin_de_câbles_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Barrette de terre sur chemin de câble
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Barrette_de_terre_sur_chemin_de_câble_Chemin_de_câbles}} x
+            {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Barrette_de_terre_sur_chemin_de_câble_Chemin_de_câbles}} x
+            {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Barrette_de_terre_sur_chemin_de_câble_Chemin_de_câbles}} x
+            {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Barrette_de_terre_sur_chemin_de_câble_Chemin_de_câbles_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Liaison équipotentielle</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Liaison_équipotentielle_Chemin_de_câbles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Liaison_équipotentielle_Chemin_de_câbles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Liaison_équipotentielle_Chemin_de_câbles}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Liaison_équipotentielle_Chemin_de_câbles_OBSERVATIONS}}
+          </td>
         </tr>
         <tr class="page-break">
           <td colspan="12" class="minitd right">
             - Liaison directe entre barrettes de terre
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Liaison_directe_entre_barrettes_de_terre_Chemin_de_câbles}}
+            x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Liaison_directe_entre_barrettes_de_terre_Chemin_de_câbles}}
+            x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Liaison_directe_entre_barrettes_de_terre_Chemin_de_câbles}}
+            x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Liaison_directe_entre_barrettes_de_terre_Chemin_de_câbles_OBSERVATIONS}}
+          </td>
         </tr>
         <tr style="position: relative">
           <td style="position: absolute" class="no-border">
@@ -4164,106 +4233,120 @@
         <tr>
           <td colspan="12" class="minitd right">- Section de câbles adaptés</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Section_de_câbles_adaptés_Chemin_de_câbles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Section_de_câbles_adaptés_Chemin_de_câbles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Section_de_câbles_adaptés_Chemin_de_câbles}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Section_de_câbles_adaptés_Chemin_de_câbles_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Sertissage cosses</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Sertissage_cosses_Chemin_de_câbles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Sertissage_cosses_Chemin_de_câbles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Sertissage_cosses_Chemin_de_câbles}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Sertissage_cosses_Chemin_de_câbles_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd header right">- Terre site</td>
           <td colspan="1" class="minitd grey3"></td>
           <td colspan="1" class="minitd grey3"></td>
           <td colspan="1" class="minitd grey3"></td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Terre_site_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Section : V/J 50 mm² monobrin
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Section_:_V/J_50_mm²_monobrin}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Section_:_V/J_50_mm²_monobrin}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Section_:_V/J_50_mm²_monobrin}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Section_:_V/J_50_mm²_monobrin_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Cheminement terre</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Cheminement_terre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Cheminement_terre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Cheminement_terre}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Cheminement_terre_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Fixation câble de terre</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Fixation_câble_de_terre_terre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Fixation_câble_de_terre_terre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Fixation_câble_de_terre_terre_site}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Fixation_câble_de_terre_terre_site_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Dimension colliers adaptée
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Dimension_colliers_adaptée_terre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Dimension_colliers_adaptée_terre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Dimension_colliers_adaptée_terre_site}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Dimension_colliers_adaptée_terre_site_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Dimension des piquets de terre
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Dimension_des_piquets_de_terre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Dimension_des_piquets_de_terre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Dimension_des_piquets_de_terre}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Dimension_des_piquets_de_terre_OBSERVATIONS}}
+          </td>
         </tr>
 
         <tr>
@@ -4271,69 +4354,77 @@
             - Serrage du câble 50 mm² nu sur piquet de terre
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Serrage_du_câble_50_mm²_nu_sur_piquet_de_terre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Serrage_du_câble_50_mm²_nu_sur_piquet_de_terre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Serrage_du_câble_50_mm²_nu_sur_piquet_de_terre}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Serrage_du_câble_50_mm²_nu_sur_piquet_de_terre_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Section de câbles adaptés</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Section_de_câbles_adaptés_Terre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Section_de_câbles_adaptés_Terre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Section_de_câbles_adaptés_Terre_site}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{_Section_de_câbles_adaptés_Terre_site_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Sertissage cosses</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Sertissage_cosses_Terre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Sertissage_cosses_Terre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Sertissage_cosses_Terre_site}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Sertissage_cosses_Terre_site_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Serrage visserie</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Serrage_visserie}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Serrage_visserie}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Serrage_visserie}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Serrage_visserie_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Dimension barrettes de terre
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Dimension_barrettes_de_terre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Dimension_barrettes_de_terre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Dimension_barrettes_de_terre}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Dimension_barrettes_de_terre_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd header right">
@@ -4345,15 +4436,17 @@
         <tr>
           <td colspan="12" class="minitd right">- Autre</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Autre_Mesure_de_terre_<_5_Ohms}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Autre_Mesure_de_terre_<_5_Ohms}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Autre_Mesure_de_terre_<_5_Ohms}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Autre_Mesure_de_terre_<_5_Ohms_OBSERVATIONS}}
+          </td>
         </tr>
         <tr class="borderdered-tr">
           <td colspan="12" class="minitd header right">8 - FOUDRE</td>
@@ -4362,285 +4455,316 @@
           <td colspan="1" class="minitd">SO</td>
           <td colspan="12" class="minitd header right center">OBSERVATIONS</td>
         </tr>
+
+        <!-- TO DO -->
         <tr>
-          <td colspan="12" class="minitd header right">- Pylône</td>
+          <td colspan="12" class="minitd header right">Pylône</td>
           <td colspan="3" class="minitd grey3"></td>
-          <td colspan="12" class="minitd header"></td>
+          <td colspan="12" class="minitd">{{Pylône_Observations}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Présence paratonnerre</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Presence_Paratonnerre_Pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Presence_Paratonnerre_Pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Presence_Paratonnerre_Pylône}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Presence_Paratonnerre_Pylône_Observations}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Type de paratonnerre</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Type_Paratonnerre_Pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Type_Paratonnerre_Pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Type_Paratonnerre_Pylône}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">MODELE :</td>
+          <td colspan="12" class="minitd">
+            MODELE: {{Modele_Paratonnerre_Pylône}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Matière</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Matiere_Pylône}} x {{/if}}
           </td>
+          <td colspan="1" class="minitd">{{#if C_Matiere_Pylône}} x {{/if}}</td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Matiere_Pylône}} x {{/if}}
           </td>
-          <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Matiere_Pylône_Observations}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Nombre de paratonnerre</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Nombre_Paratonnerre_Pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Nombre_Paratonnerre_Pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Nombre_Paratonnerre_Pylône}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Nombre_Paratonnerre_Pylône_Observations}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Cône de protection à 120°</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Cone_Protection_Pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Cone_Protection_Pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Cone_Protection_Pylône}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Cone_Protection_Pylône_Observations}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Fixation sur son support</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Fixation_Support_Pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Fixation_Support_Pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Fixation_Support_Pylône}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Fixation_Support_Pylône_Observations}}
+          </td>
         </tr>
+
         <tr>
           <td colspan="12" class="minitd right">- Liaison avec 30X2</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Liaison_30X2_Pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Liaison_30X2_Pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Liaison_30X2_Pylône}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Liaison_30X2_Pylône_Observations}}
+          </td>
         </tr>
         <tr>
-          <td colspan="12" class="minitd right">-Implantation</td>
+          <td colspan="12" class="minitd right">- Implantation</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Implantation_Pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Implantation_Pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Implantation_Pylône}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Implantation_Pylône_Observations}}
+          </td>
         </tr>
         <tr>
-          <td colspan="12" class="minitd right">-Présence isolateur</td>
+          <td colspan="12" class="minitd right">- Présence isolateur</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Presence_Isolateur_Pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Presence_Isolateur_Pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Presence_Isolateur_Pylône}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Presence_Isolateur_Pylône_Observations}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Protection du site assurée
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Protection_Site_Pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Protection_Site_Pylône}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Protection_Site_Pylône}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Protection_Site_Pylône_Observations}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd header right">Foudre site</td>
           <td colspan="3" class="minitd grey3"></td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Foudre_Site_Observations}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Conducteur 30X2 ou 50 mm² multibrin
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Conducteur_30X2_Foudre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Conducteur_30X2_Foudre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Conducteur_30X2_Foudre}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd header"></td>
+          <td colspan="12" class="minitd">
+            {{Conducteur_30X2_Foudre_Observations}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Cheminement 30X2 ou 50 mm² multibrin
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Cheminement_30X2_Foudre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Cheminement_30X2_Foudre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Cheminement_30X2_Foudre}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Cheminement_30X2_Foudre_Observations}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Fixation sur pylône</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Fixation_Pylône_Foudre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Fixation_Pylône_Foudre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Fixation_Pylône_Foudre}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Fixation_Pylône_Foudre_Observations}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Fixation sur massif</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Fixation_Massif_Foudre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Fixation_Massif_Foudre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Fixation_Massif_Foudre}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Fixation_Massif_Foudre_Observations}}
+          </td>
         </tr>
+
+        <!-- NOW -->
         <tr>
           <td colspan="12" class="minitd right">- Puits de foudre / regard</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Puits_Foudre_Regard}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Puits_Foudre_Regard}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Puits_Foudre_Regard}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Puits_Foudre_Regard_Observations}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Liaison équipotentielle</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Liaison_Equipotentielle}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Liaison_Equipotentielle}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Liaison_Equipotentielle}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Liaison_Equipotentielle_Observations}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Barrette de coupure liaison équipotentielle
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Barrette_Coupure}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Barrette_Coupure}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Barrette_Coupure}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Barrette_Coupure_Observations}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Patte d’oie (valeur inférieure ou égale à 5 ohms)
           </td>
-          <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="1" class="minitd">{{#if NC_Patte_Oie}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if C_Patte_Oie}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if SO_Patte_Oie}} x {{/if}}</td>
+          <td colspan="12" class="minitd">{{Patte_Oie_Observations}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Dimension des piquets</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Dimension_Piquets}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Dimension_Piquets}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Dimension_Piquets}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Dimension_Piquets_Observations}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Connexion entre piquets</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Connexion_Piquets}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Connexion_Piquets}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Connexion_Piquets}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Connexion_Piquets_Observations}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
@@ -4648,37 +4772,39 @@
             0.60m
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Profondeur_Enfouissement}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Profondeur_Enfouissement}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Profondeur_Enfouissement}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Profondeur_Enfouissement_Observations}}
+          </td>
         </tr>
-
         <tr>
           <td colspan="12" class="minitd right">- Shelter & Local Technique</td>
           <td colspan="3" class="minitd grey3"></td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Shelter_Local_Technique_Observations}}
+          </td>
         </tr>
         <tr class="page-break">
           <td colspan="12" class="minitd right">
             - Barrette de terre principale sur isolateurs
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Barrette_Terre}} x {{/if}}
           </td>
+          <td colspan="1" class="minitd">{{#if C_Barrette_Terre}} x {{/if}}</td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Barrette_Terre}} x {{/if}}
           </td>
-          <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Barrette_Terre_Observations}}</td>
         </tr>
+        <!-- NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOW  -->
         <tr style="position: relative">
           <td style="position: absolute" class="no-border">
             <img src="logo.png" alt="mobilis logo" style="width: 120px" />
@@ -4730,319 +4856,355 @@
           </td>
         </tr>
         <tr class="separator"></tr>
-
+        <!-- TEYSSIR -->
         <tr>
           <td colspan="12" class="minitd right">
             - Barrette de terre sous trémie sur isolateurs
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Barrette_de_terre_sous_trémie_sur_isolateurs_Foudre_site}}
+            x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Barrette_de_terre_sous_trémie_sur_isolateurs_Foudre_site}} x
+            {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Barrette_de_terre_sous_trémie_sur_isolateurs_Foudre_site}}
+            x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Barrette_de_terre_sous_trémie_sur_isolateurs_Foudre_site_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Air conditionné</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Air_conditionné_Foudre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Air_conditionné_Foudre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Air_conditionné_Foudre_site}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Air_conditionné_Foudre_site_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Trémie</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Trémie_Foudre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Trémie_Foudre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Trémie_Foudre_site}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Trémie_Foudre_site_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Chemin de câble</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Chemin_de_câble_Foudre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Chemin_de_câble_Foudre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Chemin_de_câble_Foudre_site}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Chemin_de_câble_Foudre_site_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- TGBT</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_TGBT_Foudre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_TGBT_Foudre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_TGBT_Foudre_site}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{TGBT_Foudre_site_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Porte TGBT</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Porte_TGBT_Foudre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Porte_TGBT_Foudre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Porte_TGBT_Foudre_site}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Porte_TGBT_Foudre_site_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Porte shelter ou local technique
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Porte_shelter_Foudre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Porte_shelter_Foudre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Porte_shelter_Foudre_site}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Porte_shelter_Foudre_site_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Section de câbles adaptés</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Section_câbles_Foudre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Section_câbles_Foudre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Section_câbles_Foudre_site}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Section_câbles_Foudre_site_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Sertissage cosses</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Sertissage_cosses_Foudre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Sertissage_cosses_Foudre_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Sertissage_cosses_Foudre_site}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Sertissage_cosses_Foudre_site_OBSERVATIONS}}
+          </td>
         </tr>
+
         <tr>
           <td colspan="12" class="minitd header right">Mâts</td>
           <td colspan="1" class="minitd grey3"></td>
           <td colspan="1" class="minitd grey3"></td>
           <td colspan="1" class="minitd grey3"></td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Mâts_OBSERVATIONS}}</td>
         </tr>
+
         <tr>
           <td colspan="12" class="minitd right">- Structure mâts</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Structure_mâts}} x {{/if}}
           </td>
+          <td colspan="1" class="minitd">{{#if C_Structure_mâts}} x {{/if}}</td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Structure_mâts}} x {{/if}}
           </td>
-          <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Structure_mâts_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Support d’antennes</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Support_antennes}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Support_antennes}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Support_antennes}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Support_antennes_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Support FH</td>
-          <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="1" class="minitd">{{#if NC_Support_FH}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if C_Support_FH}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if SO_Support_FH}} x {{/if}}</td>
+          <td colspan="12" class="minitd">{{Support_FH_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Présence barrette de terre
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Barrette_de_terre_mâts}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Barrette_de_terre_mâts}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Barrette_de_terre_mâts}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Barrette_de_terre_mâts_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Cheminement câble de terre
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Cheminement_câble_terre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Cheminement_câble_terre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Cheminement_câble_terre}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Cheminement_câble_terre_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Fixation câble de terre</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Fixation_câble_terre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Fixation_câble_terre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Fixation_câble_terre}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Fixation_câble_terre_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Section de câbles adaptés</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Section_câbles_adaptés}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Section_câbles_adaptés}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Section_câbles_adaptés}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Section_câbles_adaptés_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Sertissage cosses</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Sertissage_cosses_mâts}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Sertissage_cosses_mâts}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Sertissage_cosses_mâts}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Sertissage_cosses_mâts_OBSERVATIONS}}
+          </td>
         </tr>
+
         <tr>
           <td colspan="12" class="minitd header right">Chemin de câbles</td>
           <td colspan="1" class="minitd grey3"></td>
           <td colspan="1" class="minitd grey3"></td>
           <td colspan="1" class="minitd grey3"></td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Chemin_de_câbles_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Barrette de terre sur chemin de câble
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Barrette_de_terre_sur_chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Barrette_de_terre_sur_chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Barrette_de_terre_sur_chemin_de_câble}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Barrette_de_terre_sur_chemin_de_câble_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Liaison équipotentielle</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Liaison_équipotentielle}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Liaison_équipotentielle}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Liaison_équipotentielle}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Liaison_équipotentielle_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Liaison directe entre barrettes de terre
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Liaison_directe_barrettes_de_terre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Liaison_directe_barrettes_de_terre}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Liaison_directe_barrettes_de_terre}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Liaison_directe_barrettes_de_terre_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Section de câbles adaptés</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Section_câbles_adaptés_Chemin_de_câbles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Section_câbles_adaptés_Chemin_de_câbles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Section_câbles_adaptés_Chemin_de_câbles}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Section_câbles_adaptés_Chemin_de_câbles_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Sertissage cosses</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Sertissage_cosses_Chemin_de_câbles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Sertissage_cosses_Chemin_de_câbles}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Sertissage_cosses_Chemin_de_câbles}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Sertissage_cosses_Chemin_de_câbles_OBSERVATIONS}}
+          </td>
         </tr>
+
+        <!-- wooooooooooooooooooooo -->
         <tr class="borderdered-tr">
           <td colspan="12" class="minitd header right">9 - CHEMIN DE CABLES</td>
           <td colspan="1" class="minitd">NC</td>
@@ -5052,217 +5214,241 @@
         </tr>
 
         <tr>
-          <td colspan="12" class="minitd header right">
-            - Chemin de câble vertical
+          <td colspan="12" class="minitd right">- Chemin de câble vertical</td>
+          <td colspan="1" class="minitd">
+            {{#if NC_Chemin_de_câble_vertical}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Chemin_de_câble_vertical}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Chemin_de_câble_vertical}} x {{/if}}
           </td>
-          <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+          <td colspan="12" class="minitd">
+            {{Chemin_de_câble_vertical_OBSERVATIONS}}
           </td>
-          <td colspan="12" class="minitd header"></td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Fixation tous les mètres</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Fixation_tous_les_mètres}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Fixation_tous_les_mètres}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Fixation_tous_les_mètres}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Fixation_tous_les_mètres_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
-            - <span class="header">Chemin de câble horizontal</span> (entre
-            pylône et shelter)
+            - Chemin de câble horizontal (entre pylône et shelter)
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Chemin_de_câble_horizontal}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Chemin_de_câble_horizontal}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Chemin_de_câble_horizontal}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Chemin_de_câble_horizontal_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Dimensions</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Dimensions_Chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Dimensions_Chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Dimensions_Chemin_de_câble}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Dimensions_Chemin_de_câble_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Cheminement</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Cheminement_Chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Cheminement_Chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Cheminement_Chemin_de_câble}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Cheminement_Chemin_de_câble_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Fixations</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Fixations_Chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Fixations_Chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Fixations_Chemin_de_câble}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Fixations_Chemin_de_câble_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Courbes adéquates pour section feeder
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Courbes_adéquates_feeder}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Courbes_adéquates_feeder}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Courbes_adéquates_feeder}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Courbes_adéquates_feeder_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Découpes</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Découpes_Chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Découpes_Chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Découpes_Chemin_de_câble}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Découpes_Chemin_de_câble_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
-          <td colspan="12" class="minitd right">- Ebavurage</td>
+          <td colspan="12" class="minitd right">- Ébavurage</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Ébavurage_Chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Ébavurage_Chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Ébavurage_Chemin_de_câble}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Ébavurage_Chemin_de_câble_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Protection galvanisée sur découpes
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Protection_galvanisée}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Protection_galvanisée}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Protection_galvanisée}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Protection_galvanisée_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Joint de protection aux passages de câbles
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Joint_protection}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Joint_protection}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Joint_protection}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Joint_protection_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Capots</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Capots_Chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Capots_Chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Capots_Chemin_de_câble}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Capots_Chemin_de_câble_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Fixation capot avec colliers métalliques
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Fixation_capot}} x {{/if}}
           </td>
+          <td colspan="1" class="minitd">{{#if C_Fixation_capot}} x {{/if}}</td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Fixation_capot}} x {{/if}}
           </td>
-          <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Fixation_capot_OBSERVATIONS}}</td>
         </tr>
+
         <tr>
-          <td colspan="12" class="minitd right">- Support métallique</td>
+          <td colspan="12" class="minitd header right">- Support métallique</td>
           <td colspan="3" class="minitd grey3"></td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Support_métallique_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Dimensions</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Dimensions_Support_métallique}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Dimensions_Support_métallique}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Dimensions_Support_métallique}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Dimensions_Support_métallique_OBSERVATIONS}}
+          </td>
         </tr>
         <tr class="page-break">
           <td colspan="12" class="minitd right">- Positionnement</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Positionnement_Support_métallique}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Positionnement_Support_métallique}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Positionnement_Support_métallique}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Positionnement_Support_métallique_OBSERVATIONS}}
+          </td>
         </tr>
         <tr style="position: relative">
           <td style="position: absolute" class="no-border">
@@ -5299,6 +5485,7 @@
             Algérie Telecom Mobile -MOBILIS-
           </td>
         </tr>
+
         <tr>
           <td
             colspan="25"
@@ -5319,119 +5506,138 @@
         <tr>
           <td colspan="12" class="minitd right">- Fixation</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Fixation_Support_métallique}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Fixation_Support_métallique}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Fixation_Support_métallique}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Fixation_Support_métallique_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Isolation du support</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Isolation_du_support_Support_métallique}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Isolation_du_support_Support_métallique}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Isolation_du_support_Support_métallique}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Isolation_du_support_Support_métallique_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd header right">
             - Haubans pour le chemin de câble
           </td>
           <td colspan="3" class="minitd grey3"></td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Haubans_Chemin_de_câbles_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Dimensions</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Dimensions_Hauban_spour_le_chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Dimensions_Hauban_spour_le_chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Dimensions_Hauban_spour_le_chemin_de_câble}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Dimensions_Hauban_spour_le_chemin_de_câble_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Positionnement</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Positionnement_Hauban_spour_le_chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Positionnement_Hauban_spour_le_chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Positionnement_Hauban_spour_le_chemin_de_câble}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Positionnement_Hauban_spour_le_chemin_de_câble_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Fixation</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Fixation_Hauban_spour_le_chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Fixation_Hauban_spour_le_chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Fixation_Hauban_spour_le_chemin_de_câble}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Fixation_Hauban_spour_le_chemin_de_câble_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Ancrage</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Ancrage_Hauban_spour_le_chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Ancrage_Hauban_spour_le_chemin_de_câble}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Ancrage_Hauban_spour_le_chemin_de_câble}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Ancrage_Hauban_spour_le_chemin_de_câble_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd header right">- Aspect général</td>
           <td colspan="3" class="minitd grey3"></td>
-
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Aspect_général_Chemin_de_câbles_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Finition</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Finition_Chemin_de_câbles_Aspect_général}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Finition_Chemin_de_câbles_Aspect_général}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Finition_Chemin_de_câbles_Aspect_général}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Finition_Chemin_de_câbles_Aspect_général_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Oxydation</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Oxydation_Chemin_de_câbles_Aspect_général}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Oxydation_Chemin_de_câbles_Aspect_général}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Oxydation_Chemin_de_câbles_Aspect_général}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Oxydation_Chemin_de_câbles_Aspect_général_OBSERVATIONS}}
+          </td>
         </tr>
 
         <tr class="borderdered-tr">
@@ -5448,46 +5654,46 @@
           <td colspan="1" class="minitd grey3"></td>
           <td colspan="1" class="minitd grey3"></td>
           <td colspan="1" class="minitd grey3"></td>
-          <td colspan="12" class="minitd header"></td>
+          <td colspan="12" class="minitd header">
+            {{Câble_d’assurage_vertical_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Cabloc</td>
-          <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="1" class="minitd">{{#if NC_Cabloc}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if C_Cabloc}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if SO_Cabloc}} x {{/if}}</td>
+          <td colspan="12" class="minitd">{{Cabloc_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Fixation du cabloc</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Fixation_du_cabloc}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Fixation_du_cabloc}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Fixation_du_cabloc}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Fixation_du_cabloc_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Potence basse pour cabloc</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Potence_basse_pour_cabloc}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Potence_basse_pour_cabloc}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Potence_basse_pour_cabloc}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Potence_basse_pour_cabloc_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd header right">
@@ -5496,219 +5702,224 @@
           <td colspan="1" class="minitd grey3"></td>
           <td colspan="1" class="minitd grey3"></td>
           <td colspan="1" class="minitd grey3"></td>
-          <td colspan="12" class="minitd header"></td>
+          <td colspan="12" class="minitd header">
+            {{Dispositif_anti_montée_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Tôle anti-intrusion</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Tôle_anti_intrusion}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Tôle_anti_intrusion}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Tôle_anti_intrusion}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Tôle_anti_intrusion_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Patte a cadenas</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Patte_a_cadenas}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Patte_a_cadenas}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Patte_a_cadenas}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Patte_a_cadenas_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Cadenas</td>
-          <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="1" class="minitd">{{#if NC_Cadenas}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if C_Cadenas}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if SO_Cadenas}} x {{/if}}</td>
+          <td colspan="12" class="minitd">{{Cadenas_OBSERVATIONS}}</td>
         </tr>
         <tr>
-          <td colspan="12" class="minitd right">- Plate forme de travail</td>
+          <td colspan="12" class="minitd header right">
+            - Plate forme de travail
+          </td>
           <td colspan="1" class="minitd grey3"></td>
           <td colspan="1" class="minitd grey3"></td>
           <td colspan="1" class="minitd grey3"></td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Plate_forme_de_travail_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Emplacement</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Emplacement_Plate_forme_de_travail}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Emplacement_Plate_forme_de_travail}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Emplacement_Plate_forme_de_travail}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Emplacement_Plate_forme_de_travail_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Fixation</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Fixation_Plate_forme_de_travail}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Fixation_Plate_forme_de_travail}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Fixation_Plate_forme_de_travail}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Fixation_Plate_forme_de_travail_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Repose pieds</td>
-          <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="1" class="minitd">{{#if NC_Repose_pieds}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if C_Repose_pieds}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if SO_Repose_pieds}} x {{/if}}</td>
+          <td colspan="12" class="minitd">{{Repose_pieds_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Implantation</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Implantation_Plate_forme_de_travail}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Implantation_Plate_forme_de_travail}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Implantation_Plate_forme_de_travail}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Implantation_Plate_forme_de_travail_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Pylône</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Pylône_Plate_forme_de_travail}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Pylône_Plate_forme_de_travail}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Pylône_Plate_forme_de_travail}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Pylône_Plate_forme_de_travail_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Présence de repose-pieds</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Présence_de_repose_pieds}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Présence_de_repose_pieds}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Présence_de_repose_pieds}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Présence_de_repose_pieds_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Obstacles sur montée</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Obstacles_sur_montée}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Obstacles_sur_montée}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Obstacles_sur_montée}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Obstacles_sur_montée_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
-          <td colspan="12" class="minitd right">- Clôture</td>
+          <td colspan="12" class="minitd header right">- Clôture</td>
           <td colspan="1" class="minitd grey3"></td>
           <td colspan="1" class="minitd grey3"></td>
           <td colspan="1" class="minitd grey3"></td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Clôture_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Emplacement</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Emplacement_clôture}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Emplacement_clôture}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Emplacement_clôture}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Emplacement_clôture_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Hauteur du mur</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Hauteur_du_mur}} x {{/if}}
           </td>
+          <td colspan="1" class="minitd">{{#if C_Hauteur_du_mur}} x {{/if}}</td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Hauteur_du_mur}} x {{/if}}
           </td>
-          <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Hauteur_du_mur_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Barbelé au dessus de la clôture
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Barbélé_au_dessus_clôture}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Barbélé_au_dessus_clôture}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Barbélé_au_dessus_clôture}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Barbélé_au_dessus_clôture_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Portail</td>
-          <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="1" class="minitd">{{#if NC_Portail}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if C_Portail}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if SO_Portail}} x {{/if}}</td>
+          <td colspan="12" class="minitd">{{Portail_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Finition</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Finition_clôture}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Finition_clôture}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Finition_clôture}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Finition_clôture_OBSERVATIONS}}</td>
         </tr>
+
         <tr class="borderdered-tr">
           <td colspan="12" class="minitd header right center">
             11 - ENVIRONNEMENT SITE:
@@ -5720,58 +5931,57 @@
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Boîte à clefs</td>
-          <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="1" class="minitd">{{#if NC_Boîte_à_clefs}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if C_Boîte_à_clefs}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if SO_Boîte_à_clefs}} x {{/if}}</td>
+          <td colspan="12" class="minitd">{{Boîte_à_clefs_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Rebouchage perçages et ouvertures
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Rebouchage_perçages_et_ouvertures}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Rebouchage_perçages_et_ouvertures}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Rebouchage_perçages_et_ouvertures}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Rebouchage_perçages_et_ouvertures_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Peinture</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Peinture_ENVIRONNEMENT_SITE}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Peinture_ENVIRONNEMENT_SITE}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Peinture_ENVIRONNEMENT_SITE}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Peinture_ENVIRONNEMENT_SITE_OBSERVATIONS}}
+          </td>
         </tr>
-        <tr class="page-break">
+        <tr>
           <td colspan="12" class="minitd right">- Propreté du site</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Propreté_du_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Propreté_du_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Propreté_du_site}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">{{Propreté_du_site_OBSERVATIONS}}</td>
         </tr>
+
         <tr style="position: relative">
           <td style="position: absolute" class="no-border">
             <img src="logo.png" alt="mobilis logo" style="width: 120px" />
@@ -5828,123 +6038,112 @@
             - Remise en état général du site
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Remise_en_état_général_du_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Remise_en_état_général_du_site}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Remise_en_état_général_du_site}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Remise_en_état_général_du_site_OBSERVATIONS}}
+          </td>
         </tr>
-
         <tr>
-          <td colspan="12" class="minitd header right center">
-            - Clefs du site
-          </td>
-          <td colspan="3" class="minitd center grey3"></td>
-          <td colspan="12" class="minitd header right center"></td>
+          <td colspan="12" class="minitd header right">- Clefs du site</td>
+          <td colspan="3" class="minitd grey3"></td>
+          <td colspan="12" class="minitd">{{Clefs_du_site_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Clefs shelter</td>
-          <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="1" class="minitd">{{#if NC_Clefs_shelter}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if C_Clefs_shelter}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if SO_Clefs_shelter}} x {{/if}}</td>
+          <td colspan="12" class="minitd">{{Clefs_shelter_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Clefs local technique</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Clefs_local_technique}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Clefs_local_technique}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Clefs_local_technique}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Clefs_local_technique_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">
             - Clefs plaque anti-intrusion échelle
           </td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Clefs_plaque_anti_intrusion_échelle}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Clefs_plaque_anti_intrusion_échelle}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Clefs_plaque_anti_intrusion_échelle}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Clefs_plaque_anti_intrusion_échelle_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Clefs coffret SONELGAZ</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Clefs_coffret_SONELGAZ}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Clefs_coffret_SONELGAZ}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Clefs_coffret_SONELGAZ}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Clefs_coffret_SONELGAZ_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Clefs portail</td>
-          <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="1" class="minitd">{{#if NC_Clefs_portail}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if C_Clefs_portail}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if SO_Clefs_portail}} x {{/if}}</td>
+          <td colspan="12" class="minitd">{{Clefs_portail_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Clefs TGBT</td>
-          <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
-          </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="1" class="minitd">{{#if NC_Clefs_TGBT}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if C_Clefs_TGBT}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if SO_Clefs_TGBT}} x {{/if}}</td>
+          <td colspan="12" class="minitd">{{Clefs_TGBT_OBSERVATIONS}}</td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Clefs climatiseur</td>
           <td colspan="1" class="minitd">
-            {{#if NC_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if NC_Clefs_climatiseur}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if C_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if C_Clefs_climatiseur}} x {{/if}}
           </td>
           <td colspan="1" class="minitd">
-            {{#if SO_Oxydation_Assemblage_visserie}} x {{/if}}
+            {{#if SO_Clefs_climatiseur}} x {{/if}}
           </td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="12" class="minitd">
+            {{Clefs_climatiseur_OBSERVATIONS}}
+          </td>
         </tr>
         <tr>
           <td colspan="12" class="minitd right">- Autre</td>
-          <td colspan="1" class="minitd center"></td>
-          <td colspan="1" class="minitd center"></td>
-          <td colspan="1" class="minitd center"></td>
-          <td colspan="12" class="minitd">{{_OBSERVATIONS}}</td>
+          <td colspan="1" class="minitd">{{#if NC_Clefs_autre}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if C_Clefs_autre}} x {{/if}}</td>
+          <td colspan="1" class="minitd">{{#if SO_Clefs_autre}} x {{/if}}</td>
+          <td colspan="12" class="minitd">{{Clefs_autre_OBSERVATIONS}}</td>
         </tr>
       </table>
     </table>
