@@ -1,0 +1,957 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulaire de Recherche de Site</title>
+    <style>
+      .page-break {
+        page-break-after: always;
+      }
+      body {
+        font-family: "Arial";
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: scroll;
+      }
+      table {
+        width: 95vw;
+        max-height: 1141px;
+        border-collapse: collapse;
+        font-family: "Arial";
+        table-layout: fixed;
+      }
+      th,
+      td {
+        border: 2px solid black;
+        /* padding: 8px; */
+        text-align: left;
+        height: 35px;
+      }
+      .no-border {
+        border: none;
+      }
+      .header {
+        text-align: center;
+        font-weight: bold;
+      }
+      .map {
+        height: 500px;
+      }
+
+      .gray {
+        background-color: #c0c0c0;
+      }
+      .right {
+        text-align: right;
+      }
+
+      .left {
+        text-align: left;
+      }
+      .separator {
+        border: none;
+        height: 8px;
+      }
+      .minitd {
+        height: 14px;
+        text-align: center;
+        font-size: 13px;
+        padding: 0;
+        margin: 0;
+      }
+      .minitd:first-child {
+        text-align: left;
+      }
+      .borderdered-tr {
+        border: 5px solid black;
+      }
+      .borderdered-tr > *:first-child {
+        color: blue;
+      }
+      .grey3 {
+        background-color: #c0c0c0;
+      }
+      .left {
+        text-align: left;
+      }
+      .margin {
+        position: absolute;
+      }
+      .first-table th,
+      td {
+        height: 35px;
+        border: 2.5px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <!-- Logo sur 4 lignes et 2 colonnes -->
+        <td colspan="2" rowspan="4" style="text-align: center">
+          <img
+            src="logo.png"
+            alt="logo mobilis"
+            style="width: 80px; height: auto"
+          />
+        </td>
+        <!-- Annexe sur 7 colonnes -->
+        <td
+          colspan="7"
+          rowspan="3"
+          class="header"
+          style="
+            color: rgb(255, 6, 6);
+            text-align: center;
+            border-bottom: none !important;
+            font-size: 30px !important;
+          "
+        >
+          ANNEXE
+        </td>
+      </tr>
+      <tr></tr>
+      <tr></tr>
+      <!-- Grille De Validation As Built -->
+      <tr>
+        <td
+          colspan="7"
+          class="header"
+          style="
+            text-align: center;
+            border-top: none !important;
+            font-size: 25px !important;
+          "
+        >
+          Grille De Validation As Built
+        </td>
+      </tr>
+
+      <tr class="separator"></tr>
+      <tr class="separator"></tr>
+      <tr class="separator"></tr>
+      <!-- ---------------------------------------- -->
+
+      <tr>
+        <td colspan="3" class="header left">Nom du site :</td>
+        <td colspan="6">{{Nom_site}}</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="header left">Code du site :</td>
+        <td colspan="6">{{code_site}}</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="header left">Adresse :</td>
+        <td colspan="6">{{Adresse}}</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="header left">Région :</td>
+        <td colspan="6">{{Région}}</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="header left">Coordonnées GPS :</td>
+        <td colspan="6">{{GPS}}</td>
+      </tr>
+
+      <!-- --------------------------------------------- -->
+      <tr class="separator"></tr>
+      <tr class="separator"></tr>
+      <tr class="separator"></tr>
+      <tr class="separator"></tr>
+
+      <tr class="separator"></tr>
+      <tr class="separator"></tr>
+
+      <table>
+        <!-- ---------------------------------- -->
+
+        <tr class="separator"></tr>
+
+        <tr class="separator"></tr>
+
+        <tr class="borderdered-tr">
+          <td
+            colspan="12"
+            class="minitd header right center"
+            style="background-color: #e7e7e7; color: black"
+          >
+            Document
+          </td>
+          <td
+            colspan="1"
+            class="minitd center"
+            style="background-color: #e7e7e7; color: black"
+          >
+            OK
+          </td>
+          <td
+            colspan="1"
+            class="minitd center"
+            style="background-color: #e7e7e7; color: black"
+          >
+            NOK
+          </td>
+          <td
+            colspan="1"
+            class="minitd center"
+            style="background-color: #e7e7e7; color: black"
+          >
+            NA
+          </td>
+          <td
+            colspan="12"
+            class="minitd header right center"
+            style="background-color: #e7e7e7; color: black"
+          >
+            Commentaires
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd header right grey3">
+            Avant Projet Détaillé
+          </td>
+          <td colspan="1" class="minitd center grey3"></td>
+          <td colspan="1" class="minitd center grey3"></td>
+          <td colspan="1" class="minitd center grey3"></td>
+          <td colspan="12" class="minitd header right center grey3"></td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">SA-1</td>
+          <td colspan="1" class="minitd">
+            {{#if ok_sa1}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_sa1}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_sa1}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_sa1}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">SA-2</td>
+          <td colspan="1" class="minitd">
+            {{#if NC_sa2}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if C_sa2}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if SO_sa2}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_sa2}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">LOS /Path quality</td>
+          <td colspan="1" class="minitd">
+            {{#if ok_LOS}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_LOS}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_LOS}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_LOS}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">SA-3</td>
+          <td colspan="1" class="minitd">
+            {{#if ok_sa3}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_sa3}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_sa3}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_sa3}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Notes de calcul</td>
+          <td colspan="1" class="minitd">
+            {{#if ok_note_calcul}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_note_calcul}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_note_calcul}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_note_calcul}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Tests de béton</td>
+          <td colspan="1" class="minitd">
+            {{#if ok_test_beton}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_test_beton}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_test_beton}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_test_beton}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Etude géotechnique</td>
+          <td colspan="1" class="minitd">
+            {{#if ok_etude_geotechnique}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_etude_geotechnique}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_etude_geotechnique}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_etude_geotechnique}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">
+            PV de recette des fondations
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if ok_pv_fondation}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_pv_fondation}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_pv_fondation}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_pv_fondation}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd header right grey3">Plans As Built</td>
+          <td colspan="1" class="minitd center grey3"></td>
+          <td colspan="1" class="minitd center grey3"></td>
+          <td colspan="1" class="minitd center grey3"></td>
+          <td colspan="12" class="minitd header right center grey3"></td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Plan de localisation</td>
+          <td colspan="1" class="minitd">
+            {{#if ok_Plan_localisation}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Plan_localisation}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Plan_localisation}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Plan_localisation}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Plan de masse existant</td>
+          <td colspan="1" class="minitd">
+            {{#if ok_Plan_localisation}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Plan_localisation}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Plan_localisation}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Plan_localisation}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Plan de masse projeté</td>
+          <td colspan="1" class="minitd">
+            {{#if ok_Plan_masse_projete}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Plan_masse_projete}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Plan_masse_projete}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Plan_masse_projete}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Plan d’élévation existant</td>
+          <td colspan="1" class="minitd">
+            {{#if ok_Plan_elevation_existant}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Plan_elevation_existant}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Plan_elevation_existant}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Plan_elevation_existant}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Plan d’élévation projeté</td>
+          <td colspan="1" class="minitd">
+            {{#if ok_Plan_elevation_projete}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Plan_elevation_projete}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Plan_elevation_projete}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Plan_elevation_projete}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Plan des CDC</td>
+          <td colspan="1" class="minitd">
+            {{#if ok_Plan_CDC}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Plan_CDC}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Plan_CDC}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Plan_CDC}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Plan de Génie Civil</td>
+          <td colspan="1" class="minitd">
+            {{#if ok_Plan_genie_civil}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Plan_genie_civil}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Plan_genie_civil}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Plan_genie_civil}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">
+            Plan de structure métallique
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if ok_Plan_structure_metallique}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Plan_structure_metallique}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Plan_structure_metallique}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Plan_structure_metallique}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Plan de sécurité</td>
+          <td colspan="1" class="minitd">
+            {{#if ok_Plan_securite}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Plan_securite}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Plan_securite}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Plan_securite}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Plan du shelter</td>
+          <td colspan="1" class="minitd">
+            {{#if ok_Plan_shelter}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Plan_shelter}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Plan_shelter}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Plan_shelter}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Synoptique radio
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if ok_Synoptique}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Synoptique}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Synoptique}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Synoptique}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Reportage photo
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if ok_Reportage}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Reportage}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Reportage}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Reportage}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Quantitatif
+          </td>
+        <td colspan="1" class="minitd">
+            {{#if ok_Quantitatif}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Quantitatif}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Quantitatif}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Quantitatif}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">SA-4
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if ok_sa4}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_sa4}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_sa4}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_sa4}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Contrat de location
+          </td>
+        <td colspan="1" class="minitd">
+            {{#if ok_>Contrat_location}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_>Contrat_location}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_>Contrat_location}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_>Contrat_location}}
+          </td>
+        </tr>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Permis de construire
+          </td>
+        <td colspan="1" class="minitd">
+            {{#if ok_Permis_construire}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Permis_construire}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Permis_construire}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Permis_construire}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Contrat SONELGAZ ou Facture ou Devis</td>
+          <td colspan="1" class="minitd">
+            {{#if ok_SONELGAZ}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_SONELGAZ}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_SONELGAZ}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_SONELGAZ}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd header right grey3">TGBT + Alarmes
+          </td>
+          <td colspan="1" class="minitd grey3">
+         
+          </td>
+          <td colspan="1" class="minitd grey3">
+          
+          </td>
+          <td colspan="1" class="minitd grey3">
+           
+          </td>
+          <td colspan="12" class="minitd grey3">
+           
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Plans et schémas
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if ok_Plans_schemas}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Plans_schemas}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Plans_schemas}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Plans_schemas}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Manuel et tests des alarmes</td>
+           <td colspan="1" class="minitd">
+            {{#if ok_Manuel_tests}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Manuel_tests}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Manuel_tests}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Manuel_tests}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">PV recette construction
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if ok_pv_construction}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_pv_construction}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_pv_construction}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_pv_construction}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Liste de réserves
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if ok_liste_reserves}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_liste_reserves}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_liste_reserves}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_liste_reserves}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">PV recette levée de réserves
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if ok_pv_levee_reserves}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_pv_levee_reserves}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_pv_levee_reserves}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_pv_levee_reserves}}
+          </td>
+        </tr>
+       
+        <tr>
+          <td colspan="12" class="minitd header right grey3">Certificats
+          </td>
+          <td colspan="1" class="minitd center grey3"></td>
+          <td colspan="1" class="minitd center grey3"></td>
+          <td colspan="1" class="minitd center grey3"></td>
+          <td colspan="12" class="minitd header right center grey3">
+           
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Calibrage des outils de mesures
+
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if ok_Calibrage_outils}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Calibrage_outils}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Calibrage_outils}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Calibrage_outils}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Terre</td>
+           <td colspan="1" class="minitd">
+            {{#if ok_Terre}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Terre}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Terre}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Terre}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Composants élec
+
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if ok_Composants_elec}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Composants_elec}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Composants_elec}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Composants_elec}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Galvanisation
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if ok_Galvanisation}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Galvanisation}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Galvanisation}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Galvanisation}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Paratonnerre
+          </td>
+           <td colspan="1" class="minitd">
+            {{#if ok_Paratonnerre}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Paratonnerre}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Paratonnerre}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Paratonnerre}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Garantie clim
+
+          </td>
+           <td colspan="1" class="minitd">
+            {{#if ok_Garantie_clim}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Garantie_clim}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Garantie_clim}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Garantie_clim}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Garantie Pylône
+
+          </td>
+           <td colspan="1" class="minitd">
+            {{#if ok_Garantie_pylone}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Garantie_pylone}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Garantie_pylone}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Garantie_pylone}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Garantie du Shelter
+
+          </td>
+           <td colspan="1" class="minitd">
+            {{#if ok_Garantie_Shelter}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Garantie_Shelter}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Garantie_Shelter}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Garantie_Shelter}}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="minitd right">Garantie TGBT
+
+
+          </td>
+           <td colspan="1" class="minitd">
+            {{#if ok_Garantie_TGBT}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Garantie_TGBT}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Garantie_TGBT}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Garantie_TGBT}}
+          </td>
+        </tr>
+       
+        <tr>
+          <td colspan="12" class="minitd right">Garantie Pole Mat
+
+
+          </td>
+           <td colspan="1" class="minitd">
+            {{#if ok_Garantie_Pole_Mat}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_Garantie_Pole_Mat}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_Garantie_Pole_Mat}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_Garantie_Pole_Mat}}
+          </td>
+        </tr>
+       
+        <tr>
+          <td colspan="12" class="minitd right">CDROM
+
+
+          </td>
+           <td colspan="1" class="minitd">
+            {{#if ok_CDROM}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if nok_CDROM}} x {{/if}}
+          </td>
+          <td colspan="1" class="minitd">
+            {{#if na_CDROM}} x {{/if}}
+          </td>
+          <td colspan="12" class="minitd">
+            {{comme_CDROM}}
+          </td>
+        </tr>
+       <tr class="separator"></tr>
+       <tr class="separator"></tr>
+       <tr class="separator"></tr>
+        <tr>
+          <td colspan="14" class="minitd right">Responsable DOE (sous traitant)
+
+
+          </td>
+         
+        
+        
+          <td colspan="13" class="minitd">
+            Responsable validation de l’As Built
+          </td>
+        </tr>
+        <tr>
+          <td colspan="14"  class="minitd right">
+            {{Responsable_DOE}}
+
+          </td>
+         
+          
+        
+          <td colspan="13" class="minitd" style="text-align: start; ">
+            Date de validation :{{Date_validation}} <br>
+            Date de refus :{{Date_refus}}
+          </td>
+        </tr>
+        
+       
+     
+        
+      
+  
+      
+        
+        
+        
+        
+       
+       
+      
+      
+       
+        
+       
+        
+      </table>
+    </table>
+  </body>
+</html>
