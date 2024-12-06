@@ -142,6 +142,7 @@ export const nextStep = async (siteId: number) => {
     "SA1",
     "SA2",
     "SA3",
+    "APD",
     "SA4",
     "ANF",
     "OC",

@@ -94,6 +94,7 @@ export const getSiteById = async (req: Request, res: Response) => {
         steps: {
           include: {
             Document: true,
+            Images: true,
           },
         },
       },
@@ -117,6 +118,7 @@ export const getAllSites = async (_req: Request, res: Response) => {
         steps: {
           include: {
             Document: true,
+            Images: true,
           },
         },
       },

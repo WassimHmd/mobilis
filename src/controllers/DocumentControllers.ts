@@ -57,6 +57,9 @@ export const createDocument = async (req: Request, res: Response) => {
         template_file = "SA4.hbs";
         break;
 
+      case "ASBUILT":
+        template_file = "ASBUILT.hbs";
+
       default:
         return res.status(404).json("Unknown document type.");
     }
