@@ -301,6 +301,7 @@ enum DocTypes {
   SA3
   SA4
   ANF
+  ASBUILT
 }
 
 enum SiteTypes {
