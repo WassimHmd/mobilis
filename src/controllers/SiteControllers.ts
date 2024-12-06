@@ -120,6 +120,9 @@ export const getAllSites = async (_req: Request, res: Response) => {
             Document: true,
             Images: true,
           },
+          orderBy: {
+            createdAt: "asc",
+          },
         },
       },
     });

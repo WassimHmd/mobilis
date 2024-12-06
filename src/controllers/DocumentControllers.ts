@@ -58,7 +58,8 @@ export const createDocument = async (req: Request, res: Response) => {
         break;
 
       case "ASBUILT":
-        template_file = "ASBUILT.hbs";
+        template_file = "AsBuilt/AsBuilt_anx.hbs";
+        break;
 
       default:
         return res.status(404).json("Unknown document type.");
