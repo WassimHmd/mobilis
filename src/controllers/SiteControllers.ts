@@ -95,6 +95,7 @@ export const getSiteById = async (req: Request, res: Response) => {
           include: {
             Document: true,
             Images: true,
+            SubStepOC: true,
           },
         },
       },
@@ -119,6 +120,7 @@ export const getAllSites = async (_req: Request, res: Response) => {
           include: {
             Document: true,
             Images: true,
+            SubStepOC: true,
           },
           orderBy: {
             createdAt: "asc",

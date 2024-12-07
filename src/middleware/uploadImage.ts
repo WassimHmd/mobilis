@@ -68,7 +68,7 @@ export const uploadFile = (folder: FileFolders) => {
 
   const upload = multer({
     storage: storage,
-    fileFilter: fileFilter,
+    // fileFilter: fileFilter,
   });
 
   return (req: CustomRequest, res: Response, next: NextFunction) => {

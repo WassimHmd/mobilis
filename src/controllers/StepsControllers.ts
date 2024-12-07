@@ -29,7 +29,19 @@ export const createStep = async (
       await createSubStepOC(step.id, "ACTIVE", 0);
     }
 
-    return step;
+    const newStep = await prisma.step.findUnique({
+      where: {
+        id: step.id,
+      },
+      include: {
+        site: true,
+        SubStepOC: true,
+      },
+    });
+    if (newStep) return newStep;
+    else {
+      return step;
+    }
   } catch (error) {
     console.log(error);
     throw Error("Failed to create step");
@@ -64,6 +76,11 @@ export const getAllSteps = async (siteId: number) => {
         SA1Candidate: true,
         Document: true,
         site: true,
+        SubStepOC: true,
+      },
+
+      orderBy: {
+        createdAt: "asc",
       },
     });
 
