@@ -214,6 +214,7 @@ export const getManagerDetailsController = async (
               },
             },
             Document: true,
+            Images: true,
           },
         },
       },
