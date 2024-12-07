@@ -42,6 +42,7 @@ app.use(
 
 app.use("/api/v1/", routes);
 
+app.use("/static", express.static(path.join(__dirname, "../uploads")));
 // Run server
 const port: number = parseInt(process.env.PORT || "3000", 10);
 app.listen(port, () => {

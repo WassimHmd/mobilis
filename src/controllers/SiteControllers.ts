@@ -308,7 +308,7 @@ export const addImagesToSite = async (
     await prisma.images.createMany({
       data: images.images.map((img: string) => ({
         stepId: step.id,
-        path: img,
+        path: img.split(/[\/\\]/)[img.split(/[\/\\]/).length - 1],
       })),
     });
 

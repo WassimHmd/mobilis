@@ -1,4 +1,4 @@
-import { Router } from "express";
+import express, { Router } from "express";
 import auth from "./routes/auth";
 
 import sites from "./routes/sites";
@@ -14,6 +14,7 @@ import steps from "./routes/steps";
 import notifications from "./routes/notifications";
 
 import { testFeature } from "../../controllers/StepsControllers";
+import path from "path";
 
 const router = Router({ mergeParams: true });
 

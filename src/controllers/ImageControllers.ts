@@ -48,7 +48,7 @@ export const addImagesToCollection = async (
 
     await prisma.images.createMany({
       data: images.images.map((img: string) => ({
-        path: img,
+        path: img.split(/[\/\\]/)[img.split(/[\/\\]/).length - 1],
         collectionId,
       })),
     });
