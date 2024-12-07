@@ -1,3 +1,4 @@
+import { uploadFile } from "@/middleware/uploadImage";
 import {
   createDocument,
   deleteDocument,
@@ -45,7 +46,7 @@ const router = Router();
  *         description: Internal Server Error
  */
 
-router.post("/", createDocument);
+router.post("/", uploadFile("step"), createDocument);
 
 /**
  * @swagger

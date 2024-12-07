@@ -6,17 +6,23 @@ import buildReport from "./../utils/pdf";
 import path from "path";
 import fs from "fs";
 import { getCurrentStep } from "./StepsControllers";
+import { RequestWithImages } from "@/types";
 
-export const createDocument = async (req: Request, res: Response) => {
+export const createDocument = async (req: RequestWithImages, res: Response) => {
   const {
     type,
     data,
     siteId,
     comment,
-  }: { type: DocTypes; data: object; siteId: number; comment: string } =
+  }: { type: DocTypes; data: string; siteId: string; comment: string } =
     req.body;
+
+  const parsedData = JSON.parse(data);
   try {
-    const step = await getCurrentStep(siteId);
+    console.log(siteId);
+    const images = req.images;
+    console.log(images);
+    const step = await getCurrentStep(parseInt(siteId));
 
     if (!step) {
       return res.status(404).json({ error: "Step not found" });
@@ -27,9 +33,9 @@ export const createDocument = async (req: Request, res: Response) => {
     const document = await prisma.document.create({
       data: {
         type,
-        data,
+        data: parsedData,
         stepId,
-        siteId,
+        siteId: parseInt(siteId),
       },
     });
     await prisma.step.update({
