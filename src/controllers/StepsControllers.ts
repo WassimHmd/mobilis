@@ -445,10 +445,12 @@ export const createSubStepOC = async (
   try {
     const result = await prisma.$transaction(async (prisma) => {
       // Create indoor and outdoor ImageCollections in parallel
-      const [indoorCollection, outdoorCollection] = await Promise.all([
-        prisma.imageCollection.create({ data: {} }),
-        prisma.imageCollection.create({ data: {} }),
-      ]);
+      const [indoorCollection, outdoorCollection, regularCollection] =
+        await Promise.all([
+          prisma.imageCollection.create({ data: {} }),
+          prisma.imageCollection.create({ data: {} }),
+          prisma.imageCollection.create({ data: {} }),
+        ]);
 
       // Create subStepOC and reference the created collections
       const subStep = await prisma.subStepOC.create({
@@ -456,6 +458,7 @@ export const createSubStepOC = async (
           stepId,
           status,
           index,
+          imageCollectionId: regularCollection.id,
           indoorId: indoorCollection.id,
           outdoorId: outdoorCollection.id,
         },
