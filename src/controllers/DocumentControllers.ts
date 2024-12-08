@@ -19,13 +19,14 @@ export const createDocument = async (req: RequestWithImages, res: Response) => {
 
   const parsedData = JSON.parse(data);
   try {
-    console.log(siteId);
-    const images = req.images;
-    console.log(images);
     const step = await getCurrentStep(parseInt(siteId));
 
     if (!step) {
       return res.status(404).json({ error: "Step not found" });
+    }
+
+    if (!req.images || !("images" in req.images) || req.images.images.length !== 4) {
+      return res.status(400).json({ error: "Please provide all 3 required images" });
     }
 
     const stepId = step.id;
@@ -71,7 +72,7 @@ export const createDocument = async (req: RequestWithImages, res: Response) => {
         return res.status(404).json("Unknown document type.");
     }
 
-    await buildReport(template_file, document.data, document.id);
+    await buildReport(template_file, document.data, document.id, req.images.images);
     res.status(201).json(document);
   } catch (error: any) {
     console.log(error);

@@ -4,6 +4,7 @@ const fsp = require("fs").promises;
 const puppeteer = require("puppeteer");
 const handlebars = require("handlebars");
 const moment = require("moment");
+const { convertImageToBase64 } = require("./convertImageToBase64");
 
 const getPdf = async (
   html,
@@ -29,20 +30,34 @@ const hbs = handlebars.create({
   defaultLayout: false,
 });
 
-const buildReport = async (template, data, fileName) => {
+const buildReport = async (template, data, fileName, images) => {
   const getTemplate = async (template) => {
     const templatePath = path.join(templatesPath, template);
 
     if (!fs.existsSync(templatePath)) {
       throw new Error(`Template not found ${template}`);
     }
-    const file = await fsp.readFile(templatePath, "utf-8");
-    return file;
+    return await fsp.readFile(templatePath, "utf-8");
   };
 
+  const convertImagesToBase64 = async (imagePaths) => {
+    return await Promise.all(
+      imagePaths.map(async (imagePath) => {
+        const resolvedPath = path.resolve(imagePath);
+        return await convertImageToBase64(resolvedPath);
+      })
+    );
+  };
+
+  const base64Images = images && images.length > 0
+    ? await convertImagesToBase64(images)
+    : null;
+
+  data.images = base64Images;
+
+  console.log(data.images)
   const t = await getTemplate(template);
   const html = hbs.compile(t)(data);
-  console.log(data);
 
   const pdf = await getPdf(html, { format: "A4", printBackground: true });
   const documentsDir = path.join(process.cwd(), "src/documents");
@@ -53,6 +68,7 @@ const buildReport = async (template, data, fileName) => {
 
   return pdf;
 };
+
 
 const registerHelpers = (hbs) => {
   hbs.registerHelper("uppercase", function (ctx) {
