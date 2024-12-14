@@ -1,4 +1,4 @@
-import { uploadFile } from "@/middleware/uploadImage";
+import { uploadFile } from "../../../middleware/uploadImage";
 import {
   createDocument,
   deleteDocument,
