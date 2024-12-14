@@ -6,30 +6,37 @@ import buildReport from "./../utils/pdf";
 import path from "path";
 import fs from "fs";
 import { getCurrentStep } from "./StepsControllers";
+import { RequestWithImages } from "@/types";
 
-export const createDocument = async (req: Request, res: Response) => {
+export const createDocument = async (req: RequestWithImages, res: Response) => {
   const {
     type,
     data,
     siteId,
     comment,
-  }: { type: DocTypes; data: object; siteId: number; comment: string } =
+  }: { type: DocTypes; data: string; siteId: string; comment: string } =
     req.body;
+
+  const parsedData = JSON.parse(data);
   try {
-    const step = await getCurrentStep(siteId);
+    const step = await getCurrentStep(parseInt(siteId));
 
     if (!step) {
       return res.status(404).json({ error: "Step not found" });
     }
+
+    // if (!req.images || !("images" in req.images) || req.images.images.length !== 4) {
+    //   return res.status(400).json({ error: "Please provide all 3 required images" });
+    // }
 
     const stepId = step.id;
 
     const document = await prisma.document.create({
       data: {
         type,
-        data,
+        data: parsedData,
         stepId,
-        siteId,
+        siteId: parseInt(siteId),
       },
     });
     await prisma.step.update({
@@ -65,7 +72,7 @@ export const createDocument = async (req: Request, res: Response) => {
         return res.status(404).json("Unknown document type.");
     }
 
-    await buildReport(template_file, document.data, document.id);
+    await buildReport(template_file, document.data, document.id, req.images?.images);
     res.status(201).json(document);
   } catch (error: any) {
     console.log(error);
