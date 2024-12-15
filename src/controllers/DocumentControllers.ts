@@ -17,8 +17,8 @@ export const createDocument = async (req: RequestWithImages, res: Response) => {
   }: { type: DocTypes; data: string; siteId: string; comment: string } =
     req.body;
 
-  const parsedData = JSON.parse(data);
-  try {
+    try {
+    const parsedData = JSON.parse(data);
     const step = await getCurrentStep(parseInt(siteId));
 
     if (!step) {

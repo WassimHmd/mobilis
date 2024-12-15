@@ -5,3 +5,4 @@ access.log
 uploads
 documents
 src/socketClient.ts
+.vscode
