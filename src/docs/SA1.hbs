@@ -223,13 +223,15 @@
     </tr>
     <tr class="separator"></tr>
     <tr>
-      <td colspan="4" style="position: relative; width: 100%;">
+      <td colspan="4" style="position: relative; width: 100%; height:350px">
         {{#if images.[1]}}
         <img src="{{images.[1]}}" alt="Map" style="
-          width: 100%;
-          height: auto;
+          {{!-- width: 100%; --}}
+          height: 350px;
           max-width: 100%;
           object-fit: contain;
+          float:right;
+
         " />
         {{else}}
         <div style="width: 100%; height: 200px; background-color: #f0f0f0;">MAP</div>
@@ -257,13 +259,16 @@
     </tr>
     <tr class="separator"></tr>
     <tr>
-      <td colspan="4" style="position: relative; width: 100%;">
+      <td colspan="4" style="position: relative; width: 100%; height:350px;">
         {{#if images.[2]}}
         <img src="{{images.[2]}}" alt="Map" style="
-          width: 100%;
-          height: auto;
+          {{!-- width: 100%; --}}
+          height: 350px;
           max-width: 100%;
           object-fit: contain;
+          float:right;
+
+
         " />
         {{else}}
         <div style="width: 100%; height: 200px; background-color: #f0f0f0;">MAP</div>
@@ -291,14 +296,15 @@
     </tr>
     <tr class="separator"></tr>
     <tr>
-      <td colspan="4" style="position: relative; width: 100%;">
+      <td colspan="4" style="position: relative; width: 100%; height:350px;">
         {{#if images.[3]}}
         <img src="{{images.[3]}}" alt="Map" style="
-          width: 100%;
-          height: auto;
+          {{!-- width: 100%; --}}
+          height: 350px;
           max-width: 100%;
           object-fit: contain;
-        " />
+          float:right;
+          " />
         {{else}}
         <div style="width: 100%; height: 200px; background-color: #f0f0f0;">MAP</div>
         {{/if}}

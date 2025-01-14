@@ -76,7 +76,25 @@ export const getAllSteps = async (siteId: number) => {
         SA1Candidate: true,
         Document: true,
         site: true,
-        SubStepOC: true,
+        SubStepOC: {
+          include: {
+            indoor: {
+              include: {
+                Images: true,
+              },
+            },
+            outdoor: {
+              include: {
+                Images: true,
+              },
+            },
+            imageCollection: {
+              include: {
+                Images: true,
+              },
+            },
+          },
+        },
       },
 
       orderBy: {
