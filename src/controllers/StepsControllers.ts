@@ -110,7 +110,7 @@ export const getAllSteps = async (siteId: number) => {
   }
 };
 
-const addSA1Candidate = async (stepId: string, data: SA1Candidate) => {
+export const addSA1Candidate = async (stepId: string, data: SA1Candidate) => {
   const candidate = await prisma.sA1Candidate.create({
     data: {
       ...data,

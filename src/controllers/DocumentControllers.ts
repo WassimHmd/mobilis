@@ -5,7 +5,7 @@ import { DocTypes } from "@prisma/client";
 import buildReport from "./../utils/pdf";
 import path from "path";
 import fs from "fs";
-import { getCurrentStep } from "./StepsControllers";
+import { addSA1Candidate, getCurrentStep } from "./StepsControllers";
 import { RequestWithImages } from "@/types";
 
 export const createDocument = async (req: RequestWithImages, res: Response) => {
@@ -17,7 +17,7 @@ export const createDocument = async (req: RequestWithImages, res: Response) => {
   }: { type: DocTypes; data: string; siteId: string; comment: string } =
     req.body;
 
-    try {
+  try {
     const parsedData = JSON.parse(data);
     const step = await getCurrentStep(parseInt(siteId));
 
@@ -50,6 +50,21 @@ export const createDocument = async (req: RequestWithImages, res: Response) => {
     switch (type) {
       case "SA1":
         template_file = "SA1.hbs";
+        addSA1Candidate(stepId, {
+          long: parsedData.candidat_x.long,
+          lat: parsedData.candidat_x.lat,
+          location: parsedData.candidat_x.addr,
+        });
+        addSA1Candidate(stepId, {
+          long: parsedData.candidat_y.long,
+          lat: parsedData.candidat_y.lat,
+          location: parsedData.candidat_y.addr,
+        });
+        addSA1Candidate(stepId, {
+          long: parsedData.candidat_z.long,
+          lat: parsedData.candidat_z.lat,
+          location: parsedData.candidat_z.addr,
+        });
         break;
 
       case "SA2":
@@ -72,7 +87,12 @@ export const createDocument = async (req: RequestWithImages, res: Response) => {
         return res.status(404).json("Unknown document type.");
     }
 
-    await buildReport(template_file, document.data, document.id, req.images?.images);
+    await buildReport(
+      template_file,
+      document.data,
+      document.id,
+      req.images?.images
+    );
     res.status(201).json(document);
   } catch (error: any) {
     console.log(error);
