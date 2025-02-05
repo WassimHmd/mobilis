@@ -1,35 +1,43 @@
-version: "3"
 services:
   followme-api:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: followme-api
-    ports:
-      - "6000:5000"
-      - "4000:3000"
     environment:
       - NODE_ENV=development
     networks:
       - traefik-public
     labels:
       - "traefik.enable=true"
+
       # HTTP router with redirect middleware to HTTPS
       - "traefik.http.routers.followme-api-http.rule=Host(`followme.rondonna.com`)"
       - "traefik.http.routers.followme-api-http.entrypoints=http"
       - "traefik.http.routers.followme-api-http.middlewares=https-redirect"
 
-      # HTTPS router
+      # HTTPS router (API)
       - "traefik.http.routers.followme-api-https.rule=Host(`followme.rondonna.com`)"
       - "traefik.http.routers.followme-api-https.entrypoints=https"
       - "traefik.http.routers.followme-api-https.tls=true"
       - "traefik.http.routers.followme-api-https.tls.certresolver=le"
       - "traefik.http.routers.followme-api-https.service=followme-api-service"
-      - "traefik.http.services.followme-api-service.loadbalancer.server.port=6000"
+
+      # API service load balancer (port 5000)
+      - "traefik.http.services.followme-api-service.loadbalancer.server.port=5000"
 
       # Middleware definition for HTTP to HTTPS redirection
       - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
       - "traefik.http.middlewares.https-redirect.redirectscheme.permanent=true"
+
+      # WebSocket support on root domain (port 3000)
+      - "traefik.http.routers.followme-api-ws.rule=Host(`followme.rondonna.com`)"
+      - "traefik.http.routers.followme-api-ws.entrypoints=https"
+      - "traefik.http.routers.followme-api-ws.tls=true"
+      - "traefik.http.routers.followme-api-ws.service=followme-api-ws-service"
+
+      # WebSocket service definition (port 3000)
+      - "traefik.http.services.followme-api-ws-service.loadbalancer.server.port=3000"
 
 networks:
   traefik-public:
