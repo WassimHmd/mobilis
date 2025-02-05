@@ -1,12 +1,36 @@
 version: "3"
 services:
-  app:
-    build: .
+  followme-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: followme-api
     ports:
       - "5000:5000"
       - "3000:3000"
-    volumes:
-      - .:/app
-      - /app/node_modules
     environment:
       - NODE_ENV=development
+    networks:
+      - traefik-public
+    labels:
+      - "traefik.enable=true"
+      # HTTP router with redirect middleware to HTTPS
+      - "traefik.http.routers.followme-api-http.rule=Host(`followme.rondonna.com`)"
+      - "traefik.http.routers.followme-api-http.entrypoints=http"
+      - "traefik.http.routers.followme-api-http.middlewares=https-redirect"
+
+      # HTTPS router
+      - "traefik.http.routers.followme-api-https.rule=Host(`followme.rondonna.com`)"
+      - "traefik.http.routers.followme-api-https.entrypoints=https"
+      - "traefik.http.routers.followme-api-https.tls=true"
+      - "traefik.http.routers.followme-api-https.tls.certresolver=le"
+      - "traefik.http.routers.followme-api-https.service=followme-api-service"
+      - "traefik.http.services.followme-api-service.loadbalancer.server.port=5000"
+
+      # Middleware definition for HTTP to HTTPS redirection
+      - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.https-redirect.redirectscheme.permanent=true"
+
+networks:
+  traefik-public:
+    external: true

@@ -213,7 +213,7 @@ export const nextStep = async (siteId: number) => {
     }
     if (step) {
       const index = stepOrder.indexOf(step.type);
-      if (index < stepOrder.length - 1) {
+      if (index <= stepOrder.length - 1) {
         const nextStep = stepOrder[index + 1];
         const newStep = await createStep(siteId, nextStep);
         prisma.site
