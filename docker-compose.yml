@@ -6,8 +6,8 @@ services:
       dockerfile: Dockerfile
     container_name: followme-api
     ports:
-      - "5000:5000"
-      - "3000:3000"
+      - "6000:5000"
+      - "4000:3000"
     environment:
       - NODE_ENV=development
     networks:
@@ -25,7 +25,7 @@ services:
       - "traefik.http.routers.followme-api-https.tls=true"
       - "traefik.http.routers.followme-api-https.tls.certresolver=le"
       - "traefik.http.routers.followme-api-https.service=followme-api-service"
-      - "traefik.http.services.followme-api-service.loadbalancer.server.port=5000"
+      - "traefik.http.services.followme-api-service.loadbalancer.server.port=6000"
 
       # Middleware definition for HTTP to HTTPS redirection
       - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
