@@ -180,6 +180,7 @@ export const nextStep = async (siteId: number) => {
     "APD",
     "SA4",
     "ANF",
+    "DEMOC",
     "OC",
     "DOS",
   ];

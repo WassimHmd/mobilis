@@ -283,6 +283,7 @@ enum StepTypes {
   SA4
   ANF
   DOS
+  DEMOC
   OC
   APD
 }
