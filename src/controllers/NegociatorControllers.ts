@@ -3,7 +3,7 @@ import prisma from "../config/db";
 
 export const createNegociator = async (req: any, res: Response) => {
   try {
-    const { siteId } = req.body;
+    const { invitationId } = req.body;
     const negociator = await prisma.negociator.create({
       data: {
         userId: req.user.id,
@@ -20,13 +20,17 @@ export const createNegociator = async (req: any, res: Response) => {
         },
       },
     });
-    if (siteId) {
-      if (await prisma.site.findUnique({ where: { id: siteId } })) {
-        await prisma.site.update({
-          where: { id: siteId },
-          data: { negociatorId: negociator.userId },
-        });
-      }
+    if (invitationId) {
+      const invitation = await prisma.invitation.findUniqueOrThrow({
+        where: {
+          id: invitationId,
+        },
+      });
+
+      await prisma.site.update({
+        where: { id: invitation.siteId },
+        data: { negociatorId: negociator.userId },
+      });
     }
 
     res.status(201).json(negociator);

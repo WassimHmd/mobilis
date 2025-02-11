@@ -3,7 +3,7 @@ import prisma from "../config/db";
 
 export const createBureau = async (req: any, res: Response) => {
   try {
-    const { siteId } = req.body;
+    const { invitationId } = req.body;
     const bureau = await prisma.bureau.create({
       data: {
         userId: req.user.id,
@@ -20,13 +20,17 @@ export const createBureau = async (req: any, res: Response) => {
         },
       },
     });
-    if (siteId) {
-      if (await prisma.site.findUnique({ where: { id: parseInt(siteId) } })) {
-        await prisma.site.update({
-          where: { id: parseInt(siteId) },
-          data: { bureauId: bureau.userId },
-        });
-      }
+    if (invitationId) {
+      const invitation = await prisma.invitation.findUniqueOrThrow({
+        where: {
+          id: invitationId,
+        },
+      });
+
+      await prisma.site.update({
+        where: { id: invitation.siteId },
+        data: { bureauId: bureau.userId },
+      });
     }
 
     res.status(201).json(bureau);

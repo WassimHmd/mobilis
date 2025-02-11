@@ -123,6 +123,7 @@ model Site {
   Document          Document[]
   steps             Step[]
   ManagerInvitation ManagerInvitation[]
+  Invitation        Invitation[]
 }
 
 model Negociator {
@@ -268,6 +269,19 @@ model SignaNum {
   createdAt DateTime  @default(now())
   Manager   Manager[]
   User      User[]
+}
+
+model Invitation {
+  id     String          @id @default(uuid())
+  siteId Int
+  site   Site            @relation(fields: [siteId], references: [id])
+  type   InvitationTypes
+  email  String
+}
+
+enum InvitationTypes {
+  NEGOCIATOR
+  BUREAU
 }
 
 enum ManagerValidation {

@@ -51,7 +51,6 @@ export const registerMiddleware = (userType: userTypes) => {
           userType: userType,
         },
       });
-      //TODO: Add Validation link
 
       const validation = await prisma.emailValidation.create({
         data: {

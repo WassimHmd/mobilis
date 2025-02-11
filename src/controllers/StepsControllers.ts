@@ -409,7 +409,6 @@ export const startValidationPhase = async (stepId: string) => {
       return step;
     }
 
-    //TODO: Send Validation Emails
     managers.map((manager) => {
       sendEmail(
         manager.email,

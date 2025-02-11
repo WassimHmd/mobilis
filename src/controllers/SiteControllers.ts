@@ -18,6 +18,7 @@ import {
 
 import { RequestWithImages } from "./../types";
 import { createManager, createPendingInvite } from "./ManagerControllers";
+import { sendEmail } from "@/utils/sendMail";
 
 export const createSite = async (req: Request, res: Response) => {
   try {
@@ -251,7 +252,20 @@ export const inviteNegociator = async (req: Request, res: Response) => {
 
     if (!user) {
       //TODO: mailing logic
-      return res.status(400).json("Email invitations not implemented yet");
+      const invitation = await prisma.invitation.create({
+        data: {
+          siteId: parseInt(siteId),
+          type: "NEGOCIATOR",
+          email,
+        },
+      });
+
+      sendEmail(
+        email,
+        "Invitation Follow Me",
+        `https://follow-me-test-version.netlify.app/invitation/${invitation.id}`
+      );
+      return res.status(200).json(invitation);
     } else {
       await prisma.site.update({
         where: { id: parseInt(siteId) },
@@ -278,8 +292,20 @@ export const inviteBureau = async (req: Request, res: Response) => {
     });
 
     if (!user) {
-      //TODO: mailing logic
-      return res.status(400).json("Email invitations not implemented yet");
+      const invitation = await prisma.invitation.create({
+        data: {
+          siteId: parseInt(siteId),
+          type: "BUREAU",
+          email,
+        },
+      });
+
+      sendEmail(
+        email,
+        "Invitation Follow Me",
+        `https://follow-me-test-version.netlify.app/invitation/${invitation.id}`
+      );
+      return res.status(200).json(invitation);
     } else {
       await prisma.site.update({
         where: { id: parseInt(siteId) },
