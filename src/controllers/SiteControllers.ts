@@ -18,7 +18,7 @@ import {
 
 import { RequestWithImages } from "./../types";
 import { createManager, createPendingInvite } from "./ManagerControllers";
-import { sendEmail } from "@/utils/sendMail";
+import { sendEmail } from "../utils/sendMail";
 
 export const createSite = async (req: Request, res: Response) => {
   try {
