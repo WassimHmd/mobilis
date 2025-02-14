@@ -80,12 +80,14 @@ export const login = async (req: Request, res: Response, next: Function) => {
       { expiresIn: "1d" }
     );
 
-    await prisma.notificationTarget.create({
-      data: {
-        userId: user.id,
-        token: tokenFB,
-      },
-    });
+    if (tokenFB) {
+      await prisma.notificationTarget.create({
+        data: {
+          userId: user.id,
+          token: tokenFB,
+        },
+      });
+    }
 
     res.cookie("token", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
 
