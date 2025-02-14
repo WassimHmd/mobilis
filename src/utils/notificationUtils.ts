@@ -1,4 +1,4 @@
-import admin from "@/config/firebase";
+import admin from "../config/firebase";
 import prisma from "../config/db";
 import io, { userSockets } from "../config/socket";
 import { Message } from "firebase-admin/lib/messaging/messaging-api";
