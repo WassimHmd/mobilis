@@ -57,7 +57,7 @@ export const login = async (req: Request, res: Response, next: Function) => {
   try {
     const { email, password, token: tokenFB } = req.body;
 
-    if (!email || !password || !tokenFB)
+    if (!email || !password)
       return res.status(400).json({ message: "All fields are required" });
 
     const user = await prisma.user.findUnique({
