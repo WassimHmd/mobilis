@@ -111,6 +111,9 @@ model Site {
   lat         String     @default("N/A")
   long        String     @default("N/A")
 
+  invitedBureau     Boolean @default(false)
+  invitedNegociator Boolean @default(false)
+
   //step
   negociatorId    String?
   subcontractorId String

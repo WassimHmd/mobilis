@@ -250,6 +250,11 @@ export const inviteNegociator = async (req: Request, res: Response) => {
       where: { email },
     });
 
+    await prisma.site.update({
+      where: { id: parseInt(siteId) },
+      data: { invitedNegociator: true },
+    });
+
     if (!user) {
       //TODO: mailing logic
       const invitation = await prisma.invitation.create({
@@ -289,6 +294,11 @@ export const inviteBureau = async (req: Request, res: Response) => {
 
     const user = await prisma.user.findUnique({
       where: { email },
+    });
+
+    await prisma.site.update({
+      where: { id: parseInt(siteId) },
+      data: { invitedBureau: true },
     });
 
     if (!user) {
