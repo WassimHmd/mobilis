@@ -9,6 +9,9 @@ import setupSwagger from "./config/swagger";
 // FIXME: change usage so the log of database connection is printed on here(low priority)
 import { PrismaClient } from "@prisma/client";
 import io from "./config/socket";
+import admin from "./config/firebase";
+
+admin.SDK_VERSION;
 // Load environment variables
 dotenv.config();
 

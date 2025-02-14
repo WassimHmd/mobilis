@@ -1,5 +1,7 @@
+import admin from "@/config/firebase";
 import prisma from "../config/db";
 import io, { userSockets } from "../config/socket";
+import { Message } from "firebase-admin/lib/messaging/messaging-api";
 
 export const notifyUser = async ({
   targetId,
@@ -31,6 +33,32 @@ export const notifyUser = async ({
       message,
       payload,
     });
+
+    const targets = await prisma.notificationTarget.findMany({
+      where: {
+        userId: targetId,
+      },
+    });
+    for (let target of targets) {
+      const fb_object: Message = {
+        token: target.token,
+        notification: {
+          title,
+          body: message,
+        },
+        data: { ...payload },
+      };
+
+      admin
+        .messaging()
+        .send(fb_object)
+        .then((response) => {
+          console.log("Successfully sent message:", response);
+        })
+        .catch((error) => {
+          console.error("Error sending message:", error);
+        });
+    }
   } catch (error) {
     console.log(error);
     return false;

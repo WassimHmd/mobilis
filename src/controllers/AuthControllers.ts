@@ -55,9 +55,9 @@ export const register = async (
 // login global
 export const login = async (req: Request, res: Response, next: Function) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, token: tokenFB } = req.body;
 
-    if (!email || !password)
+    if (!email || !password || !tokenFB)
       return res.status(400).json({ message: "All fields are required" });
 
     const user = await prisma.user.findUnique({
@@ -79,6 +79,13 @@ export const login = async (req: Request, res: Response, next: Function) => {
       process.env.JWT_SECRET || "secret@2025",
       { expiresIn: "1d" }
     );
+
+    await prisma.notificationTarget.create({
+      data: {
+        userId: user.id,
+        token: tokenFB,
+      },
+    });
 
     res.cookie("token", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
 

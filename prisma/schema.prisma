@@ -20,15 +20,16 @@ model User {
   signatureId String?
   valid       Boolean   @default(false)
 
-  moderator       Moderator?
-  subcontractor   SubContractor?
-  Negociator      Negociator?
-  Bureau          Bureau?
-  resetTokens     ResetToken[]
+  moderator          Moderator?
+  subcontractor      SubContractor?
+  Negociator         Negociator?
+  Bureau             Bureau?
+  resetTokens        ResetToken[]
   //tetincrementa a chaque changement li lazem y'deconnecti les sessions lokhrin
-  ver             Int               @default(0)
-  Notification    Notification[]
-  EmailValidation EmailValidation[]
+  ver                Int                  @default(0)
+  Notification       Notification[]
+  EmailValidation    EmailValidation[]
+  NotificationTarget NotificationTarget[]
 
   @@index([email])
 }
@@ -277,6 +278,12 @@ model Invitation {
   site   Site            @relation(fields: [siteId], references: [id])
   type   InvitationTypes
   email  String
+}
+
+model NotificationTarget {
+  token  String @id
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 enum InvitationTypes {
