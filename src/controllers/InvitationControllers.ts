@@ -1,4 +1,4 @@
-import prisma from "@/config/db";
+import prisma from "../config/db";
 import { Request, Response } from "express";
 
 export const getInvitation = async (req: Request, res: Response) => {
