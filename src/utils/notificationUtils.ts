@@ -46,7 +46,6 @@ export const notifyUser = async ({
           title,
           body: message,
         },
-        data: { ...payload },
       };
 
       admin

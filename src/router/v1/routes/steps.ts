@@ -1,7 +1,10 @@
+import { uploadFile } from "@/middleware/uploadImage";
 import {
+  addRPPhoto,
   addSA1CandidateController,
   chooseSA1Candidate,
   nextSubStepOCController,
+  setMeetDate,
   startValidationPhaseController,
   testFeature,
 } from "../../../controllers/StepsControllers";
@@ -113,4 +116,7 @@ router.post("/candidate/choose/:candidateId", chooseSA1Candidate);
 
 router.post("/validation/:stepId", startValidationPhaseController);
 
+router.post("/rp/addRecette/:stepId", uploadFile("step"), addRPPhoto);
+
+router.post("/rp/setMeetDate/:stepId", setMeetDate);
 export default router;

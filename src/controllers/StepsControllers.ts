@@ -5,6 +5,7 @@ import { createManager, replicateManagers } from "./ManagerControllers";
 //@ts-ignore
 import { sendEmail } from "./../utils/sendMail";
 import { formatSite, notifyUser } from "../utils/notificationUtils";
+import { RequestWithImages } from "@/types";
 
 type SA1Candidate = {
   long: string;
@@ -182,10 +183,16 @@ export const nextStep = async (siteId: number) => {
     "ANF",
     "DEMOC",
     "OC",
+    "RP",
     "DOS",
   ];
   try {
     const step = await getCurrentStep(siteId);
+    if (step?.type === "RP") {
+      if (!step.meetDate || new Date() < step?.meetDate) {
+        throw Error("Date is too early");
+      }
+    }
     console.log("step: ", step);
     if (!step) throw Error("Step unavailable");
     const managers = await prisma.manager.findMany({
@@ -534,5 +541,64 @@ export const nextSubStepOCController = async (req: Request, res: Response) => {
   } catch (error) {
     console.log(error);
     return false;
+  }
+};
+
+export const addRPPhoto = async (req: RequestWithImages, res: Response) => {
+  try {
+    const { stepId } = req.params;
+    const { images } = req;
+
+    if (!images) return res.status(400).json("Images not found");
+    const step = await prisma.step.findUnique({
+      where: {
+        id: stepId,
+      },
+    });
+    if (!step) return res.status(400).json("Step not found");
+
+    await prisma.images.createMany({
+      data: images.images.map((img: string) => ({
+        stepId: step.id,
+        path: img.split(/[\/\\]/)[img.split(/[\/\\]/).length - 1],
+      })),
+    });
+
+    await prisma.step.update({
+      where: {
+        id: stepId,
+      },
+      data: {
+        meetDate: null,
+        status: "PENDING",
+      },
+    });
+
+    return res.status(200).json("Images added successfully");
+  } catch (err) {
+    console.error(err);
+    return res.status(400).json(err);
+  }
+};
+
+export const setMeetDate = async (req: Request, res: Response) => {
+  try {
+    const { stepId } = req.params;
+    const { meetDate } = req.body;
+    const step = await prisma.step.update({
+      where: {
+        id: stepId,
+      },
+      data: {
+        meetDate: new Date(meetDate),
+        status: "VALIDATION",
+      },
+    });
+    if (!step) return res.status(400).json("Step not found");
+
+    return res.status(200).json(step);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json("Internal Server Error.");
   }
 };

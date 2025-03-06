@@ -165,6 +165,7 @@ model Step {
   type      StepTypes
   createdAt DateTime   @default(now())
   comment   String     @default("N/A")
+  meetDate  DateTime?
 
   site         Site           @relation(fields: [siteId], references: [id], onDelete: Cascade)
   siteId       Int
@@ -309,6 +310,7 @@ enum StepTypes {
   DOS
   DEMOC
   OC
+  RP
   APD
 }
 
