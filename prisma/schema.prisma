@@ -311,6 +311,8 @@ enum StepTypes {
   DEMOC
   OC
   RP
+  RS
+  DC
   APD
 }
 

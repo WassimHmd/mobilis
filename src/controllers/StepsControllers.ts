@@ -184,6 +184,8 @@ export const nextStep = async (siteId: number) => {
     "DEMOC",
     "OC",
     "RP",
+    "RS",
+    "DC",
     "DOS",
   ];
   try {
