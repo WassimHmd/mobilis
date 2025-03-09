@@ -20,35 +20,33 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   libxshmfence1 \
   libglu1-mesa \
   chromium \
+  python3 \
+  python3-pip \
+  python3-venv \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
+RUN python3 -m venv /opt/venv
 
-# Puppeteer setup: Skip Chromium download and use the installed Chromium
+ENV PATH="/opt/venv/bin:$PATH"
+
+RUN pip install --no-cache-dir easyocr opencv-python numpy
+
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV PUPPETEER_EXECUTABLE_PATH="/usr/bin/chromium"
 
-# Set working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json for dependency installation
 COPY package*.json ./
-
-# Install dependencies
 RUN npm install
 
-# Copy the rest of the application files
 COPY . .
 
-# Generate Prisma client
 RUN npx prisma generate
 
-# Build TypeScript files
 RUN npm run build
 
-# Expose ports for your services
-EXPOSE 5000  
-EXPOSE 3000  
+EXPOSE 5000
+EXPOSE 3000
 
-# Run the compiled JS code
 CMD ["npm", "start"]
